@@ -15,6 +15,8 @@
 #define SQRT 7
 #define LN 8
 #define LOG 9
+#define POW 10
+#define MOD 11
 
 struct Stack {
     int top;
@@ -22,7 +24,18 @@ struct Stack {
     char *data;
 };
 
-double polish_notation(char *string);
-void is_func(struct Stack *stack, char *string, int *index);
+void polish_notation(char *string);
+void push_func(struct Stack *stack, char *string, int *index);
+
+double arithmetic_calculations(char *output);
+
+struct Stack *createStack(int capacity);
+int is_empty(struct Stack *stack);
+int size(struct Stack *stack);
+void delete_stack(struct Stack *stack);
+void resize_stack(struct Stack *stack);
+void push(struct Stack *stack, char item);
+char peek(struct Stack *stack);
+char pop(struct Stack *stack);
 
 #endif // SRC_S21_SMARTCALC_H_

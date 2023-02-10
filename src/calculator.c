@@ -1,188 +1,88 @@
 #include "s21_SmartCalc.h"
 
-struct Stack *createStack(int capacity) {
-    struct Stack *stack = (struct Stack *)malloc(sizeof(struct Stack));
-    stack->top = -1;
-    stack->capacity = capacity;
-    stack->data = (char*)malloc(stack->capacity * sizeof(char));
-    return stack;
-}
-
-int is_empty(struct Stack *stack) {
-    return stack->top == -1;
-}
-
-int size(struct Stack *stack) {
-    return stack->top + 1;
-}
-
-void delete_stack(struct Stack *stack) {
-    if (stack) {
-        if (stack->data) {
-            free(stack->data);
-        }
-        free(stack);
-    }
-}
-
-void resize_stack(struct Stack *stack) {
-    int newCapacity = stack->capacity * 2;
-    char *newdata = (char*)realloc(stack->data, newCapacity * sizeof(char));
-    if (newdata) {
-        stack->data = newdata;
-        stack->capacity = newCapacity;
-    }
-}
-
-void push(struct Stack *stack, char item) {
-    if (size(stack) == stack->capacity) {
-        resize_stack(stack);
-    }
-    stack->data[++stack->top] = item;
-}
-
-char peek(struct Stack *stack) {
-    if (is_empty(stack)) {
-        return -1;
-    }
-    return stack->data[stack->top];
-}
-
-char pop(struct Stack *stack) {
-    if (is_empty(stack)) {
-        return -1;
-    }
-    return stack->data[stack->top--];
-}
-
-void is_func(struct Stack *stack, char *string, int *index) {
+void push_func(struct Stack *stack, char *string, int *index) {
     if (string[*index] == 'c') {
-        if (string[*index + 1] == 'o') {
-            if (string[*index + 2] == 's') {
-                if (string[*index + 3] == '(') {
-                    push(stack, 'c');
-                    // *index += 3;
-                }
-            }
-        }
-    }
-    if (string[*index] == 's') {
-        if (string[*index + 1] == 'i') {
-            if (string[*index + 2] == 'n') {
-                if (string[*index + 3] == '(') {
-                    push(stack, 's');
-                    // *index += 3;
-                }
-            }
-        }
-    }
-    if (string[*index] == 't') {
-        if (string[*index + 1] == 'a') {
-            if (string[*index + 2] == 'n') {
-                if (string[*index + 3] == '(') {
-                    push(stack, 't');
-                    // *index += 3;
-                }
-            }
-        }
-    }
-    if (string[*index] == 'a') {
-        if (string[*index + 1] == 'c') {
-            if (string[*index + 2] == 'o') {
-                if (string[*index + 3] == 's') {
-                    if (string[*index + 4] == '(') {
-                        push(stack, 'a');
-                        // *index += 4;
-                    }
-                }
-            }
-        }
-    }
-    if (string[*index] == 'a') {
-        if (string[*index + 1] == 's') {
-            if (string[*index + 2] == 'i') {
-                if (string[*index + 3] == 'n') {
-                    if (string[*index + 4] == '(') {
-                        push(stack, 'a');
-                        // *index += 4;
-                    }
-                }
-            }
-        }
-    }
-    if (string[*index] == 'a') {
-        if (string[*index + 1] == 't') {
-            if (string[*index + 2] == 'a') {
-                if (string[*index + 3] == 'n') {
-                    if (string[*index + 4] == '(') {
-                        push(stack, 'a');
-                        // *index += 4;
-                    }
-                }
-            }
-        }
-    }
-    if (string[*index] == 's') {
+        push(stack, 'c');
+        *index += 3;
+    } else if (string[*index] == 's') {
         if (string[*index + 1] == 'q') {
-            if (string[*index + 2] == 'r') {
-                if (string[*index + 3] == 't') {
-                    if (string[*index + 4] == '(') {
-                        push(stack, '~');
-                        // *index += 4;
-                    }
-                }
-            }
+            push(stack, '~');
+            *index += 4;
+        } else {
+            push(stack, 's');
+            *index += 3;
         }
-    }
-    if (string[*index] == 'l') {
+    } else if (string[*index] == 't') {
+        push(stack, 't');
+        *index += 3;
+    } else if (string[*index] == 'a') {
+        if (string[*index + 1] == 'c') {
+            push(stack, 'C');
+        } else if (string[*index + 1] == 's') {
+            push(stack, 'S');
+        } else if (string[*index + 1] == 't') {
+            push(stack, 'T');
+        }
+        *index += 4;
+    } else if (string[*index] == 'l') {
         if (string[*index + 1] == 'n') {
-            if (string[*index + 2] == '(') {
-                push(stack, 'l');
-                // *index += 2;
-            }
+            push(stack, 'l');
+            *index += 2;
+        } else {
+            push(stack, 'L');
+            *index += 3;
         }
-    }
-    if (string[*index] == 'l') {
-        if (string[*index + 1] == 'o') {
-            if (string[*index + 2] == 'g') {
-                if (string[*index + 3] == '(') {
-                    push(stack, '!');
-                    // *index += 3;
-                }
-            }
-        }
-    }
-    if (string[*index] == 'p') {
-        if (string[*index + 1] == 'o') {
-            if (string[*index + 2] == 'w') {
-                if (string[*index + 3] == '(') {
-                    push(stack, 'p');
-                    // *index += 3;
-                }
-            }
-        }
-    }
-    if (string[*index] == 'm') {
-        if (string[*index + 1] == 'o') {
-            if (string[*index + 2] == 'd') {
-                if (string[*index + 3] == '(') {
-                    push(stack, 'm');
-                    // *index += 3;
-                }
-            }
-        }
+    } else if (string[*index] == 'm') {
+        push(stack, 'm');
+    } else if (string[*index] == '^') {
+        push(stack, '^');
     }
     if (string[*index] == '(') {
         push(stack, '(');
     }
 }
 
-double polish_notation(char *string) {
+int is_func(struct Stack *stack) {
+    int func = 0;
+    if (peek(stack) == 'c') {
+        func = COS;
+    } else if (peek(stack) == 's') {
+        func = SIN;
+    } else if (peek(stack) == 't') {
+        func = TAN;
+    } else if (peek(stack) == 'C') {
+        func = ACOS;
+    } else if (peek(stack) == 'S') {
+        func = ASIN;
+    } else if (peek(stack) == 'T') {
+        func = ATAN;
+    } else if (peek(stack) == '^') {
+        func = POW;
+    } else if (peek(stack) == 'm') {
+        func = MOD;
+    } else if (peek(stack) == '~') {
+        func = SQRT;
+    } else if (peek(stack) == 'L') {
+        func = LOG;
+    } else if (peek(stack) == 'l') {
+        func = LN;
+    }
+    return func;
+}
+
+void do_space() {
+
+}
+
+void polish_notation(char *string) {
     struct Stack *stack = createStack(2);
     int index = 0;
-    double result = 0.0;
     char output[255] = {'\0'};
-    for (int i = 0; i < strlen(string) + 1; i++) {
+    for (int i = 0; i < (int)strlen(string) + 1 && index < 255; i++) {
+        if ((string[i] < '0' || string[i] > '9') && string[i] != '(' && string[i] != ')' && output[index - 1] != ' ') {
+            output[index] = ' ';
+            index++;
+        }
         switch (string[i]) {
             case '0':
             case '1':
@@ -197,24 +97,20 @@ double polish_notation(char *string) {
                 output[index] = string[i];
                 index++;
                 break;
+            case '^':
             case 'c':
             case 's':
             case 't':
             case 'a':
             case 'l':
-            case 'p':
             case 'm':
             case '(':
-                is_func(stack, string, &i);
-                break;
-            case ',':
-                while (peek(stack) != '(') {
-                    output[index] = pop(stack);
-                    index++;
-                }
+                push_func(stack, string, &i);
                 break;
             case '*':
                 while (peek(stack) != '-' || peek(stack) != '+') {
+                    output[index] = ' ';
+                    index++;
                     output[index] = pop(stack);
                     index++;
                 }
@@ -222,42 +118,77 @@ double polish_notation(char *string) {
                 break;
             case '/':
                 while (peek(stack) != '-' || peek(stack) != '+') {
+                    output[index] = ' ';
+                    index++;
                     output[index] = pop(stack);
                     index++;
                 }
                 push(stack, '/');
                 break;
             case '+':
+                while (!is_empty(stack) && peek(stack) != '(') {
+                    if (output[index - 1] != ' ') {
+                        output[index] = ' ';
+                        index++;
+                    }
+                    output[index] = pop(stack);
+                    index++;
+                    output[index] = ' ';
+                    index++;
+                }
                 push(stack, '+');
                 break;
             case '-':
+                while (!is_empty(stack) && peek(stack) != '(') {
+                    if (output[index - 1] != ' ') {
+                        output[index] = ' ';
+                        index++;
+                    }
+                    output[index] = pop(stack);
+                    index++;
+                    output[index] = ' ';
+                    index++;
+                }
                 push(stack, '-');
                 break;
             case ')':
                 while (peek(stack) != '(') {
+                    output[index] = ' ';
+                    index++;
                     output[index] = pop(stack);
                     index++;
                 }
                 pop(stack);
-                while (peek(stack) == 'c' || peek(stack) == 's' || peek(stack) == 't' || peek(stack) == 'a' || peek(stack) == 'p' || peek(stack) == 'm' || peek(stack) == '~' || peek(stack) == '!' || peek(stack) == 'l') {
+                while (is_func(stack)) {
+                    output[index] = ' ';
+                    index++;
                     output[index] = pop(stack);
                     index++;
                 }
                 break;
             case '\0':
                 while (!is_empty(stack)) {
+                    if (output[index - 1] != ' ') {
+                        output[index] = ' ';
+                        index++;
+                    }
                     output[index] = pop(stack);
                     index++;
                 }
                 break;
         }
     }
-    printf("Result - %s\n", output);
+    arithmetic_calculations(output);
     delete_stack(stack);
-    return result;
 }
 
-int main() {
-    polish_notation("2+(3-4)+3-7+pow(10, 2)");
-    return 0;
+double arithmetic_calculations(char *output) {
+    double result = 0.0;
+    printf("Result: %s\n", output);
+    // for (int i = 0; i < (int)strlen(output); i++) {
+    //     if (output[i] == '') {
+
+    //     }
+    // }
+    return result;
 }
