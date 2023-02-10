@@ -5,6 +5,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-double polish_notation(char **string);
+double polish_notation(char *string);
 
 #endif // SRC_S21_SMARTCALC_H_
