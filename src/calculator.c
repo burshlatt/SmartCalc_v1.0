@@ -74,8 +74,9 @@ void do_space() {
 
 }
 
-void polish_notation(char *string) {
+double polish_notation(char *string) {
     struct Stack *stack = createStack(2);
+    double result = 0.0;
     int index = 0;
     char output[255] = {'\0'};
     for (int i = 0; i < (int)strlen(string) + 1 && index < 255; i++) {
@@ -178,17 +179,24 @@ void polish_notation(char *string) {
                 break;
         }
     }
-    arithmetic_calculations(output);
+    result = arithmetic_calculations(output);
     delete_stack(stack);
+    return result;
 }
 
 double arithmetic_calculations(char *output) {
     double result = 0.0;
     printf("Result: %s\n", output);
-    // for (int i = 0; i < (int)strlen(output); i++) {
-    //     if (output[i] == '') {
-
-    //     }
-    // }
+    for (int i = 0; i < (int)strlen(output); i++) {
+        switch (output[i]) {
+            case '+':
+                for (int j = i; j >= 0; j--) {
+                    // result += atof();
+                }
+                break;
+            case '-':
+                break;
+        }
+    }
     return result;
 }

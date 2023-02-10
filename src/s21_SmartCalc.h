@@ -24,9 +24,9 @@ struct Stack {
     char *data;
 };
 
-void polish_notation(char *string);
 void push_func(struct Stack *stack, char *string, int *index);
 
+double polish_notation(char *string);
 double arithmetic_calculations(char *output);
 
 struct Stack *createStack(int capacity);
