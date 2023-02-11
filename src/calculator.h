@@ -34,6 +34,7 @@ void set_space(char *output, int *index);
 void push(struct Stack *stack, char item);
 void set_num(double *stack, int *top, double num);
 void push_func(struct Stack *stack, char *string, int *index);
+void logic_actions(struct Stack *stack, char *output, int *index);
 void set_in_output(struct Stack *stack, char *output, int *index);
 void set_nums_output(char *string, int *i, char *output, int *index);
 void do_pop(struct Stack *stack, char *output, int *index, int variant);

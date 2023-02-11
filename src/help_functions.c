@@ -157,35 +157,32 @@ void set_in_output(struct Stack *stack, char *output, int *index) {
     *index += 1;
 }
 
+void logic_actions(struct Stack *stack, char *output, int *index) {
+    set_space(output, index);
+    set_in_output(stack, output, index);
+    set_space(output, index);
+}
+
 void do_pop(struct Stack *stack, char *output, int *index, int variant) {
     if (variant == 1) {
         while (!is_empty(stack) && peek(stack) != '(') {
-            set_space(output, index);
-            set_in_output(stack, output, index);
-            set_space(output, index);
+            logic_actions(stack, output, index);
         }
     } else if (variant == 2) {
-        while (!is_empty(stack) && peek(stack) != '-' && peek(stack) != '+' && peek(stack) != '(') {
-            set_space(output, index);
-            set_in_output(stack, output, index);
-            set_space(output, index);
+        while (!is_empty(stack)) {
+            logic_actions(stack, output, index);
         }
     } else if (variant == 3) {
         while (peek(stack) != '(') {
-            set_space(output, index);
-            set_in_output(stack, output, index);
-            set_space(output, index);
+            logic_actions(stack, output, index);
         }
     } else if (variant == 4) {
         while (is_func(stack)) {
-            set_space(output, index);
-            set_in_output(stack, output, index);
-            set_space(output, index);
+            logic_actions(stack, output, index);
         }
     } else if (variant == 5) {
-        while (!is_empty(stack)) {
-            set_space(output, index);
-            set_in_output(stack, output, index);
+        while (!is_empty(stack) && peek(stack) != '-' && peek(stack) != '+' && peek(stack) != '(') {
+            logic_actions(stack, output, index);
         }
     }
 }

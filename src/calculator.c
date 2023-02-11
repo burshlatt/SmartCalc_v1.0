@@ -18,11 +18,11 @@ double polish_notation(char *string) {
                 push_func(stack, string, &i);
                 break;
             case '*':
-                do_pop(stack, output, &index, 2);
+                do_pop(stack, output, &index, 5);
                 push(stack, '*');
                 break;
             case '/':
-                do_pop(stack, output, &index, 2);
+                do_pop(stack, output, &index, 5);
                 push(stack, '/');
                 break;
             case '+':
@@ -41,7 +41,7 @@ double polish_notation(char *string) {
                 do_pop(stack, output, &index, 4);
                 break;
             case '\0':
-                do_pop(stack, output, &index, 5);
+                do_pop(stack, output, &index, 2);
                 break;
         }
     }

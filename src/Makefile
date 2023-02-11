@@ -4,23 +4,23 @@ TEST_LIBS = -lcheck -lm -lpthread
 
 all: gcov_report
 
-s21_SmartCalc.a: clean
+calculator.a: clean
 	$(CC) $(CFLAGS) -c *.c
-	ar rcs s21_SmartCalc.a *.o
-	ranlib s21_SmartCalc.a
+	ar rcs calculator.a *.o
+	ranlib calculator.a
 
-main: s21_SmartCalc.a
+main: calculator.a
 	$(CC) $(CFLAGS) -c main.c -o main.o
-	$(CC) main.o s21_SmartCalc.a $(TEST_LIBS) -o s21_SmartCalc
-	./s21_SmartCalc
+	$(CC) main.o calculator.a $(TEST_LIBS) -o calculator
+	./calculator
 
-test: s21_matrix.a
+test: calculator.a
 	$(CC) $(CFLAGS) -c unit_tests.c -o unit_tests.o
-	$(CC) unit_tests.o s21_matrix.a $(TEST_LIBS) -o s21_matrix
-	./s21_matrix
+	$(CC) unit_tests.o calculator.a $(TEST_LIBS) -o calculator
+	./calculator
 
-gcov_report: s21_matrix.a
-	$(CC) $(FLAGS) --coverage unit_tests.c s21_*.c s21_matrix.a $(TEST_LIBS) -o gcov_test
+gcov_report: calculator.a
+	$(CC) $(FLAGS) --coverage unit_tests.c s21_*.c calculator.a $(TEST_LIBS) -o gcov_test
 	chmod +x *
 	./gcov_test
 	gcov s21_*.gcda
@@ -29,7 +29,7 @@ gcov_report: s21_matrix.a
 	open report.html
 
 clean:
-	rm -rf s21_SmartCalc
+	rm -rf calculator
 	rm -rf *.o
 	rm -rf *.a
 	rm -rf *.gcno
