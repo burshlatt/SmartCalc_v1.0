@@ -1,103 +1,12 @@
-#include "s21_SmartCalc.h"
-
-void push_func(struct Stack *stack, char *string, int *index) {
-    if (string[*index] == 'c') {
-        push(stack, 'c');
-        *index += 3;
-    } else if (string[*index] == 's') {
-        if (string[*index + 1] == 'q') {
-            push(stack, '~');
-            *index += 4;
-        } else {
-            push(stack, 's');
-            *index += 3;
-        }
-    } else if (string[*index] == 't') {
-        push(stack, 't');
-        *index += 3;
-    } else if (string[*index] == 'a') {
-        if (string[*index + 1] == 'c') {
-            push(stack, 'C');
-        } else if (string[*index + 1] == 's') {
-            push(stack, 'S');
-        } else if (string[*index + 1] == 't') {
-            push(stack, 'T');
-        }
-        *index += 4;
-    } else if (string[*index] == 'l') {
-        if (string[*index + 1] == 'n') {
-            push(stack, 'l');
-            *index += 2;
-        } else {
-            push(stack, 'L');
-            *index += 3;
-        }
-    } else if (string[*index] == 'm') {
-        push(stack, 'm');
-    } else if (string[*index] == '^') {
-        push(stack, '^');
-    }
-    if (string[*index] == '(') {
-        push(stack, '(');
-    }
-}
-
-int is_func(struct Stack *stack) {
-    int func = 0;
-    if (peek(stack) == 'c') {
-        func = COS;
-    } else if (peek(stack) == 's') {
-        func = SIN;
-    } else if (peek(stack) == 't') {
-        func = TAN;
-    } else if (peek(stack) == 'C') {
-        func = ACOS;
-    } else if (peek(stack) == 'S') {
-        func = ASIN;
-    } else if (peek(stack) == 'T') {
-        func = ATAN;
-    } else if (peek(stack) == '^') {
-        func = POW;
-    } else if (peek(stack) == 'm') {
-        func = MOD;
-    } else if (peek(stack) == '~') {
-        func = SQRT;
-    } else if (peek(stack) == 'L') {
-        func = LOG;
-    } else if (peek(stack) == 'l') {
-        func = LN;
-    }
-    return func;
-}
-
-void do_space() {
-
-}
+#include "calculator.h"
 
 double polish_notation(char *string) {
-    struct Stack *stack = createStack(2);
-    double result = 0.0;
+    struct Stack *stack = create_stack(SIZE);
     int index = 0;
     char output[255] = {'\0'};
     for (int i = 0; i < (int)strlen(string) + 1 && index < 255; i++) {
-        if ((string[i] < '0' || string[i] > '9') && string[i] != '(' && string[i] != ')' && output[index - 1] != ' ') {
-            output[index] = ' ';
-            index++;
-        }
+        set_nums_output(string, &i, output, &index);
         switch (string[i]) {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-                output[index] = string[i];
-                index++;
-                break;
             case '^':
             case 'c':
             case 's':
@@ -109,94 +18,122 @@ double polish_notation(char *string) {
                 push_func(stack, string, &i);
                 break;
             case '*':
-                while (peek(stack) != '-' || peek(stack) != '+') {
-                    output[index] = ' ';
-                    index++;
-                    output[index] = pop(stack);
-                    index++;
-                }
+                do_pop(stack, output, &index, 2);
                 push(stack, '*');
                 break;
             case '/':
-                while (peek(stack) != '-' || peek(stack) != '+') {
-                    output[index] = ' ';
-                    index++;
-                    output[index] = pop(stack);
-                    index++;
-                }
+                do_pop(stack, output, &index, 2);
                 push(stack, '/');
                 break;
             case '+':
-                while (!is_empty(stack) && peek(stack) != '(') {
-                    if (output[index - 1] != ' ') {
-                        output[index] = ' ';
-                        index++;
-                    }
-                    output[index] = pop(stack);
-                    index++;
-                    output[index] = ' ';
-                    index++;
-                }
+                do_pop(stack, output, &index, 1);
                 push(stack, '+');
                 break;
             case '-':
-                while (!is_empty(stack) && peek(stack) != '(') {
-                    if (output[index - 1] != ' ') {
-                        output[index] = ' ';
-                        index++;
-                    }
-                    output[index] = pop(stack);
-                    index++;
-                    output[index] = ' ';
-                    index++;
+                if (string[i - 1] != '(') {
+                    do_pop(stack, output, &index, 1);
+                    push(stack, '-');
                 }
-                push(stack, '-');
                 break;
             case ')':
-                while (peek(stack) != '(') {
-                    output[index] = ' ';
-                    index++;
-                    output[index] = pop(stack);
-                    index++;
-                }
+                do_pop(stack, output, &index, 3);
                 pop(stack);
-                while (is_func(stack)) {
-                    output[index] = ' ';
-                    index++;
-                    output[index] = pop(stack);
-                    index++;
-                }
+                do_pop(stack, output, &index, 4);
                 break;
             case '\0':
-                while (!is_empty(stack)) {
-                    if (output[index - 1] != ' ') {
-                        output[index] = ' ';
-                        index++;
-                    }
-                    output[index] = pop(stack);
-                    index++;
-                }
+                do_pop(stack, output, &index, 5);
                 break;
         }
     }
-    result = arithmetic_calculations(output);
     delete_stack(stack);
-    return result;
+    return arithmetic_calculations(output);
 }
 
 double arithmetic_calculations(char *output) {
-    double result = 0.0;
-    printf("Result: %s\n", output);
-    for (int i = 0; i < (int)strlen(output); i++) {
-        switch (output[i]) {
-            case '+':
-                for (int j = i; j >= 0; j--) {
-                    // result += atof();
-                }
-                break;
-            case '-':
-                break;
+    char *trash;
+    int top = -1;
+    double x = 0.0;
+    double y = 0.0;
+    double num = 0.0;
+    double stack_nums[SIZE];
+    for (int i = 0; output[i]; i++) {
+        if (isdigit(output[i]) || output[i] == '.') {
+            num = strtod(&output[i], &trash);
+            if (output[i + 1] == '-') {
+                num = -num;
+            }
+            i = trash - output;
+            set_num(stack_nums, &top, num);
+        } else {
+            switch (output[i]) {
+                case '+':
+                    x = get_num(stack_nums, &top);
+                    y = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, y + x);
+                    break;
+                case '-':
+                    x = get_num(stack_nums, &top);
+                    y = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, y - x);
+                    break;
+                case '*':
+                    x = get_num(stack_nums, &top);
+                    y = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, y * x);
+                    break;
+                case '/':
+                    x = get_num(stack_nums, &top);
+                    y = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, y / x);
+                    break;
+                case '^':
+                    x = get_num(stack_nums, &top);
+                    y = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, pow(y, x));
+                    break;
+                case 'm':
+                    x = get_num(stack_nums, &top);
+                    y = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, fmod(y, x));
+                    break;
+                case 'c':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, cos(x));
+                    break;
+                case 's':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, sin(x));
+                    break;
+                case 't':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, tan(x));
+                    break;
+                case 'C':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, acos(x));
+                    break;
+                case 'S':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, asin(x));
+                    break;
+                case 'T':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, atan(x));
+                    break;
+                case '~':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, sqrt(x));
+                    break;
+                case 'l':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, log(x));
+                    break;
+                case 'L':
+                    x = get_num(stack_nums, &top);
+                    set_num(stack_nums, &top, log10(x));
+                    break;
+            }
         }
     }
-    return result;
+    return get_num(stack_nums, &top);
 }
