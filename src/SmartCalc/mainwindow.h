@@ -6,11 +6,13 @@
 #include <QLineEdit>
 #include <QApplication>
 #include <QVector>
-#include "qcustomplot.h"
-#include "qcustomplot.c"
 
 #include <iostream>
 #include <string>
+
+extern "C" {
+#include "../CFiles/calculator.h"
+}
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -64,5 +66,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    double xBegin, xEnd, h, X;
+    int N;
+
+    QVector<double> xCord, yCord;
 };
 #endif // MAINWINDOW_H

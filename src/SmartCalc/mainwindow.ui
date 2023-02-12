@@ -1142,7 +1142,7 @@ QPushButton:pressed {
      <string>Deposit calculator</string>
     </property>
    </widget>
-   <widget class="QCustomPlot" name="widget" native="true">
+   <widget class="QCustomPlot" name="functionGraph" native="true">
     <property name="geometry">
      <rect>
       <x>480</x>

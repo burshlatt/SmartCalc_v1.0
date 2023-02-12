@@ -1,8 +1,0 @@
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/SmartCalc.dir
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/edit_cache.dir
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/rebuild_cache.dir
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/list_install_components.dir
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/install.dir
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/install/local.dir
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/install/strip.dir
-/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/SmartCalc_autogen.dir
