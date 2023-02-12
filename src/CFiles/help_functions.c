@@ -59,7 +59,7 @@ void set_nums_output(char *string, int *i, char *output, int *index) {
         *i += 1;
         is_negative = 1;
     }
-    while ((string[*i] >= '0' && string[*i] <= '9') || string[*i] == '.') {
+    while ((string[*i] >= '0' && string[*i] <= '9') || string[*i] == '.' || string[*i] == 'x') {
         output[*index] = string[*i];
         *index += 1;
         *i += 1;
@@ -68,7 +68,7 @@ void set_nums_output(char *string, int *i, char *output, int *index) {
         output[*index] = '-';
         *index += 1;
     }
-    if ((string[*i] < '0' || string[*i] > '9')) {
+    if ((string[*i] < '0' || string[*i] > '9') && string[*i] != 'x') {
         if (string[*i] != '(' && string[*i] != ')') {
             if (string[*i] != '.' && output[*index - 1] != ' ') {
                 output[*index] = ' ';

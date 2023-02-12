@@ -6,6 +6,18 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    setGeometry(x(), y(), width() - 480, height());
+
+    QSettings settings("Trolltech", "Application Example");
+    QPoint pos = settings.value("pos", QPoint(1000, 400)).toPoint();
+    move(pos);
+
+    ui->xValue->setText("0");
+    ui->xMinCord->setText("-5");
+    ui->xMaxCord->setText("5");
+    ui->yMinCord->setText("-5");
+    ui->yMaxCord->setText("5");
 }
 
 MainWindow::~MainWindow()
@@ -392,12 +404,11 @@ void MainWindow::on_xSym_clicked() {
 
 void MainWindow::on_dotSym_clicked() {
     std::string final_string = ui->inputOutput->text().toStdString();
-    char *chars_array = &final_string[0];
     if (count_of_actions == 0) {
         ui->inputOutput->clear();
     }
     if (count_of_actions < 255) {
-        if (chars_array[strlen(chars_array - 1)] < '0' || chars_array[strlen(chars_array - 1)] > '9') {
+        if (final_string[final_string.size() - 1] < '0' || final_string[final_string.size() - 1] > '9') {
             ui->inputOutput->setText(ui->inputOutput->text() + "0");
             count_of_actions++;
         }
@@ -425,48 +436,56 @@ void MainWindow::on_delAll_clicked() {
 }
 
 void MainWindow::on_resultFunc_clicked() {
+    double xValue = ui->xValue->text().toDouble();
+    std::string final_string = ui->inputOutput->text().toStdString();
+    char *chars_array = &final_string[0];
+    double result = polish_notation(chars_array, is_x, xValue);
     if (is_x) {
-        change_cord();
-        h = 0.1;
-        xBegin = -3;
-        xEnd = 3 + h;
-        N = (xEnd - xBegin) / h + 2;
-        for (X = xBegin; X <= xEnd; X += h) {
-            xCord.push_back(X);
-            yCord.push_back(X*X);
-        }
-        ui->functionGraph->addGraph();
-        ui->functionGraph->graph(0)->addData(xCord, yCord);
-        ui->functionGraph->replot();
+        print_graph(result);
         is_x = 0;
     } else {
-        count_of_actions = 0;
-        std::string final_string = ui->inputOutput->text().toStdString();
-        char *chars_array = &final_string[0];
-        double result = polish_notation(chars_array);
         QString result_string = QString::number(result);
         ui->inputOutput->clear();
         ui->inputOutput->setText(ui->inputOutput->text() + result_string);
+        count_of_actions = 0;
     }
 }
 
 void MainWindow::on_showGraph_clicked() {
+    int xPos = this->geometry().x();
+    int yPos = this->geometry().y();
     if (!graph_is_open) {
         ui->showGraph->setText("<");
-        setGeometry(x(), y(), width() + 480, height());
+        setGeometry(xPos, yPos, width() + 480, height());
         graph_is_open = 1;
     } else {
         ui->showGraph->setText(">");
-        setGeometry(x(), y(), width() - 480, height());
+        setGeometry(xPos, yPos, width() - 480, height());
         graph_is_open = 0;
     }
+//    QSettings settings("Trolltech", "Application Example");
+//    QPoint pos = settings.value("pos", QPoint(xPos, yPos)).toPoint();
+//    move(pos);
+
 }
 
-void MainWindow::change_cord() {
+void MainWindow::print_graph(double result) {
+    ui->functionGraph->clearGraphs();
     int xMin = ui->xMinCord->text().toInt();
     int xMax = ui->xMaxCord->text().toInt();
     int yMin = ui->yMinCord->text().toInt();
     int yMax = ui->yMaxCord->text().toInt();
     ui->functionGraph->xAxis->setRange(xMin, xMax);
     ui->functionGraph->yAxis->setRange(yMin, yMax);
+    h = 0.1;
+    xBegin = xMin;
+    xEnd = xMax + h;
+    N = (xEnd - xBegin) / h + 2;
+    for (X = xBegin; X <= xEnd; X += h) {
+        xCord.push_back(X);
+        yCord.push_back(result);
+    }
+    ui->functionGraph->addGraph();
+    ui->functionGraph->graph(0)->addData(xCord, yCord);
+    ui->functionGraph->replot();
 }

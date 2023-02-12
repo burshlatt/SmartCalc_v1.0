@@ -63,13 +63,13 @@ private slots:
     void on_resultFunc_clicked();
     void on_showGraph_clicked();
 
-    void change_cord();
+    void print_graph(double result);
 
 
 private:
     Ui::MainWindow *ui;
     int is_x = 0;
-    int graph_is_open = 1;
+    int graph_is_open = 0;
     int count_of_actions = 0;
 
     int N;

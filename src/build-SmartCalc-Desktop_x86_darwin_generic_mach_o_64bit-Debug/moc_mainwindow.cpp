@@ -1,152 +1,95 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.4.2)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 #include <memory>
 #include "../SmartCalc/mainwindow.h"
-#include <QtGui/qtextcursor.h>
+#include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.4.2. It"
+#error "This file was generated using the moc from 6.2.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
-#endif
-
-#ifndef Q_CONSTINIT
-#define Q_CONSTINIT
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-namespace {
 struct qt_meta_stringdata_MainWindow_t {
-    uint offsetsAndSizes[72];
-    char stringdata0[11];
-    char stringdata1[17];
-    char stringdata2[1];
-    char stringdata3[17];
-    char stringdata4[17];
-    char stringdata5[17];
-    char stringdata6[17];
-    char stringdata7[17];
-    char stringdata8[17];
-    char stringdata9[17];
-    char stringdata10[17];
-    char stringdata11[17];
-    char stringdata12[19];
-    char stringdata13[19];
-    char stringdata14[19];
-    char stringdata15[19];
-    char stringdata16[19];
-    char stringdata17[19];
-    char stringdata18[19];
-    char stringdata19[20];
-    char stringdata20[18];
-    char stringdata21[19];
-    char stringdata22[20];
-    char stringdata23[20];
-    char stringdata24[20];
-    char stringdata25[19];
-    char stringdata26[19];
-    char stringdata27[23];
-    char stringdata28[24];
-    char stringdata29[16];
-    char stringdata30[18];
-    char stringdata31[19];
-    char stringdata32[18];
-    char stringdata33[22];
-    char stringdata34[21];
-    char stringdata35[12];
+    const uint offsetsAndSize[74];
+    char stringdata0[650];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
+    uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
-        QT_MOC_LITERAL(0, 10),  // "MainWindow"
-        QT_MOC_LITERAL(11, 16),  // "on_num_0_clicked"
-        QT_MOC_LITERAL(28, 0),  // ""
-        QT_MOC_LITERAL(29, 16),  // "on_num_1_clicked"
-        QT_MOC_LITERAL(46, 16),  // "on_num_2_clicked"
-        QT_MOC_LITERAL(63, 16),  // "on_num_3_clicked"
-        QT_MOC_LITERAL(80, 16),  // "on_num_4_clicked"
-        QT_MOC_LITERAL(97, 16),  // "on_num_5_clicked"
-        QT_MOC_LITERAL(114, 16),  // "on_num_6_clicked"
-        QT_MOC_LITERAL(131, 16),  // "on_num_7_clicked"
-        QT_MOC_LITERAL(148, 16),  // "on_num_8_clicked"
-        QT_MOC_LITERAL(165, 16),  // "on_num_9_clicked"
-        QT_MOC_LITERAL(182, 18),  // "on_addFunc_clicked"
-        QT_MOC_LITERAL(201, 18),  // "on_subFunc_clicked"
-        QT_MOC_LITERAL(220, 18),  // "on_mulFunc_clicked"
-        QT_MOC_LITERAL(239, 18),  // "on_divFunc_clicked"
-        QT_MOC_LITERAL(258, 18),  // "on_cosFunc_clicked"
-        QT_MOC_LITERAL(277, 18),  // "on_sinFunc_clicked"
-        QT_MOC_LITERAL(296, 18),  // "on_tanFunc_clicked"
-        QT_MOC_LITERAL(315, 19),  // "on_sqrtFunc_clicked"
-        QT_MOC_LITERAL(335, 17),  // "on_lnFunc_clicked"
-        QT_MOC_LITERAL(353, 18),  // "on_logFunc_clicked"
-        QT_MOC_LITERAL(372, 19),  // "on_acosFunc_clicked"
-        QT_MOC_LITERAL(392, 19),  // "on_asinFunc_clicked"
-        QT_MOC_LITERAL(412, 19),  // "on_atanFunc_clicked"
-        QT_MOC_LITERAL(432, 18),  // "on_powFunc_clicked"
-        QT_MOC_LITERAL(451, 18),  // "on_modFunc_clicked"
-        QT_MOC_LITERAL(470, 22),  // "on_leftBracket_clicked"
-        QT_MOC_LITERAL(493, 23),  // "on_rightBracket_clicked"
-        QT_MOC_LITERAL(517, 15),  // "on_xSym_clicked"
-        QT_MOC_LITERAL(533, 17),  // "on_dotSym_clicked"
-        QT_MOC_LITERAL(551, 18),  // "on_delElem_clicked"
-        QT_MOC_LITERAL(570, 17),  // "on_delAll_clicked"
-        QT_MOC_LITERAL(588, 21),  // "on_resultFunc_clicked"
-        QT_MOC_LITERAL(610, 20),  // "on_showGraph_clicked"
-        QT_MOC_LITERAL(631, 11)   // "change_cord"
+QT_MOC_LITERAL(0, 10), // "MainWindow"
+QT_MOC_LITERAL(11, 16), // "on_num_0_clicked"
+QT_MOC_LITERAL(28, 0), // ""
+QT_MOC_LITERAL(29, 16), // "on_num_1_clicked"
+QT_MOC_LITERAL(46, 16), // "on_num_2_clicked"
+QT_MOC_LITERAL(63, 16), // "on_num_3_clicked"
+QT_MOC_LITERAL(80, 16), // "on_num_4_clicked"
+QT_MOC_LITERAL(97, 16), // "on_num_5_clicked"
+QT_MOC_LITERAL(114, 16), // "on_num_6_clicked"
+QT_MOC_LITERAL(131, 16), // "on_num_7_clicked"
+QT_MOC_LITERAL(148, 16), // "on_num_8_clicked"
+QT_MOC_LITERAL(165, 16), // "on_num_9_clicked"
+QT_MOC_LITERAL(182, 18), // "on_addFunc_clicked"
+QT_MOC_LITERAL(201, 18), // "on_subFunc_clicked"
+QT_MOC_LITERAL(220, 18), // "on_mulFunc_clicked"
+QT_MOC_LITERAL(239, 18), // "on_divFunc_clicked"
+QT_MOC_LITERAL(258, 18), // "on_cosFunc_clicked"
+QT_MOC_LITERAL(277, 18), // "on_sinFunc_clicked"
+QT_MOC_LITERAL(296, 18), // "on_tanFunc_clicked"
+QT_MOC_LITERAL(315, 19), // "on_sqrtFunc_clicked"
+QT_MOC_LITERAL(335, 17), // "on_lnFunc_clicked"
+QT_MOC_LITERAL(353, 18), // "on_logFunc_clicked"
+QT_MOC_LITERAL(372, 19), // "on_acosFunc_clicked"
+QT_MOC_LITERAL(392, 19), // "on_asinFunc_clicked"
+QT_MOC_LITERAL(412, 19), // "on_atanFunc_clicked"
+QT_MOC_LITERAL(432, 18), // "on_powFunc_clicked"
+QT_MOC_LITERAL(451, 18), // "on_modFunc_clicked"
+QT_MOC_LITERAL(470, 22), // "on_leftBracket_clicked"
+QT_MOC_LITERAL(493, 23), // "on_rightBracket_clicked"
+QT_MOC_LITERAL(517, 15), // "on_xSym_clicked"
+QT_MOC_LITERAL(533, 17), // "on_dotSym_clicked"
+QT_MOC_LITERAL(551, 18), // "on_delElem_clicked"
+QT_MOC_LITERAL(570, 17), // "on_delAll_clicked"
+QT_MOC_LITERAL(588, 21), // "on_resultFunc_clicked"
+QT_MOC_LITERAL(610, 20), // "on_showGraph_clicked"
+QT_MOC_LITERAL(631, 11), // "print_graph"
+QT_MOC_LITERAL(643, 6) // "result"
+
     },
-    "MainWindow",
-    "on_num_0_clicked",
-    "",
-    "on_num_1_clicked",
-    "on_num_2_clicked",
-    "on_num_3_clicked",
-    "on_num_4_clicked",
-    "on_num_5_clicked",
-    "on_num_6_clicked",
-    "on_num_7_clicked",
-    "on_num_8_clicked",
-    "on_num_9_clicked",
-    "on_addFunc_clicked",
-    "on_subFunc_clicked",
-    "on_mulFunc_clicked",
-    "on_divFunc_clicked",
-    "on_cosFunc_clicked",
-    "on_sinFunc_clicked",
-    "on_tanFunc_clicked",
-    "on_sqrtFunc_clicked",
-    "on_lnFunc_clicked",
-    "on_logFunc_clicked",
-    "on_acosFunc_clicked",
-    "on_asinFunc_clicked",
-    "on_atanFunc_clicked",
-    "on_powFunc_clicked",
-    "on_modFunc_clicked",
-    "on_leftBracket_clicked",
-    "on_rightBracket_clicked",
-    "on_xSym_clicked",
-    "on_dotSym_clicked",
-    "on_delElem_clicked",
-    "on_delAll_clicked",
-    "on_resultFunc_clicked",
-    "on_showGraph_clicked",
-    "change_cord"
+    "MainWindow\0on_num_0_clicked\0\0"
+    "on_num_1_clicked\0on_num_2_clicked\0"
+    "on_num_3_clicked\0on_num_4_clicked\0"
+    "on_num_5_clicked\0on_num_6_clicked\0"
+    "on_num_7_clicked\0on_num_8_clicked\0"
+    "on_num_9_clicked\0on_addFunc_clicked\0"
+    "on_subFunc_clicked\0on_mulFunc_clicked\0"
+    "on_divFunc_clicked\0on_cosFunc_clicked\0"
+    "on_sinFunc_clicked\0on_tanFunc_clicked\0"
+    "on_sqrtFunc_clicked\0on_lnFunc_clicked\0"
+    "on_logFunc_clicked\0on_acosFunc_clicked\0"
+    "on_asinFunc_clicked\0on_atanFunc_clicked\0"
+    "on_powFunc_clicked\0on_modFunc_clicked\0"
+    "on_leftBracket_clicked\0on_rightBracket_clicked\0"
+    "on_xSym_clicked\0on_dotSym_clicked\0"
+    "on_delElem_clicked\0on_delAll_clicked\0"
+    "on_resultFunc_clicked\0on_showGraph_clicked\0"
+    "print_graph\0result"
 };
 #undef QT_MOC_LITERAL
-} // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
+static const uint qt_meta_data_MainWindow[] = {
 
  // content:
       10,       // revision
@@ -193,7 +136,7 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
       32,    0,  248,    2, 0x08,   31 /* Private */,
       33,    0,  249,    2, 0x08,   32 /* Private */,
       34,    0,  250,    2, 0x08,   33 /* Private */,
-      35,    0,  251,    2, 0x08,   34 /* Private */,
+      35,    1,  251,    2, 0x08,   34 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -229,91 +172,10 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Double,   36,
 
        0        // eod
 };
-
-Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
-    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
-    qt_meta_stringdata_MainWindow.offsetsAndSizes,
-    qt_meta_data_MainWindow,
-    qt_static_metacall,
-    nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t,
-        // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
-        // method 'on_num_0_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_1_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_2_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_3_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_4_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_5_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_6_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_7_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_8_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_num_9_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_addFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_subFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_mulFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_divFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_cosFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_sinFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_tanFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_sqrtFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_lnFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_logFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_acosFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_asinFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_atanFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_powFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_modFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_leftBracket_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_rightBracket_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_xSym_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_dotSym_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_delElem_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_delAll_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_resultFunc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_showGraph_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'change_cord'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
-    >,
-    nullptr
-} };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
@@ -354,12 +216,27 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 30: _t->on_delAll_clicked(); break;
         case 31: _t->on_resultFunc_clicked(); break;
         case 32: _t->on_showGraph_clicked(); break;
-        case 33: _t->change_cord(); break;
+        case 33: _t->print_graph((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
     }
-    (void)_a;
 }
+
+const QMetaObject MainWindow::staticMetaObject = { {
+    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
+    qt_meta_stringdata_MainWindow.offsetsAndSize,
+    qt_meta_data_MainWindow,
+    qt_static_metacall,
+    nullptr,
+qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
+, QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
+
+
+>,
+    nullptr
+} };
+
 
 const QMetaObject *MainWindow::metaObject() const
 {

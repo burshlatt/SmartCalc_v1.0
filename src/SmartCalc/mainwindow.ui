@@ -37,6 +37,9 @@
   <property name="windowTitle">
    <string>SmartCalc v.1.0 (by Stephank)</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="inputOutput">
     <property name="geometry">
@@ -1064,7 +1067,7 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>&lt;</string>
+     <string>&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="simpleCalc">
@@ -1148,7 +1151,7 @@ QPushButton:pressed {
       <x>480</x>
       <y>0</y>
       <width>480</width>
-      <height>300</height>
+      <height>290</height>
      </rect>
     </property>
    </widget>
@@ -1156,7 +1159,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>310</y>
+      <y>330</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -1171,7 +1174,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>350</y>
+      <y>360</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -1186,7 +1189,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>820</x>
-      <y>310</y>
+      <y>330</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -1201,7 +1204,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>820</x>
-      <y>350</y>
+      <y>360</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -1216,14 +1219,14 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>310</y>
+      <y>330</y>
       <width>110</width>
       <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>19</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -1242,14 +1245,14 @@ background-color : gray;</string>
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>350</y>
+      <y>360</y>
       <width>110</width>
       <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>19</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -1268,14 +1271,14 @@ background-color : gray;</string>
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>310</y>
+      <y>330</y>
       <width>110</width>
       <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>19</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -1294,14 +1297,14 @@ background-color : gray;</string>
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>350</y>
+      <y>360</y>
       <width>110</width>
       <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
+      <pointsize>19</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -1314,6 +1317,47 @@ background-color : gray;</string>
     </property>
     <property name="text">
      <string>Y max:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="xValue">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>300</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>300</y>
+      <width>110</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>19</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border-bottom: 1px solid white;
+}
+
+background-color : gray;</string>
+    </property>
+    <property name="text">
+     <string>X value:</string>
     </property>
    </widget>
   </widget>

@@ -1,6 +1,6 @@
 #include "calculator.h"
 
-double polish_notation(char *string) {
+double polish_notation(char *string, int is_graph, double xValue) {
     struct Stack *stack = create_stack(SIZE);
     int index = 0;
     char output[255] = {'\0'};
@@ -46,10 +46,10 @@ double polish_notation(char *string) {
         }
     }
     delete_stack(stack);
-    return arithmetic_calculations(output);
+    return arithmetic_calculations(output, is_graph, xValue);
 }
 
-double arithmetic_calculations(char *output) {
+double arithmetic_calculations(char *output, int is_graph, double xValue) {
     char *trash;
     int top = -1;
     int n_num = 0;
@@ -62,8 +62,11 @@ double arithmetic_calculations(char *output) {
             n_num++;
             i++;
         }
-        if (isdigit(output[i]) || output[i] == '.') {
+        if (isdigit(output[i]) || output[i] == '.' || output[i] == 'x') {
             num = strtod(&output[i], &trash);
+            if (output[i] == 'x') {
+                num = xValue;
+            }
             if (trash[0] == '-') {
                 n_num++;
                 if (n_num % 2 != 0) {
@@ -107,27 +110,51 @@ double arithmetic_calculations(char *output) {
                     break;
                 case 'c':
                     x = get_num(num_buffer, &top);
-                    set_num(num_buffer, &top, cos(x * M_PI / 180));
+                    if (!is_graph) {
+                        set_num(num_buffer, &top, cos(x * M_PI / 180));
+                    } else {
+                        set_num(num_buffer, &top, cos(x));
+                    }
                     break;
                 case 's':
                     x = get_num(num_buffer, &top);
-                    set_num(num_buffer, &top, sin(x * M_PI / 180));
+                    if (!is_graph) {
+                        set_num(num_buffer, &top, sin(x * M_PI / 180));
+                    } else {
+                        set_num(num_buffer, &top, sin(x));
+                    }
                     break;
                 case 't':
                     x = get_num(num_buffer, &top);
-                    set_num(num_buffer, &top, tan(x * M_PI / 180));
+                    if (!is_graph) {
+                        set_num(num_buffer, &top, tan(x * M_PI / 180));
+                    } else {
+                        set_num(num_buffer, &top, tan(x));
+                    }
                     break;
                 case 'C':
                     x = get_num(num_buffer, &top);
-                    set_num(num_buffer, &top, acos(x * M_PI / 180));
+                    if (!is_graph) {
+                        set_num(num_buffer, &top, acos(x * M_PI / 180));
+                    } else {
+                        set_num(num_buffer, &top, acos(x));
+                    }
                     break;
                 case 'S':
                     x = get_num(num_buffer, &top);
-                    set_num(num_buffer, &top, asin(x * M_PI / 180));
+                    if (!is_graph) {
+                        set_num(num_buffer, &top, asin(x * M_PI / 180));
+                    } else {
+                        set_num(num_buffer, &top, asin(x));
+                    }
                     break;
                 case 'T':
                     x = get_num(num_buffer, &top);
-                    set_num(num_buffer, &top, atan(x * M_PI / 180));
+                    if (!is_graph) {
+                        set_num(num_buffer, &top, atan(x * M_PI / 180));
+                    } else {
+                        set_num(num_buffer, &top, atan(x));
+                    }
                     break;
                 case '~':
                     x = get_num(num_buffer, &top);

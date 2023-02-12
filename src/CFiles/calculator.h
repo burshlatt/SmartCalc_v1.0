@@ -39,9 +39,9 @@ void set_in_output(struct Stack *stack, char *output, int *index);
 void set_nums_output(char *string, int *i, char *output, int *index);
 void do_pop(struct Stack *stack, char *output, int *index, int variant);
 
-double polish_notation(char *string);
 double get_num(double *stack, int *top);
-double arithmetic_calculations(char *output);
+double polish_notation(char *string, int is_graph, double xValue);
+double arithmetic_calculations(char *output, int is_graph, double xValue);
 
 char pop(struct Stack *stack);
 char peek(struct Stack *stack);
