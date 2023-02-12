@@ -58,7 +58,6 @@ public:
     QPushButton *delAll;
     QPushButton *resultFunc;
     QPushButton *showGraph;
-    QPushButton *simpleCalc;
     QPushButton *credCalc;
     QPushButton *deposCalc;
     QCustomPlot *functionGraph;
@@ -72,14 +71,15 @@ public:
     QLabel *label_4;
     QLineEdit *xValue;
     QLabel *label_5;
+    QPushButton *pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(960, 390);
-        MainWindow->setMinimumSize(QSize(480, 390));
-        MainWindow->setMaximumSize(QSize(960, 390));
+        MainWindow->resize(960, 380);
+        MainWindow->setMinimumSize(QSize(480, 380));
+        MainWindow->setMaximumSize(QSize(960, 380));
         MainWindow->setSizeIncrement(QSize(0, 0));
         MainWindow->setBaseSize(QSize(100, 100));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
@@ -93,10 +93,11 @@ public:
         inputOutput->setFont(font);
         inputOutput->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
-"	border-bottom: 1px solid white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
 "\n"
-"background-color : gray;"));
+"background-color : gray;\n"
+""));
         inputOutput->setReadOnly(true);
         cosFunc = new QPushButton(centralwidget);
         cosFunc->setObjectName(QString::fromUtf8("cosFunc"));
@@ -434,7 +435,7 @@ public:
 "}"));
         divFunc = new QPushButton(centralwidget);
         divFunc->setObjectName(QString::fromUtf8("divFunc"));
-        divFunc->setGeometry(QRect(340, 60, 60, 60));
+        divFunc->setGeometry(QRect(400, 180, 60, 60));
         divFunc->setFont(font1);
         divFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 215, 0);\n"
@@ -462,7 +463,7 @@ public:
 "}"));
         mulFunc = new QPushButton(centralwidget);
         mulFunc->setObjectName(QString::fromUtf8("mulFunc"));
-        mulFunc->setGeometry(QRect(340, 120, 60, 60));
+        mulFunc->setGeometry(QRect(400, 240, 60, 60));
         mulFunc->setFont(font1);
         mulFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 215, 0);\n"
@@ -476,7 +477,7 @@ public:
 "}"));
         delElem = new QPushButton(centralwidget);
         delElem->setObjectName(QString::fromUtf8("delElem"));
-        delElem->setGeometry(QRect(400, 60, 60, 120));
+        delElem->setGeometry(QRect(340, 60, 60, 120));
         delElem->setFont(font1);
         delElem->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(105, 105, 105);\n"
@@ -487,7 +488,7 @@ public:
 "}"));
         delAll = new QPushButton(centralwidget);
         delAll->setObjectName(QString::fromUtf8("delAll"));
-        delAll->setGeometry(QRect(400, 180, 60, 120));
+        delAll->setGeometry(QRect(400, 60, 60, 120));
         delAll->setFont(font1);
         delAll->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(105, 105, 105);\n"
@@ -502,7 +503,7 @@ public:
         resultFunc->setBaseSize(QSize(0, 0));
         resultFunc->setFont(font1);
         resultFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 140, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -515,20 +516,7 @@ public:
         showGraph->setObjectName(QString::fromUtf8("showGraph"));
         showGraph->setGeometry(QRect(460, -5, 20, 365));
         showGraph->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
-"  color: black; \n"
-"  border: 1px solid gray;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
-"}"));
-        simpleCalc = new QPushButton(centralwidget);
-        simpleCalc->setObjectName(QString::fromUtf8("simpleCalc"));
-        simpleCalc->setGeometry(QRect(0, 360, 160, 30));
-        simpleCalc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 140, 0);\n"
+"  background-color: rgb(255, 160, 122);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -539,9 +527,9 @@ public:
 "}"));
         credCalc = new QPushButton(centralwidget);
         credCalc->setObjectName(QString::fromUtf8("credCalc"));
-        credCalc->setGeometry(QRect(160, 360, 180, 30));
+        credCalc->setGeometry(QRect(0, 360, 230, 20));
         credCalc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 160, 122);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -552,9 +540,9 @@ public:
 "}"));
         deposCalc = new QPushButton(centralwidget);
         deposCalc->setObjectName(QString::fromUtf8("deposCalc"));
-        deposCalc->setGeometry(QRect(340, 360, 140, 30));
+        deposCalc->setGeometry(QRect(230, 360, 230, 20));
         deposCalc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 160, 122);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -568,25 +556,25 @@ public:
         functionGraph->setGeometry(QRect(480, 0, 480, 290));
         xMinCord = new QLineEdit(centralwidget);
         xMinCord->setObjectName(QString::fromUtf8("xMinCord"));
-        xMinCord->setGeometry(QRect(590, 330, 120, 30));
+        xMinCord->setGeometry(QRect(590, 325, 120, 25));
         xMinCord->setFont(font1);
         xMaxCord = new QLineEdit(centralwidget);
         xMaxCord->setObjectName(QString::fromUtf8("xMaxCord"));
-        xMaxCord->setGeometry(QRect(590, 360, 120, 30));
+        xMaxCord->setGeometry(QRect(590, 350, 120, 25));
         xMaxCord->setFont(font1);
         yMinCord = new QLineEdit(centralwidget);
         yMinCord->setObjectName(QString::fromUtf8("yMinCord"));
-        yMinCord->setGeometry(QRect(820, 330, 120, 30));
+        yMinCord->setGeometry(QRect(820, 325, 120, 25));
         yMinCord->setFont(font1);
         yMaxCord = new QLineEdit(centralwidget);
         yMaxCord->setObjectName(QString::fromUtf8("yMaxCord"));
-        yMaxCord->setGeometry(QRect(820, 360, 120, 30));
+        yMaxCord->setGeometry(QRect(820, 350, 120, 25));
         yMaxCord->setFont(font1);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(480, 330, 110, 30));
+        label->setGeometry(QRect(541, 325, 49, 25));
         QFont font2;
-        font2.setPointSize(19);
+        font2.setPointSize(18);
         label->setFont(font2);
         label->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -596,7 +584,7 @@ public:
 "background-color : gray;"));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(480, 360, 110, 30));
+        label_2->setGeometry(QRect(536, 350, 54, 25));
         label_2->setFont(font2);
         label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -606,7 +594,7 @@ public:
 "background-color : gray;"));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(710, 330, 110, 30));
+        label_3->setGeometry(QRect(771, 325, 49, 25));
         label_3->setFont(font2);
         label_3->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -616,7 +604,7 @@ public:
 "background-color : gray;"));
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(710, 360, 110, 30));
+        label_4->setGeometry(QRect(766, 350, 54, 25));
         label_4->setFont(font2);
         label_4->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -626,11 +614,11 @@ public:
 "background-color : gray;"));
         xValue = new QLineEdit(centralwidget);
         xValue->setObjectName(QString::fromUtf8("xValue"));
-        xValue->setGeometry(QRect(590, 300, 120, 30));
+        xValue->setGeometry(QRect(590, 300, 120, 25));
         xValue->setFont(font1);
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(480, 300, 110, 30));
+        label_5->setGeometry(QRect(528, 298, 62, 25));
         label_5->setFont(font2);
         label_5->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -638,6 +626,19 @@ public:
 "}\n"
 "\n"
 "background-color : gray;"));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(460, 360, 20, 20));
+        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"  background-color: rgb(255, 160, 122);\n"
+"  color: black; \n"
+"  border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
+"}"));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -681,7 +682,6 @@ public:
         delAll->setText(QCoreApplication::translate("MainWindow", "AC", nullptr));
         resultFunc->setText(QCoreApplication::translate("MainWindow", "=", nullptr));
         showGraph->setText(QCoreApplication::translate("MainWindow", ">", nullptr));
-        simpleCalc->setText(QCoreApplication::translate("MainWindow", "Calculator", nullptr));
         credCalc->setText(QCoreApplication::translate("MainWindow", "Credit calculator", nullptr));
         deposCalc->setText(QCoreApplication::translate("MainWindow", "Deposit calculator", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "X min:", nullptr));
@@ -689,6 +689,7 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "Y min:", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Y max:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "X value:", nullptr));
+        pushButton->setText(QString());
     } // retranslateUi
 
 };

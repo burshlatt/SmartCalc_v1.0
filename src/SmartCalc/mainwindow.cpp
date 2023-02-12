@@ -407,14 +407,14 @@ void MainWindow::on_dotSym_clicked() {
     if (count_of_actions == 0) {
         ui->inputOutput->clear();
     }
-    if (count_of_actions < 255) {
+    if (count_of_actions <= 255 && final_string[final_string.size() - 1] != '.') {
         if (final_string[final_string.size() - 1] < '0' || final_string[final_string.size() - 1] > '9') {
             ui->inputOutput->setText(ui->inputOutput->text() + "0");
             count_of_actions++;
         }
         ui->inputOutput->setText(ui->inputOutput->text() + ".");
         count_of_actions++;
-    } else {
+    } else if (count_of_actions > 255) {
         ui->inputOutput->clear();
         ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
     }
