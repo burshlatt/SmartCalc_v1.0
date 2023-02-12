@@ -287,9 +287,9 @@ QPushButton:pressed {
    <widget class="QPushButton" name="powFunc">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>240</y>
-      <width>80</width>
+      <x>160</x>
+      <y>60</y>
+      <width>60</width>
       <height>60</height>
      </rect>
     </property>
@@ -431,9 +431,9 @@ QPushButton:pressed {
    <widget class="QPushButton" name="modFunc">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>60</y>
-      <width>60</width>
+      <x>80</x>
+      <y>240</y>
+      <width>80</width>
       <height>60</height>
      </rect>
     </property>

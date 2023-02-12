@@ -193,7 +193,7 @@ public:
 "}"));
         powFunc = new QPushButton(centralwidget);
         powFunc->setObjectName(QString::fromUtf8("powFunc"));
-        powFunc->setGeometry(QRect(80, 240, 80, 60));
+        powFunc->setGeometry(QRect(160, 60, 60, 60));
         powFunc->setBaseSize(QSize(0, 0));
         powFunc->setFont(font1);
         powFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -253,7 +253,7 @@ public:
 "}"));
         modFunc = new QPushButton(centralwidget);
         modFunc->setObjectName(QString::fromUtf8("modFunc"));
-        modFunc->setGeometry(QRect(160, 60, 60, 60));
+        modFunc->setGeometry(QRect(80, 240, 80, 60));
         modFunc->setFont(font1);
         modFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 215, 0);\n"

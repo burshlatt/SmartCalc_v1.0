@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    setGeometry(x(), y(), width() - 480, height());
+    this->setFixedSize(480, 380);
 
     QSettings settings("Trolltech", "Application Example");
     QPoint pos = settings.value("pos", QPoint(1000, 400)).toPoint();
@@ -169,12 +169,12 @@ void MainWindow::on_addFunc_clicked() {
 }
 
 void MainWindow::on_subFunc_clicked() {
-    std::string final_string = ui->inputOutput->text().toStdString();
-    char *chars_array = &final_string[0];
-    char operators[6] = {'+', '-', '*', '/', '^', 'd'};
     if (count_of_actions == 0) {
         ui->inputOutput->clear();
     }
+    std::string final_string = ui->inputOutput->text().toStdString();
+    char *chars_array = &final_string[0];
+    char operators[6] = {'+', '-', '*', '/', '^', 'd'};
     if (count_of_actions < 255) {
         for (int i = 0; i < 6; i++) {
             if (chars_array[strlen(chars_array) - 1] == operators[i]) {
@@ -403,10 +403,10 @@ void MainWindow::on_xSym_clicked() {
 }
 
 void MainWindow::on_dotSym_clicked() {
-    std::string final_string = ui->inputOutput->text().toStdString();
     if (count_of_actions == 0) {
         ui->inputOutput->clear();
     }
+    std::string final_string = ui->inputOutput->text().toStdString();
     if (count_of_actions <= 255 && final_string[final_string.size() - 1] != '.') {
         if (final_string[final_string.size() - 1] < '0' || final_string[final_string.size() - 1] > '9') {
             ui->inputOutput->setText(ui->inputOutput->text() + "0");
@@ -421,12 +421,16 @@ void MainWindow::on_dotSym_clicked() {
 }
 
 void MainWindow::on_delElem_clicked() {
-    if (count_of_actions > 0) {
-        count_of_actions--;
+    if (count_of_actions == 0) {
+        ui->inputOutput->clear();
+    } else {
+        if (count_of_actions > 0) {
+            count_of_actions--;
+        }
+        QString text = ui->inputOutput->text();
+        text.chop(1);
+        ui->inputOutput->setText(text);
     }
-    QString text = ui->inputOutput->text();
-    text.chop(1);
-    ui->inputOutput->setText(text);
 }
 
 void MainWindow::on_delAll_clicked() {
@@ -455,18 +459,16 @@ void MainWindow::on_showGraph_clicked() {
     int xPos = this->geometry().x();
     int yPos = this->geometry().y();
     if (!graph_is_open) {
+        this->setFixedSize(960, 380);
         ui->showGraph->setText("<");
         setGeometry(xPos, yPos, width() + 480, height());
         graph_is_open = 1;
     } else {
+        this->setFixedSize(480, 380);
         ui->showGraph->setText(">");
         setGeometry(xPos, yPos, width() - 480, height());
         graph_is_open = 0;
     }
-//    QSettings settings("Trolltech", "Application Example");
-//    QPoint pos = settings.value("pos", QPoint(xPos, yPos)).toPoint();
-//    move(pos);
-
 }
 
 void MainWindow::print_graph(double result) {
