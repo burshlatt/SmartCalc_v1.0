@@ -1,0 +1,70 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-ce6fc7983c70a9e67754.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SmartCalc",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "SmartCalc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SmartCalc-Debug-94b056c58034501b3e51.json",
+					"name" : "SmartCalc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "SmartCalc_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SmartCalc_autogen-Debug-00ee6717b97654d2e81a.json",
+					"name" : "SmartCalc_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug",
+		"source" : "/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
