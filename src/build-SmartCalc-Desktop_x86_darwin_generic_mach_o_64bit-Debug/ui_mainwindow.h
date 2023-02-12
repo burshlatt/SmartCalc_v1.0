@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -61,6 +62,14 @@ public:
     QPushButton *credCalc;
     QPushButton *deposCalc;
     QCustomPlot *functionGraph;
+    QLineEdit *xMinCord;
+    QLineEdit *xMaxCord;
+    QLineEdit *yMinCord;
+    QLineEdit *yMaxCord;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -553,7 +562,65 @@ public:
 "}"));
         functionGraph = new QCustomPlot(centralwidget);
         functionGraph->setObjectName("functionGraph");
-        functionGraph->setGeometry(QRect(480, 0, 480, 390));
+        functionGraph->setGeometry(QRect(480, 0, 480, 300));
+        xMinCord = new QLineEdit(centralwidget);
+        xMinCord->setObjectName("xMinCord");
+        xMinCord->setGeometry(QRect(590, 310, 120, 30));
+        xMinCord->setFont(font1);
+        xMaxCord = new QLineEdit(centralwidget);
+        xMaxCord->setObjectName("xMaxCord");
+        xMaxCord->setGeometry(QRect(590, 350, 120, 30));
+        xMaxCord->setFont(font1);
+        yMinCord = new QLineEdit(centralwidget);
+        yMinCord->setObjectName("yMinCord");
+        yMinCord->setGeometry(QRect(820, 310, 120, 30));
+        yMinCord->setFont(font1);
+        yMaxCord = new QLineEdit(centralwidget);
+        yMaxCord->setObjectName("yMaxCord");
+        yMaxCord->setGeometry(QRect(820, 350, 120, 30));
+        yMaxCord->setFont(font1);
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(480, 310, 110, 30));
+        QFont font2;
+        font2.setPointSize(20);
+        label->setFont(font2);
+        label->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	border-bottom: 1px solid white;\n"
+"}\n"
+"\n"
+"background-color : gray;"));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(480, 350, 110, 30));
+        label_2->setFont(font2);
+        label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	border-bottom: 1px solid white;\n"
+"}\n"
+"\n"
+"background-color : gray;"));
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(710, 310, 110, 30));
+        label_3->setFont(font2);
+        label_3->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	border-bottom: 1px solid white;\n"
+"}\n"
+"\n"
+"background-color : gray;"));
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(710, 350, 110, 30));
+        label_4->setFont(font2);
+        label_4->setStyleSheet(QString::fromUtf8("QLabel{\n"
+"	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	border-bottom: 1px solid white;\n"
+"}\n"
+"\n"
+"background-color : gray;"));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -596,10 +663,14 @@ public:
         delElem->setText(QCoreApplication::translate("MainWindow", "del", nullptr));
         delAll->setText(QCoreApplication::translate("MainWindow", "AC", nullptr));
         resultFunc->setText(QCoreApplication::translate("MainWindow", "=", nullptr));
-        showGraph->setText(QCoreApplication::translate("MainWindow", ">", nullptr));
+        showGraph->setText(QCoreApplication::translate("MainWindow", "<", nullptr));
         simpleCalc->setText(QCoreApplication::translate("MainWindow", "Calculator", nullptr));
         credCalc->setText(QCoreApplication::translate("MainWindow", "Credit calculator", nullptr));
         deposCalc->setText(QCoreApplication::translate("MainWindow", "Deposit calculator", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "X min:", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "X max:", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Y min:", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "Y max:", nullptr));
     } // retranslateUi
 
 };

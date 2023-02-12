@@ -6,33 +6,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    h = 0.1;
-    xBegin = -3;
-    xEnd = 3 + h;
-
-    ui->functionGraph->xAxis->setRange(-4, 4);
-    ui->functionGraph->yAxis->setRange(0, 9);
-
-    N = (xEnd - xBegin) / h + 2;
-
-    for (X = xBegin; X <= xEnd; X += h) {
-        xCord.push_back(X);
-        yCord.push_back(X*X);
-    }
-
-    ui->functionGraph->addGraph();
-    ui->functionGraph->graph(0)->addData(xCord, yCord);
-    ui->functionGraph->replot();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-int graph_is_open = 0;
-int count_of_actions = 0;
 
 void MainWindow::on_num_0_clicked() {
     if (count_of_actions == 0) {
@@ -402,8 +381,9 @@ void MainWindow::on_xSym_clicked() {
         ui->inputOutput->clear();
     }
     if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "xx");
+        ui->inputOutput->setText(ui->inputOutput->text() + "x");
         count_of_actions++;
+        is_x = 1;
     } else {
         ui->inputOutput->clear();
         ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
@@ -439,18 +419,35 @@ void MainWindow::on_delElem_clicked() {
 }
 
 void MainWindow::on_delAll_clicked() {
+    is_x = 0;
     count_of_actions = 0;
     ui->inputOutput->clear();
 }
 
 void MainWindow::on_resultFunc_clicked() {
-    count_of_actions = 0;
-    std::string final_string = ui->inputOutput->text().toStdString();
-    char *chars_array = &final_string[0];
-    double result = polish_notation(chars_array);
-    QString result_string = QString::number(result);
-    ui->inputOutput->clear();
-    ui->inputOutput->setText(ui->inputOutput->text() + result_string);
+    if (is_x) {
+        change_cord();
+        h = 0.1;
+        xBegin = -3;
+        xEnd = 3 + h;
+        N = (xEnd - xBegin) / h + 2;
+        for (X = xBegin; X <= xEnd; X += h) {
+            xCord.push_back(X);
+            yCord.push_back(X*X);
+        }
+        ui->functionGraph->addGraph();
+        ui->functionGraph->graph(0)->addData(xCord, yCord);
+        ui->functionGraph->replot();
+        is_x = 0;
+    } else {
+        count_of_actions = 0;
+        std::string final_string = ui->inputOutput->text().toStdString();
+        char *chars_array = &final_string[0];
+        double result = polish_notation(chars_array);
+        QString result_string = QString::number(result);
+        ui->inputOutput->clear();
+        ui->inputOutput->setText(ui->inputOutput->text() + result_string);
+    }
 }
 
 void MainWindow::on_showGraph_clicked() {
@@ -463,4 +460,13 @@ void MainWindow::on_showGraph_clicked() {
         setGeometry(x(), y(), width() - 480, height());
         graph_is_open = 0;
     }
+}
+
+void MainWindow::change_cord() {
+    int xMin = ui->xMinCord->text().toInt();
+    int xMax = ui->xMaxCord->text().toInt();
+    int yMin = ui->yMinCord->text().toInt();
+    int yMax = ui->yMaxCord->text().toInt();
+    ui->functionGraph->xAxis->setRange(xMin, xMax);
+    ui->functionGraph->yAxis->setRange(yMin, yMax);
 }

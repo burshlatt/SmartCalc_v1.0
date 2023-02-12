@@ -6,9 +6,11 @@
 #include <QLineEdit>
 #include <QApplication>
 #include <QVector>
+#include <QtMath>
 
 #include <iostream>
 #include <string>
+#include <math.h>
 
 extern "C" {
 #include "../CFiles/calculator.h"
@@ -37,7 +39,6 @@ private slots:
     void on_num_7_clicked();
     void on_num_8_clicked();
     void on_num_9_clicked();
-
     void on_addFunc_clicked();
     void on_subFunc_clicked();
     void on_mulFunc_clicked();
@@ -59,15 +60,20 @@ private slots:
     void on_dotSym_clicked();
     void on_delElem_clicked();
     void on_delAll_clicked();
-
     void on_resultFunc_clicked();
-
     void on_showGraph_clicked();
+
+    void change_cord();
+
 
 private:
     Ui::MainWindow *ui;
-    double xBegin, xEnd, h, X;
+    int is_x = 0;
+    int graph_is_open = 1;
+    int count_of_actions = 0;
+
     int N;
+    double xBegin, xEnd, h, X;
 
     QVector<double> xCord, yCord;
 };

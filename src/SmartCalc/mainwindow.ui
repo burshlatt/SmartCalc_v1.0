@@ -1064,7 +1064,7 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>&gt;</string>
+     <string>&lt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="simpleCalc">
@@ -1148,8 +1148,172 @@ QPushButton:pressed {
       <x>480</x>
       <y>0</y>
       <width>480</width>
-      <height>390</height>
+      <height>300</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="xMinCord">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>310</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="xMaxCord">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>350</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="yMinCord">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>310</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="yMaxCord">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>350</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>310</y>
+      <width>110</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border-bottom: 1px solid white;
+}
+
+background-color : gray;</string>
+    </property>
+    <property name="text">
+     <string>X min:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>350</y>
+      <width>110</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border-bottom: 1px solid white;
+}
+
+background-color : gray;</string>
+    </property>
+    <property name="text">
+     <string>X max:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>310</y>
+      <width>110</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border-bottom: 1px solid white;
+}
+
+background-color : gray;</string>
+    </property>
+    <property name="text">
+     <string>Y min:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>350</y>
+      <width>110</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border-bottom: 1px solid white;
+}
+
+background-color : gray;</string>
+    </property>
+    <property name="text">
+     <string>Y max:</string>
     </property>
    </widget>
   </widget>
