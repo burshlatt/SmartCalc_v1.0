@@ -69,6 +69,7 @@ int get_nums_func(double *num_buffer, int *top, double *x, double *y) {
 
 void set_nums_output(char *string, int *i, char *output, int *index) {
     int is_negative = 0;
+    char pi_chars[] = "3.141592";
     if ((string[*i] == '-' && string[*i - 1] <= '(')) {
         *i += 1;
         is_negative = 1;
@@ -77,6 +78,13 @@ void set_nums_output(char *string, int *i, char *output, int *index) {
         output[*index] = string[*i];
         *index += 1;
         *i += 1;
+    }
+    if (string[*i] >= 'P') {
+        for (int k = 0; k < 8; k++) {
+            output[*index] = pi_chars[k];
+            *index += 1;
+        }
+        *i += 2;
     }
     if (is_negative) {
         output[*index] = '-';

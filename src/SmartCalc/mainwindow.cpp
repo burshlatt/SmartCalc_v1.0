@@ -63,7 +63,7 @@ MainWindow::~MainWindow()
 void MainWindow::operators_clicked() {
     int already = 0;
     decompose_func();
-    if (count_of_actions != 0 && last_symbol != '(') {
+    if (string_size != 0 && last_symbol != '(' && last_symbol != '.') {
         for (int i = 0; i < 6; i++) {
             if (last_symbol == operators[i]) {
                 already = 1;
@@ -76,48 +76,42 @@ void MainWindow::operators_clicked() {
             }
             on_delElem_clicked();
         }
-        if (count_of_actions > 0 && count_of_actions < 255) {
+        if (string_size < 255) {
             ui->inputOutput->setText(ui->inputOutput->text() + button->text());
-            count_of_actions += button->text().size();
         }
     }
 }
 
 void MainWindow::symbols_clicked() {
     decompose_func();
-    if (count_of_actions < 255) {
+    if (string_size < 255) {
         if (last_symbol == 'x' || last_symbol == ')') {
             ui->inputOutput->setText(ui->inputOutput->text() + "*");
-            count_of_actions++;
         }
-        if (button->text() == "Pi") {
-            if (last_symbol > '0' && last_symbol < '9') {
+        if (button->text() == "Pi" && last_symbol != '.') {
+            if ((last_symbol >= '0' && last_symbol <= '9') || last_symbol == 'i') {
                 ui->inputOutput->setText(ui->inputOutput->text() + "*");
             }
-            ui->inputOutput->setText(ui->inputOutput->text() + "3.141592");
-            count_of_actions += 8;
-        } else if (button->text() == 'x') {
-            if (last_symbol > '0' && last_symbol < '9') {
+            ui->inputOutput->setText(ui->inputOutput->text() + button->text());
+            decompose_func();
+        } else if (button->text() == 'x' && last_symbol != '.') {
+            if (last_symbol >= '0' && last_symbol <= '9') {
                 ui->inputOutput->setText(ui->inputOutput->text() + "*");
             }
             ui->inputOutput->setText(ui->inputOutput->text() + "x");
-            count_of_actions += 1;
-        } else {
+        } else if (button->text() >= '0' && button->text() <= '9') {
             ui->inputOutput->setText(ui->inputOutput->text() + button->text());
-            count_of_actions += 1;
         }
     }
 }
 
 void MainWindow::func_clicked() {
     decompose_func();
-    if (count_of_actions < 255) {
-        if ((last_symbol > '0' && last_symbol < '9') || last_symbol == ')') {
+    if (string_size < 255 && last_symbol != '.') {
+        if ((last_symbol >= '0' && last_symbol <= '9') || last_symbol == ')') {
             ui->inputOutput->setText(ui->inputOutput->text() + "*");
-            count_of_actions++;
         }
         ui->inputOutput->setText(ui->inputOutput->text() + button->text() + "(");
-        count_of_actions += button->text().size() + 1;
     }
 }
 
@@ -126,32 +120,31 @@ void MainWindow::brackets_clicked() {
     decompose_func();
     count_of_left_bracket = 0;
     count_of_right_bracket = 0;
-    for (int i = 0; i < string_size; i++) {
-        if (input_string[i] == '(') {
-            count_of_left_bracket++;
-        }
-        if (input_string[i] == ')') {
-            count_of_right_bracket++;
-        }
-    }
-    if (count_of_actions < 255) {
-        if (button->text() == '(') {
-            if ((last_symbol > '0' && last_symbol < '9') || last_symbol == 'x' || last_symbol == ')') {
-                ui->inputOutput->setText(ui->inputOutput->text() + "*");
-                count_of_actions++;
+    if (last_symbol != '.') {
+        for (int i = 0; i < string_size; i++) {
+            if (input_string[i] == '(') {
+                count_of_left_bracket++;
             }
-            ui->inputOutput->setText(ui->inputOutput->text() + "(");
-            count_of_actions++;
+            if (input_string[i] == ')') {
+                count_of_right_bracket++;
+            }
         }
-        if (button->text() == ')' && count_of_right_bracket < count_of_left_bracket) {
-            for (int i = 0; i < 6; i++) {
-                if (last_symbol == operators[i]) {
-                    can_do = 0;
+        if (string_size < 255) {
+            if (button->text() == '(') {
+                if ((last_symbol >= '0' && last_symbol <= '9') || last_symbol == 'x' || last_symbol == ')') {
+                    ui->inputOutput->setText(ui->inputOutput->text() + "*");
                 }
+                ui->inputOutput->setText(ui->inputOutput->text() + "(");
             }
-            if (can_do) {
-                ui->inputOutput->setText(ui->inputOutput->text() + ")");
-                count_of_actions++;
+            if (button->text() == ')' && count_of_right_bracket < count_of_left_bracket) {
+                for (int i = 0; i < 6; i++) {
+                    if (last_symbol == operators[i]) {
+                        can_do = 0;
+                    }
+                }
+                if (can_do) {
+                    ui->inputOutput->setText(ui->inputOutput->text() + ")");
+                }
             }
         }
     }
@@ -159,33 +152,28 @@ void MainWindow::brackets_clicked() {
 
 void MainWindow::on_subFunc_clicked() {
     decompose_func();
-    if (count_of_actions < 255) {
-        if (count_of_actions == 0) {
+    if (string_size < 255 && last_symbol != '.') {
+        if (string_size == 0) {
             ui->inputOutput->setText(ui->inputOutput->text() + "(");
-            count_of_actions++;
         } else {
             for (int i = 0; i < 6; i++) {
                 if (last_symbol == operators[i]) {
                     ui->inputOutput->setText(ui->inputOutput->text() + "(");
-                    count_of_actions++;
                     break;
                 }
             }
         }
         ui->inputOutput->setText(ui->inputOutput->text() + "-");
-        count_of_actions++;
     }
 }
 
 void MainWindow::on_dotSym_clicked() {
     decompose_func();
-    if (count_of_actions < 255 && last_symbol != '.') {
+    if (string_size < 255 && last_symbol != '.') {
         if (last_symbol < '0' || last_symbol > '9') {
             ui->inputOutput->setText(ui->inputOutput->text() + "0");
-            count_of_actions++;
         }
         ui->inputOutput->setText(ui->inputOutput->text() + ".");
-        count_of_actions++;
     }
 }
 
@@ -193,23 +181,20 @@ void MainWindow::decompose_func() {
     button = (QPushButton *)sender();
     input_string = ui->inputOutput->text().toStdString();
     last_symbol = input_string[input_string.size() - 1];
-    string_size = input_string.size();
-    if (count_of_actions == 0) {
+    string_size = ui->inputOutput->text().size();
+    if (string_size == 0) {
         ui->inputOutput->clear();
     }
-    if (count_of_actions >= 255) {
+    if (string_size >= 255) {
         ui->inputOutput->clear();
         ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
     }
 }
 
 void MainWindow::on_delElem_clicked() {
-    if (count_of_actions == 0) {
+    if (string_size == 0) {
         ui->inputOutput->clear();
     } else {
-        if (count_of_actions > 0) {
-            count_of_actions--;
-        }
         QString text = ui->inputOutput->text();
         text.chop(1);
         ui->inputOutput->setText(text);
@@ -218,7 +203,6 @@ void MainWindow::on_delElem_clicked() {
 
 void MainWindow::on_delAll_clicked() {
     is_x = 0;
-    count_of_actions = 0;
     ui->inputOutput->clear();
 }
 
@@ -256,6 +240,11 @@ void MainWindow::on_resultFunc_clicked() {
             is_x = 1;
         }
     }
+    if (!can_do) {
+        ui->inputOutput->setText(ui->inputOutput->text() + "1");
+    } else if (error_status) {
+        ui->inputOutput->setText(ui->inputOutput->text() + "2");
+    }
     if (!error_status && can_do) {
         if (is_x) {
             if (!graph_is_open) {
@@ -272,11 +261,10 @@ void MainWindow::on_resultFunc_clicked() {
             QString result_string = QString::number(result);
             ui->inputOutput->clear();
             ui->inputOutput->setText(ui->inputOutput->text() + result_string);
-            count_of_actions = 0;
         }
     } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Incorrect data!");
+        // ui->inputOutput->clear();
+        // ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Incorrect data!");
     }
 }
 
