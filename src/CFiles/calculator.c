@@ -3,9 +3,18 @@
 double polish_notation(char *string, int is_graph, double xValue, int *error_flag) {
     struct Stack *stack = create_stack(SIZE);
     int index = 0;
+    double result = 0.0;
     int count_of_left_bracket = 0;
     int count_of_right_bracket = 0;
     char output[255] = {'\0'};
+    for (int i = 0; string[i] != '\0'; i++) {
+        if (string[i] == '(') {
+            count_of_left_bracket++;
+        }
+        if (string[i] == ')') {
+            count_of_right_bracket++;
+        }
+    }
     for (int i = 0; i < (int)strlen(string) + 1 && index < 255; i++) {
         set_nums_output(string, &i, output, &index);
         if (*error_flag == 0) {
@@ -19,7 +28,6 @@ double polish_notation(char *string, int is_graph, double xValue, int *error_fla
                 case 'm':
                 case '(':
                     push_func(stack, string, &i);
-                    count_of_left_bracket++;
                     break;
                 case '*':
                     do_pop(stack, output, &index, 5);
@@ -45,7 +53,6 @@ double polish_notation(char *string, int is_graph, double xValue, int *error_fla
                         pop(stack);
                         do_pop(stack, output, &index, 4);
                     }
-                    count_of_right_bracket++;
                     break;
                 case '\0':
                     do_pop(stack, output, &index, 2);
@@ -57,10 +64,13 @@ double polish_notation(char *string, int is_graph, double xValue, int *error_fla
     if (count_of_left_bracket != count_of_right_bracket) {
         *error_flag = 1;
     }
-    return !(*error_flag) ? arithmetic_calculations(output, is_graph, xValue) : 0;
+    if (!(*error_flag)) {
+        result = arithmetic_calculations(output, is_graph, xValue, error_flag);
+    }
+    return !(*error_flag) ? result : 0;
 }
 
-double arithmetic_calculations(char *output, int is_graph, double xValue) {
+double arithmetic_calculations(char *output, int is_graph, double xValue, int *error_flag) {
     char *trash;
     int top = -1;
     int n_num = 0;
@@ -90,33 +100,27 @@ double arithmetic_calculations(char *output, int is_graph, double xValue) {
         } else {
             switch (output[i]) {
                 case '+':
-                    x = get_num(num_buffer, &top);
-                    y = get_num(num_buffer, &top);
+                    *error_flag = get_nums_func(num_buffer, &top, &x, &y);
                     set_num(num_buffer, &top, y + x);
                     break;
                 case '-':
-                    x = get_num(num_buffer, &top);
-                    y = get_num(num_buffer, &top);
+                    *error_flag = get_nums_func(num_buffer, &top, &x, &y);
                     set_num(num_buffer, &top, y - x);
                     break;
                 case '*':
-                    x = get_num(num_buffer, &top);
-                    y = get_num(num_buffer, &top);
+                    *error_flag = get_nums_func(num_buffer, &top, &x, &y);
                     set_num(num_buffer, &top, y * x);
                     break;
                 case '/':
-                    x = get_num(num_buffer, &top);
-                    y = get_num(num_buffer, &top);
+                    *error_flag = get_nums_func(num_buffer, &top, &x, &y);
                     set_num(num_buffer, &top, y / x);
                     break;
                 case '^':
-                    x = get_num(num_buffer, &top);
-                    y = get_num(num_buffer, &top);
+                    *error_flag = get_nums_func(num_buffer, &top, &x, &y);
                     set_num(num_buffer, &top, pow(y, x));
                     break;
                 case 'm':
-                    x = get_num(num_buffer, &top);
-                    y = get_num(num_buffer, &top);
+                    *error_flag = get_nums_func(num_buffer, &top, &x, &y);
                     set_num(num_buffer, &top, fmod(y, x));
                     break;
                 case 'c':
@@ -171,6 +175,10 @@ double arithmetic_calculations(char *output, int is_graph, double xValue) {
                     x = get_num(num_buffer, &top);
                     set_num(num_buffer, &top, sqrt(x));
                     break;
+                case '|':
+                    x = get_num(num_buffer, &top);
+                    set_num(num_buffer, &top, fabs(x));
+                    break;
                 case 'l':
                     x = get_num(num_buffer, &top);
                     set_num(num_buffer, &top, log(x));
@@ -184,11 +192,3 @@ double arithmetic_calculations(char *output, int is_graph, double xValue) {
     }
     return get_num(num_buffer, &top);
 }
-
-// int main () {
-//     int error = 0;
-//     double res = polish_notation("5+8-6)", 0, 0, &error);
-//     printf("error = %d\n", error);
-//     printf("Result = %lf\n", res);
-//     return 0;
-// }

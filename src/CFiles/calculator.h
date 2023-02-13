@@ -32,21 +32,22 @@ struct Stack *create_stack(int capacity);
 void delete_stack(struct Stack *stack);
 void set_space(char *output, int *index);
 void push(struct Stack *stack, char item);
-void set_num(double *stack, int *top, double num);
 void push_func(struct Stack *stack, char *string, int *index);
 void logic_actions(struct Stack *stack, char *output, int *index);
 void set_in_output(struct Stack *stack, char *output, int *index);
 void set_nums_output(char *string, int *i, char *output, int *index);
 
 double get_num(double *stack, int *top);
-double arithmetic_calculations(char *output, int is_graph, double xValue);
 double polish_notation(char *string, int is_graph, double xValue, int *error_flag);
+double arithmetic_calculations(char *output, int is_graph, double xValue, int *error_flag);
 
 char pop(struct Stack *stack);
 char peek(struct Stack *stack);
 
 int size(struct Stack *stack);
 int is_empty(struct Stack *stack);
+int set_num(double *stack, int *top, double num);
+int get_nums_func(double *num_buffer, int *top, double *x, double *y);
 int do_pop(struct Stack *stack, char *output, int *index, int variant);
 
 #endif // SRC_SMARTCALC_CALCULATOR_H_

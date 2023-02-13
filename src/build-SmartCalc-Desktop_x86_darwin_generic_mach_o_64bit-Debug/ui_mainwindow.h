@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.2.3
+** Created by: Qt User Interface Compiler version 6.4.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -72,11 +72,13 @@ public:
     QLineEdit *xValue;
     QLabel *label_5;
     QPushButton *pushButton;
+    QPushButton *num_pi;
+    QPushButton *absFunc;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+            MainWindow->setObjectName("MainWindow");
         MainWindow->resize(960, 380);
         MainWindow->setMinimumSize(QSize(480, 380));
         MainWindow->setMaximumSize(QSize(960, 380));
@@ -84,9 +86,9 @@ public:
         MainWindow->setBaseSize(QSize(100, 100));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setObjectName("centralwidget");
         inputOutput = new QLineEdit(centralwidget);
-        inputOutput->setObjectName(QString::fromUtf8("inputOutput"));
+        inputOutput->setObjectName("inputOutput");
         inputOutput->setGeometry(QRect(0, 0, 460, 60));
         QFont font;
         font.setPointSize(25);
@@ -100,7 +102,7 @@ public:
 ""));
         inputOutput->setReadOnly(true);
         cosFunc = new QPushButton(centralwidget);
-        cosFunc->setObjectName(QString::fromUtf8("cosFunc"));
+        cosFunc->setObjectName("cosFunc");
         cosFunc->setGeometry(QRect(0, 60, 80, 60));
         cosFunc->setBaseSize(QSize(0, 0));
         QFont font1;
@@ -117,7 +119,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         sinFunc = new QPushButton(centralwidget);
-        sinFunc->setObjectName(QString::fromUtf8("sinFunc"));
+        sinFunc->setObjectName("sinFunc");
         sinFunc->setGeometry(QRect(0, 120, 80, 60));
         sinFunc->setBaseSize(QSize(0, 0));
         sinFunc->setFont(font1);
@@ -132,7 +134,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         tanFunc = new QPushButton(centralwidget);
-        tanFunc->setObjectName(QString::fromUtf8("tanFunc"));
+        tanFunc->setObjectName("tanFunc");
         tanFunc->setGeometry(QRect(0, 180, 80, 60));
         tanFunc->setBaseSize(QSize(0, 0));
         tanFunc->setFont(font1);
@@ -147,7 +149,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         sqrtFunc = new QPushButton(centralwidget);
-        sqrtFunc->setObjectName(QString::fromUtf8("sqrtFunc"));
+        sqrtFunc->setObjectName("sqrtFunc");
         sqrtFunc->setGeometry(QRect(0, 240, 80, 60));
         sqrtFunc->setBaseSize(QSize(0, 0));
         sqrtFunc->setFont(font1);
@@ -162,7 +164,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         lnFunc = new QPushButton(centralwidget);
-        lnFunc->setObjectName(QString::fromUtf8("lnFunc"));
+        lnFunc->setObjectName("lnFunc");
         lnFunc->setGeometry(QRect(0, 300, 80, 60));
         lnFunc->setBaseSize(QSize(0, 0));
         lnFunc->setFont(font1);
@@ -177,7 +179,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         acosFunc = new QPushButton(centralwidget);
-        acosFunc->setObjectName(QString::fromUtf8("acosFunc"));
+        acosFunc->setObjectName("acosFunc");
         acosFunc->setGeometry(QRect(80, 60, 80, 60));
         acosFunc->setBaseSize(QSize(0, 0));
         acosFunc->setFont(font1);
@@ -192,7 +194,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         powFunc = new QPushButton(centralwidget);
-        powFunc->setObjectName(QString::fromUtf8("powFunc"));
+        powFunc->setObjectName("powFunc");
         powFunc->setGeometry(QRect(160, 60, 60, 60));
         powFunc->setBaseSize(QSize(0, 0));
         powFunc->setFont(font1);
@@ -207,7 +209,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         asinFunc = new QPushButton(centralwidget);
-        asinFunc->setObjectName(QString::fromUtf8("asinFunc"));
+        asinFunc->setObjectName("asinFunc");
         asinFunc->setGeometry(QRect(80, 120, 80, 60));
         asinFunc->setBaseSize(QSize(0, 0));
         asinFunc->setFont(font1);
@@ -222,7 +224,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         atanFunc = new QPushButton(centralwidget);
-        atanFunc->setObjectName(QString::fromUtf8("atanFunc"));
+        atanFunc->setObjectName("atanFunc");
         atanFunc->setGeometry(QRect(80, 180, 80, 60));
         atanFunc->setBaseSize(QSize(0, 0));
         atanFunc->setFont(font1);
@@ -237,7 +239,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         logFunc = new QPushButton(centralwidget);
-        logFunc->setObjectName(QString::fromUtf8("logFunc"));
+        logFunc->setObjectName("logFunc");
         logFunc->setGeometry(QRect(80, 300, 80, 60));
         logFunc->setBaseSize(QSize(0, 0));
         logFunc->setFont(font1);
@@ -252,8 +254,8 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         modFunc = new QPushButton(centralwidget);
-        modFunc->setObjectName(QString::fromUtf8("modFunc"));
-        modFunc->setGeometry(QRect(80, 240, 80, 60));
+        modFunc->setObjectName("modFunc");
+        modFunc->setGeometry(QRect(340, 120, 60, 60));
         modFunc->setFont(font1);
         modFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 215, 0);\n"
@@ -266,7 +268,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         num_7 = new QPushButton(centralwidget);
-        num_7->setObjectName(QString::fromUtf8("num_7"));
+        num_7->setObjectName("num_7");
         num_7->setGeometry(QRect(160, 120, 60, 60));
         num_7->setFont(font1);
         num_7->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -277,7 +279,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         num_4 = new QPushButton(centralwidget);
-        num_4->setObjectName(QString::fromUtf8("num_4"));
+        num_4->setObjectName("num_4");
         num_4->setGeometry(QRect(160, 180, 60, 60));
         num_4->setFont(font1);
         num_4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -288,7 +290,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         num_1 = new QPushButton(centralwidget);
-        num_1->setObjectName(QString::fromUtf8("num_1"));
+        num_1->setObjectName("num_1");
         num_1->setGeometry(QRect(160, 240, 60, 60));
         num_1->setFont(font1);
         num_1->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -299,7 +301,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         xSym = new QPushButton(centralwidget);
-        xSym->setObjectName(QString::fromUtf8("xSym"));
+        xSym->setObjectName("xSym");
         xSym->setGeometry(QRect(160, 300, 60, 60));
         xSym->setFont(font1);
         xSym->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -310,7 +312,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         num_2 = new QPushButton(centralwidget);
-        num_2->setObjectName(QString::fromUtf8("num_2"));
+        num_2->setObjectName("num_2");
         num_2->setGeometry(QRect(220, 240, 60, 60));
         num_2->setFont(font1);
         num_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -321,7 +323,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         num_0 = new QPushButton(centralwidget);
-        num_0->setObjectName(QString::fromUtf8("num_0"));
+        num_0->setObjectName("num_0");
         num_0->setGeometry(QRect(220, 300, 60, 60));
         num_0->setFont(font1);
         num_0->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -332,18 +334,21 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         leftBracket = new QPushButton(centralwidget);
-        leftBracket->setObjectName(QString::fromUtf8("leftBracket"));
+        leftBracket->setObjectName("leftBracket");
         leftBracket->setGeometry(QRect(220, 60, 60, 60));
         leftBracket->setFont(font1);
         leftBracket->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(105, 105, 105);\n"
+"  background-color: rgb(255, 215, 0);\n"
+"  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #BEBEBE, stop: 1 #D7D7D7);\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         num_5 = new QPushButton(centralwidget);
-        num_5->setObjectName(QString::fromUtf8("num_5"));
+        num_5->setObjectName("num_5");
         num_5->setGeometry(QRect(220, 180, 60, 60));
         num_5->setFont(font1);
         num_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -354,7 +359,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         num_8 = new QPushButton(centralwidget);
-        num_8->setObjectName(QString::fromUtf8("num_8"));
+        num_8->setObjectName("num_8");
         num_8->setGeometry(QRect(220, 120, 60, 60));
         num_8->setFont(font1);
         num_8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -365,7 +370,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         num_3 = new QPushButton(centralwidget);
-        num_3->setObjectName(QString::fromUtf8("num_3"));
+        num_3->setObjectName("num_3");
         num_3->setGeometry(QRect(280, 240, 60, 60));
         num_3->setFont(font1);
         num_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -376,7 +381,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         dotSym = new QPushButton(centralwidget);
-        dotSym->setObjectName(QString::fromUtf8("dotSym"));
+        dotSym->setObjectName("dotSym");
         dotSym->setGeometry(QRect(280, 300, 60, 60));
         dotSym->setFont(font1);
         dotSym->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -387,18 +392,21 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         rightBracket = new QPushButton(centralwidget);
-        rightBracket->setObjectName(QString::fromUtf8("rightBracket"));
+        rightBracket->setObjectName("rightBracket");
         rightBracket->setGeometry(QRect(280, 60, 60, 60));
         rightBracket->setFont(font1);
         rightBracket->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(105, 105, 105);\n"
+"  background-color: rgb(255, 215, 0);\n"
+"  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #BEBEBE, stop: 1 #D7D7D7);\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         num_6 = new QPushButton(centralwidget);
-        num_6->setObjectName(QString::fromUtf8("num_6"));
+        num_6->setObjectName("num_6");
         num_6->setGeometry(QRect(280, 180, 60, 60));
         num_6->setFont(font1);
         num_6->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -409,7 +417,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         num_9 = new QPushButton(centralwidget);
-        num_9->setObjectName(QString::fromUtf8("num_9"));
+        num_9->setObjectName("num_9");
         num_9->setGeometry(QRect(280, 120, 60, 60));
         num_9->setFont(font1);
         num_9->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -420,7 +428,7 @@ public:
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
 "}"));
         addFunc = new QPushButton(centralwidget);
-        addFunc->setObjectName(QString::fromUtf8("addFunc"));
+        addFunc->setObjectName("addFunc");
         addFunc->setGeometry(QRect(340, 240, 60, 60));
         addFunc->setFont(font1);
         addFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -434,7 +442,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         divFunc = new QPushButton(centralwidget);
-        divFunc->setObjectName(QString::fromUtf8("divFunc"));
+        divFunc->setObjectName("divFunc");
         divFunc->setGeometry(QRect(400, 180, 60, 60));
         divFunc->setFont(font1);
         divFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -448,7 +456,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         subFunc = new QPushButton(centralwidget);
-        subFunc->setObjectName(QString::fromUtf8("subFunc"));
+        subFunc->setObjectName("subFunc");
         subFunc->setGeometry(QRect(340, 180, 60, 60));
         subFunc->setFont(font1);
         subFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -462,7 +470,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         mulFunc = new QPushButton(centralwidget);
-        mulFunc->setObjectName(QString::fromUtf8("mulFunc"));
+        mulFunc->setObjectName("mulFunc");
         mulFunc->setGeometry(QRect(400, 240, 60, 60));
         mulFunc->setFont(font1);
         mulFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -476,29 +484,35 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         delElem = new QPushButton(centralwidget);
-        delElem->setObjectName(QString::fromUtf8("delElem"));
-        delElem->setGeometry(QRect(340, 60, 60, 120));
+        delElem->setObjectName("delElem");
+        delElem->setGeometry(QRect(340, 60, 60, 60));
         delElem->setFont(font1);
         delElem->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(105, 105, 105);\n"
+"  background-color: rgb(255, 140, 0);\n"
+"  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #BEBEBE, stop: 1 #D7D7D7);\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         delAll = new QPushButton(centralwidget);
-        delAll->setObjectName(QString::fromUtf8("delAll"));
-        delAll->setGeometry(QRect(400, 60, 60, 120));
+        delAll->setObjectName("delAll");
+        delAll->setGeometry(QRect(400, 60, 60, 60));
         delAll->setFont(font1);
         delAll->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(105, 105, 105);\n"
+"  background-color: rgb(255, 140, 0);\n"
+"  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #BEBEBE, stop: 1 #D7D7D7);\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         resultFunc = new QPushButton(centralwidget);
-        resultFunc->setObjectName(QString::fromUtf8("resultFunc"));
+        resultFunc->setObjectName("resultFunc");
         resultFunc->setGeometry(QRect(340, 300, 120, 60));
         resultFunc->setBaseSize(QSize(0, 0));
         resultFunc->setFont(font1);
@@ -513,7 +527,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         showGraph = new QPushButton(centralwidget);
-        showGraph->setObjectName(QString::fromUtf8("showGraph"));
+        showGraph->setObjectName("showGraph");
         showGraph->setGeometry(QRect(460, -5, 20, 365));
         showGraph->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 160, 122);\n"
@@ -526,7 +540,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         credCalc = new QPushButton(centralwidget);
-        credCalc->setObjectName(QString::fromUtf8("credCalc"));
+        credCalc->setObjectName("credCalc");
         credCalc->setGeometry(QRect(0, 360, 230, 20));
         credCalc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 160, 122);\n"
@@ -539,7 +553,7 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         deposCalc = new QPushButton(centralwidget);
-        deposCalc->setObjectName(QString::fromUtf8("deposCalc"));
+        deposCalc->setObjectName("deposCalc");
         deposCalc->setGeometry(QRect(230, 360, 230, 20));
         deposCalc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 160, 122);\n"
@@ -552,27 +566,27 @@ public:
 "                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
 "}"));
         functionGraph = new QCustomPlot(centralwidget);
-        functionGraph->setObjectName(QString::fromUtf8("functionGraph"));
+        functionGraph->setObjectName("functionGraph");
         functionGraph->setGeometry(QRect(480, 0, 480, 290));
         xMinCord = new QLineEdit(centralwidget);
-        xMinCord->setObjectName(QString::fromUtf8("xMinCord"));
+        xMinCord->setObjectName("xMinCord");
         xMinCord->setGeometry(QRect(590, 325, 120, 25));
         xMinCord->setFont(font1);
         xMaxCord = new QLineEdit(centralwidget);
-        xMaxCord->setObjectName(QString::fromUtf8("xMaxCord"));
+        xMaxCord->setObjectName("xMaxCord");
         xMaxCord->setGeometry(QRect(590, 350, 120, 25));
         xMaxCord->setFont(font1);
         yMinCord = new QLineEdit(centralwidget);
-        yMinCord->setObjectName(QString::fromUtf8("yMinCord"));
+        yMinCord->setObjectName("yMinCord");
         yMinCord->setGeometry(QRect(820, 325, 120, 25));
         yMinCord->setFont(font1);
         yMaxCord = new QLineEdit(centralwidget);
-        yMaxCord->setObjectName(QString::fromUtf8("yMaxCord"));
+        yMaxCord->setObjectName("yMaxCord");
         yMaxCord->setGeometry(QRect(820, 350, 120, 25));
         yMaxCord->setFont(font1);
         label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(541, 325, 49, 25));
+        label->setObjectName("label");
+        label->setGeometry(QRect(538, 325, 49, 25));
         QFont font2;
         font2.setPointSize(18);
         label->setFont(font2);
@@ -583,8 +597,8 @@ public:
 "\n"
 "background-color : gray;"));
         label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(536, 350, 54, 25));
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(533, 350, 54, 25));
         label_2->setFont(font2);
         label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -593,8 +607,8 @@ public:
 "\n"
 "background-color : gray;"));
         label_3 = new QLabel(centralwidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(771, 325, 49, 25));
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(768, 325, 49, 25));
         label_3->setFont(font2);
         label_3->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -603,8 +617,8 @@ public:
 "\n"
 "background-color : gray;"));
         label_4 = new QLabel(centralwidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(766, 350, 54, 25));
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(763, 350, 54, 25));
         label_4->setFont(font2);
         label_4->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -613,12 +627,12 @@ public:
 "\n"
 "background-color : gray;"));
         xValue = new QLineEdit(centralwidget);
-        xValue->setObjectName(QString::fromUtf8("xValue"));
+        xValue->setObjectName("xValue");
         xValue->setGeometry(QRect(590, 300, 120, 25));
         xValue->setFont(font1);
         label_5 = new QLabel(centralwidget);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(528, 298, 62, 25));
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(525, 298, 62, 25));
         label_5->setFont(font2);
         label_5->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
@@ -627,10 +641,38 @@ public:
 "\n"
 "background-color : gray;"));
         pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setObjectName("pushButton");
         pushButton->setGeometry(QRect(460, 360, 20, 20));
         pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(255, 160, 122);\n"
+"  color: black; \n"
+"  border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
+"}"));
+        num_pi = new QPushButton(centralwidget);
+        num_pi->setObjectName("num_pi");
+        num_pi->setGeometry(QRect(400, 120, 60, 60));
+        num_pi->setFont(font1);
+        num_pi->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"  background-color: rgb(255, 215, 0);\n"
+"  color: black; \n"
+"  border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #FF7832, stop: 1 #FF9739);\n"
+"}"));
+        absFunc = new QPushButton(centralwidget);
+        absFunc->setObjectName("absFunc");
+        absFunc->setGeometry(QRect(80, 240, 80, 60));
+        absFunc->setFont(font1);
+        absFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"  background-color: rgb(255, 215, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -690,6 +732,8 @@ public:
         label_4->setText(QCoreApplication::translate("MainWindow", "Y max:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "X value:", nullptr));
         pushButton->setText(QString());
+        num_pi->setText(QCoreApplication::translate("MainWindow", "Pi", nullptr));
+        absFunc->setText(QCoreApplication::translate("MainWindow", "abs", nullptr));
     } // retranslateUi
 
 };

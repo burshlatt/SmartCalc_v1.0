@@ -39,18 +39,32 @@ void delete_stack(struct Stack *stack) {
     }
 }
 
-void set_num(double *stack, int *top, double num) {
+int set_num(double *stack, int *top, double num) {
+    int error_status = 0;
     if (*top != SIZE - 1) {
         stack[++(*top)] = num;
     }
+    return error_status;
 }
 
 double get_num(double *stack, int *top) {
     double result = 0.0;
     if (*top != -1) {
         result = stack[(*top)--];
+    } else {
+        result = NAN;
     }
     return result;
+}
+
+int get_nums_func(double *num_buffer, int *top, double *x, double *y) {
+    int error_status = 0;
+    *x = get_num(num_buffer, top);
+    *y = get_num(num_buffer, top);
+    if (*x == NAN || *y == NAN) {
+        error_status = 1;
+    }
+    return error_status;
 }
 
 void set_nums_output(char *string, int *i, char *output, int *index) {
@@ -124,12 +138,17 @@ void push_func(struct Stack *stack, char *string, int *index) {
     } else if (string[*index] == 'a') {
         if (string[*index + 1] == 'c') {
             push(stack, 'C');
+            *index += 4;
         } else if (string[*index + 1] == 's') {
             push(stack, 'S');
+            *index += 4;
         } else if (string[*index + 1] == 't') {
             push(stack, 'T');
+            *index += 4;
+        } else if (string[*index + 1] == 'b') {
+            push(stack, '|');
+            *index += 3;
         }
-        *index += 4;
     } else if (string[*index] == 'l') {
         if (string[*index + 1] == 'n') {
             push(stack, 'l');

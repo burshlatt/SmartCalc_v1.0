@@ -30,26 +30,34 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_subFunc_clicked();
-    void on_dotSym_clicked();
-    void on_delElem_clicked();
-    void on_delAll_clicked();
-    void on_resultFunc_clicked();
-    void on_showGraph_clicked();
-    void print_graph(double result);
-    void symbols_clicked();
     void func_clicked();
-
+    void decompose_func();
+    void symbols_clicked();
+    void brackets_clicked();
+    void operators_clicked();
+    void on_dotSym_clicked();
+    void on_delAll_clicked();
+    void on_subFunc_clicked();
+    void on_delElem_clicked();
+    void on_showGraph_clicked();
+    void on_resultFunc_clicked();
+    void print_graph(char *chars_array);
 
 private:
     Ui::MainWindow *ui;
+
     int is_x = 0;
+    int string_size = 0;
+    int error_status = 0;
     int graph_is_open = 0;
     int count_of_actions = 0;
+    int count_of_left_bracket = 0;
+    int count_of_right_bracket = 0;
 
-    int N;
-    double xBegin, xEnd, h, X;
+    char last_symbol = '\0';
+    char operators[6] = {'-', '+', '*', '/', '^', 'd'};
 
-    QVector<double> xCord, yCord;
+    QPushButton *button;
+    std::string input_string;
 };
 #endif // MAINWINDOW_H
