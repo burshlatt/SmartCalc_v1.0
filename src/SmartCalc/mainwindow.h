@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QVector>
 #include <QtMath>
+#include <QScreen>
 
 #include <iostream>
 #include <string>
@@ -29,41 +30,15 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_num_0_clicked();
-    void on_num_1_clicked();
-    void on_num_2_clicked();
-    void on_num_3_clicked();
-    void on_num_4_clicked();
-    void on_num_5_clicked();
-    void on_num_6_clicked();
-    void on_num_7_clicked();
-    void on_num_8_clicked();
-    void on_num_9_clicked();
-    void on_addFunc_clicked();
     void on_subFunc_clicked();
-    void on_mulFunc_clicked();
-    void on_divFunc_clicked();
-    void on_cosFunc_clicked();
-    void on_sinFunc_clicked();
-    void on_tanFunc_clicked();
-    void on_sqrtFunc_clicked();
-    void on_lnFunc_clicked();
-    void on_logFunc_clicked();
-    void on_acosFunc_clicked();
-    void on_asinFunc_clicked();
-    void on_atanFunc_clicked();
-    void on_powFunc_clicked();
-    void on_modFunc_clicked();
-    void on_leftBracket_clicked();
-    void on_rightBracket_clicked();
-    void on_xSym_clicked();
     void on_dotSym_clicked();
     void on_delElem_clicked();
     void on_delAll_clicked();
     void on_resultFunc_clicked();
     void on_showGraph_clicked();
-
     void print_graph(double result);
+    void symbols_clicked();
+    void func_clicked();
 
 
 private:

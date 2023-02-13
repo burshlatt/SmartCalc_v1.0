@@ -1,52 +1,63 @@
 #include "calculator.h"
 
-double polish_notation(char *string, int is_graph, double xValue) {
+double polish_notation(char *string, int is_graph, double xValue, int *error_flag) {
     struct Stack *stack = create_stack(SIZE);
     int index = 0;
+    int count_of_left_bracket = 0;
+    int count_of_right_bracket = 0;
     char output[255] = {'\0'};
     for (int i = 0; i < (int)strlen(string) + 1 && index < 255; i++) {
         set_nums_output(string, &i, output, &index);
-        switch (string[i]) {
-            case '^':
-            case 'c':
-            case 's':
-            case 't':
-            case 'a':
-            case 'l':
-            case 'm':
-            case '(':
-                push_func(stack, string, &i);
-                break;
-            case '*':
-                do_pop(stack, output, &index, 5);
-                push(stack, '*');
-                break;
-            case '/':
-                do_pop(stack, output, &index, 5);
-                push(stack, '/');
-                break;
-            case '+':
-                do_pop(stack, output, &index, 1);
-                push(stack, '+');
-                break;
-            case '-':
-                if (string[i - 1] != '(') {
+        if (*error_flag == 0) {
+            switch (string[i]) {
+                case '^':
+                case 'c':
+                case 's':
+                case 't':
+                case 'a':
+                case 'l':
+                case 'm':
+                case '(':
+                    push_func(stack, string, &i);
+                    count_of_left_bracket++;
+                    break;
+                case '*':
+                    do_pop(stack, output, &index, 5);
+                    push(stack, '*');
+                    break;
+                case '/':
+                    do_pop(stack, output, &index, 5);
+                    push(stack, '/');
+                    break;
+                case '+':
                     do_pop(stack, output, &index, 1);
-                    push(stack, '-');
-                }
-                break;
-            case ')':
-                do_pop(stack, output, &index, 3);
-                pop(stack);
-                do_pop(stack, output, &index, 4);
-                break;
-            case '\0':
-                do_pop(stack, output, &index, 2);
-                break;
+                    push(stack, '+');
+                    break;
+                case '-':
+                    if (string[i - 1] != '(') {
+                        do_pop(stack, output, &index, 1);
+                        push(stack, '-');
+                    }
+                    break;
+                case ')':
+                    *error_flag = do_pop(stack, output, &index, 3);
+                    if (*error_flag == 0) {
+                        pop(stack);
+                        do_pop(stack, output, &index, 4);
+                    }
+                    count_of_right_bracket++;
+                    break;
+                case '\0':
+                    do_pop(stack, output, &index, 2);
+                    break;
+            }
         }
     }
     delete_stack(stack);
-    return arithmetic_calculations(output, is_graph, xValue);
+    if (count_of_left_bracket != count_of_right_bracket) {
+        *error_flag = 1;
+    }
+    return !(*error_flag) ? arithmetic_calculations(output, is_graph, xValue) : 0;
 }
 
 double arithmetic_calculations(char *output, int is_graph, double xValue) {
@@ -173,3 +184,11 @@ double arithmetic_calculations(char *output, int is_graph, double xValue) {
     }
     return get_num(num_buffer, &top);
 }
+
+// int main () {
+//     int error = 0;
+//     double res = polish_notation("5+8-6)", 0, 0, &error);
+//     printf("error = %d\n", error);
+//     printf("Result = %lf\n", res);
+//     return 0;
+// }

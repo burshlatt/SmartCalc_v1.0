@@ -9,15 +9,46 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setFixedSize(480, 380);
 
-    QSettings settings("Trolltech", "Application Example");
-    QPoint pos = settings.value("pos", QPoint(1000, 400)).toPoint();
-    move(pos);
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (screenGeometry.width() - 480) / 2;
+    int y = (screenGeometry.height() - 380) / 2;
+    move(x, y);
 
     ui->xValue->setText("0");
-    ui->xMinCord->setText("-5");
     ui->xMaxCord->setText("5");
-    ui->yMinCord->setText("-5");
     ui->yMaxCord->setText("5");
+    ui->xMinCord->setText("-5");
+    ui->yMinCord->setText("-5");
+
+    connect(ui->xSym, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_0, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_1, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_2, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_3, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_4, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_5, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_6, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_7, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_8, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->num_9, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->addFunc, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->mulFunc, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->divFunc, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->powFunc, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->modFunc, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->leftBracket, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+    connect(ui->rightBracket, SIGNAL(clicked()), this, SLOT(symbols_clicked()));
+
+    connect(ui->lnFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->logFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->cosFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->sinFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->tanFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->acosFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->asinFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->atanFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
+    connect(ui->sqrtFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -25,12 +56,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_num_0_clicked() {
+void MainWindow::symbols_clicked() {
     if (count_of_actions == 0) {
         ui->inputOutput->clear();
     }
+    QPushButton *button = (QPushButton *)sender();
     if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "0");
+        ui->inputOutput->setText(ui->inputOutput->text() + button->text());
         count_of_actions++;
     } else {
         ui->inputOutput->clear();
@@ -38,130 +70,14 @@ void MainWindow::on_num_0_clicked() {
     }
 }
 
-void MainWindow::on_num_1_clicked() {
+void MainWindow::func_clicked() {
     if (count_of_actions == 0) {
         ui->inputOutput->clear();
     }
+    QPushButton *button = (QPushButton *)sender();
     if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "1");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_2_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "2");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_3_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "3");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_4_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "4");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_5_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "5");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_6_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "6");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_7_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "7");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_8_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "8");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_num_9_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "9");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_addFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "+");
-        count_of_actions++;
+        ui->inputOutput->setText(ui->inputOutput->text() + button->text() + "(");
+        count_of_actions += button->text().size() + 1;
     } else {
         ui->inputOutput->clear();
         ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
@@ -173,229 +89,23 @@ void MainWindow::on_subFunc_clicked() {
         ui->inputOutput->clear();
     }
     std::string final_string = ui->inputOutput->text().toStdString();
-    char *chars_array = &final_string[0];
+    char *last_symbol = &final_string[0];
     char operators[6] = {'+', '-', '*', '/', '^', 'd'};
     if (count_of_actions < 255) {
-        for (int i = 0; i < 6; i++) {
-            if (chars_array[strlen(chars_array) - 1] == operators[i]) {
-                ui->inputOutput->setText(ui->inputOutput->text() + "(");
-            }
-        }
         if (count_of_actions == 0) {
             ui->inputOutput->setText(ui->inputOutput->text() + "(");
             count_of_actions++;
+        } else {
+            for (int i = 0; i < 6; i++) {
+                if (last_symbol[strlen(last_symbol) - 1] == operators[i]) {
+                    ui->inputOutput->setText(ui->inputOutput->text() + "(");
+                    count_of_actions++;
+                    break;
+                }
+            }
         }
         ui->inputOutput->setText(ui->inputOutput->text() + "-");
         count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_mulFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "*");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_divFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "/");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_cosFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "cos(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_sinFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "sin(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_tanFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "tan(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_sqrtFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "sqrt(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_lnFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "ln(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_logFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "log(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_acosFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "acos(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_asinFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "asin(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_atanFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "atan(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_powFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "^");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_modFunc_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "mod");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_leftBracket_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "(");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_rightBracket_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + ")");
-        count_of_actions++;
-    } else {
-        ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
-    }
-}
-
-void MainWindow::on_xSym_clicked() {
-    if (count_of_actions == 0) {
-        ui->inputOutput->clear();
-    }
-    if (count_of_actions < 255) {
-        ui->inputOutput->setText(ui->inputOutput->text() + "x");
-        count_of_actions++;
-        is_x = 1;
     } else {
         ui->inputOutput->clear();
         ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Too many elements!");
@@ -440,18 +150,24 @@ void MainWindow::on_delAll_clicked() {
 }
 
 void MainWindow::on_resultFunc_clicked() {
+    int error_status = 0;
     double xValue = ui->xValue->text().toDouble();
     std::string final_string = ui->inputOutput->text().toStdString();
     char *chars_array = &final_string[0];
-    double result = polish_notation(chars_array, is_x, xValue);
-    if (is_x) {
-        print_graph(result);
-        is_x = 0;
+    double result = polish_notation(chars_array, is_x, xValue, &error_status);
+    if (!error_status) {
+        if (is_x) {
+            print_graph(result);
+            is_x = 0;
+        } else {
+            QString result_string = QString::number(result);
+            ui->inputOutput->clear();
+            ui->inputOutput->setText(ui->inputOutput->text() + result_string);
+            count_of_actions = 0;
+        }
     } else {
-        QString result_string = QString::number(result);
         ui->inputOutput->clear();
-        ui->inputOutput->setText(ui->inputOutput->text() + result_string);
-        count_of_actions = 0;
+        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Incorrect data!");
     }
 }
 

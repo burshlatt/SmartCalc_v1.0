@@ -166,7 +166,8 @@ void logic_actions(struct Stack *stack, char *output, int *index) {
     set_space(output, index);
 }
 
-void do_pop(struct Stack *stack, char *output, int *index, int variant) {
+int do_pop(struct Stack *stack, char *output, int *index, int variant) {
+    int error_status = 0;
     if (variant == 1) {
         while (!is_empty(stack) && peek(stack) != '(') {
             logic_actions(stack, output, index);
@@ -177,6 +178,10 @@ void do_pop(struct Stack *stack, char *output, int *index, int variant) {
         }
     } else if (variant == 3) {
         while (peek(stack) != '(') {
+            if (is_empty(stack)) {
+                error_status = 1;
+                break;
+            }
             logic_actions(stack, output, index);
         }
     } else if (variant == 4) {
@@ -188,4 +193,5 @@ void do_pop(struct Stack *stack, char *output, int *index, int variant) {
             logic_actions(stack, output, index);
         }
     }
+    return error_status;
 }
