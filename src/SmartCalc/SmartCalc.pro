@@ -11,16 +11,19 @@ CONFIG += c++17
 SOURCES += \
     ../CFiles/calculator.c \
     ../CFiles/help_functions.c \
+    creditwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp
 
 HEADERS += \
     ../CFiles/calculator.h \
+    creditwindow.h \
     mainwindow.h \
     qcustomplot.h
 
 FORMS += \
+    creditwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

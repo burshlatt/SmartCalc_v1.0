@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "creditwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -299,3 +300,11 @@ void MainWindow::print_graph(char *chars_array) {
     ui->functionGraph->graph(0)->addData(xCord, yCord);
     ui->functionGraph->replot();
 }
+
+void MainWindow::on_credCalc_clicked() {
+    hide();
+    CreditWindow window;
+    window.setModal(true);
+    window.exec();
+}
+

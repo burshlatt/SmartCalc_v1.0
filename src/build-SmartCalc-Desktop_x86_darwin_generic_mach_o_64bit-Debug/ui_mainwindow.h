@@ -525,7 +525,7 @@ public:
         delElem->setGeometry(QRect(340, 60, 60, 60));
         delElem->setFont(font1);
         delElem->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(240, 151, 0);\n"
+"  background-color: rgb(244, 169, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -539,7 +539,7 @@ public:
         delAll->setGeometry(QRect(400, 60, 60, 60));
         delAll->setFont(font1);
         delAll->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(240, 151, 0);\n"
+"  background-color: rgb(244, 169, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -554,7 +554,7 @@ public:
         resultFunc->setBaseSize(QSize(0, 0));
         resultFunc->setFont(font1);
         resultFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(240, 151, 0);\n"
+"  background-color: rgb(244, 169, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -761,8 +761,8 @@ public:
         delAll->setText(QCoreApplication::translate("MainWindow", "AC", nullptr));
         resultFunc->setText(QCoreApplication::translate("MainWindow", "=", nullptr));
         showGraph->setText(QCoreApplication::translate("MainWindow", ">", nullptr));
-        credCalc->setText(QCoreApplication::translate("MainWindow", "Credit calculator", nullptr));
-        deposCalc->setText(QCoreApplication::translate("MainWindow", "Deposit calculator", nullptr));
+        credCalc->setText(QCoreApplication::translate("MainWindow", "\320\232\321\200\320\265\320\264\320\270\321\202\320\275\321\213\320\271 \320\272\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200", nullptr));
+        deposCalc->setText(QCoreApplication::translate("MainWindow", "\320\224\320\265\320\277\320\276\320\267\320\270\321\202\320\275\321\213\320\271 \320\272\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "X min:", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "X max:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Y min:", nullptr));

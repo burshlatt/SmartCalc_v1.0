@@ -1015,7 +1015,7 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-  background-color: rgb(240, 151, 0);
+  background-color: rgb(244, 169, 0);
   color: black; 
   border: 1px solid gray;
 }
@@ -1045,7 +1045,7 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-  background-color: rgb(240, 151, 0);
+  background-color: rgb(244, 169, 0);
   color: black; 
   border: 1px solid gray;
 }
@@ -1081,7 +1081,7 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-  background-color: rgb(240, 151, 0);
+  background-color: rgb(244, 169, 0);
   color: black; 
   border: 1px solid gray;
 }
@@ -1142,7 +1142,7 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>Credit calculator</string>
+     <string>Кредитный калькулятор</string>
     </property>
    </widget>
    <widget class="QPushButton" name="deposCalc">
@@ -1167,7 +1167,7 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>Deposit calculator</string>
+     <string>Депозитный калькулятор</string>
     </property>
    </widget>
    <widget class="QCustomPlot" name="functionGraph" native="true">

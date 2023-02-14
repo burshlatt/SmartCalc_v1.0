@@ -43,6 +43,8 @@ private slots:
     void on_resultFunc_clicked();
     void print_graph(char *chars_array);
 
+    void on_credCalc_clicked();
+
 private:
     Ui::MainWindow *ui;
 
