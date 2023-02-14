@@ -47,6 +47,7 @@ private:
     Ui::MainWindow *ui;
 
     int is_x = 0;
+    int is_dot = 0;
     int string_size = 0;
     int error_status = 0;
     int graph_is_open = 0;

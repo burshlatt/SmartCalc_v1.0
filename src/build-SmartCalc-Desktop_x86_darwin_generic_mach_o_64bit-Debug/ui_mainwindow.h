@@ -84,7 +84,9 @@ public:
         MainWindow->setMaximumSize(QSize(960, 380));
         MainWindow->setSizeIncrement(QSize(0, 0));
         MainWindow->setBaseSize(QSize(100, 100));
-        MainWindow->setStyleSheet(QString::fromUtf8(""));
+        MainWindow->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background-color: solid gray;\n"
+"}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         inputOutput = new QLineEdit(centralwidget);
@@ -109,7 +111,7 @@ public:
         font1.setPointSize(17);
         cosFunc->setFont(font1);
         cosFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -124,7 +126,7 @@ public:
         sinFunc->setBaseSize(QSize(0, 0));
         sinFunc->setFont(font1);
         sinFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -139,7 +141,7 @@ public:
         tanFunc->setBaseSize(QSize(0, 0));
         tanFunc->setFont(font1);
         tanFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -154,7 +156,7 @@ public:
         sqrtFunc->setBaseSize(QSize(0, 0));
         sqrtFunc->setFont(font1);
         sqrtFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -169,7 +171,7 @@ public:
         lnFunc->setBaseSize(QSize(0, 0));
         lnFunc->setFont(font1);
         lnFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -184,7 +186,7 @@ public:
         acosFunc->setBaseSize(QSize(0, 0));
         acosFunc->setFont(font1);
         acosFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -199,7 +201,7 @@ public:
         powFunc->setBaseSize(QSize(0, 0));
         powFunc->setFont(font1);
         powFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -214,7 +216,7 @@ public:
         asinFunc->setBaseSize(QSize(0, 0));
         asinFunc->setFont(font1);
         asinFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -229,7 +231,7 @@ public:
         atanFunc->setBaseSize(QSize(0, 0));
         atanFunc->setFont(font1);
         atanFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -244,7 +246,7 @@ public:
         logFunc->setBaseSize(QSize(0, 0));
         logFunc->setFont(font1);
         logFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -258,7 +260,7 @@ public:
         modFunc->setGeometry(QRect(340, 120, 60, 60));
         modFunc->setFont(font1);
         modFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -272,7 +274,9 @@ public:
         num_7->setGeometry(QRect(160, 120, 60, 60));
         num_7->setFont(font1);
         num_7->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
@@ -283,8 +287,11 @@ public:
         num_4->setGeometry(QRect(160, 180, 60, 60));
         num_4->setFont(font1);
         num_4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -294,8 +301,11 @@ public:
         num_1->setGeometry(QRect(160, 240, 60, 60));
         num_1->setFont(font1);
         num_1->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -305,8 +315,11 @@ public:
         xSym->setGeometry(QRect(160, 300, 60, 60));
         xSym->setFont(font1);
         xSym->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -316,8 +329,11 @@ public:
         num_2->setGeometry(QRect(220, 240, 60, 60));
         num_2->setFont(font1);
         num_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -327,8 +343,11 @@ public:
         num_0->setGeometry(QRect(220, 300, 60, 60));
         num_0->setFont(font1);
         num_0->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -338,7 +357,7 @@ public:
         leftBracket->setGeometry(QRect(220, 60, 60, 60));
         leftBracket->setFont(font1);
         leftBracket->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -352,8 +371,11 @@ public:
         num_5->setGeometry(QRect(220, 180, 60, 60));
         num_5->setFont(font1);
         num_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -363,8 +385,11 @@ public:
         num_8->setGeometry(QRect(220, 120, 60, 60));
         num_8->setFont(font1);
         num_8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -374,8 +399,11 @@ public:
         num_3->setGeometry(QRect(280, 240, 60, 60));
         num_3->setFont(font1);
         num_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -385,8 +413,11 @@ public:
         dotSym->setGeometry(QRect(280, 300, 60, 60));
         dotSym->setFont(font1);
         dotSym->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -396,7 +427,7 @@ public:
         rightBracket->setGeometry(QRect(280, 60, 60, 60));
         rightBracket->setFont(font1);
         rightBracket->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -410,8 +441,11 @@ public:
         num_6->setGeometry(QRect(280, 180, 60, 60));
         num_6->setFont(font1);
         num_6->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -421,8 +455,11 @@ public:
         num_9->setGeometry(QRect(280, 120, 60, 60));
         num_9->setFont(font1);
         num_9->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"   border: 1px solid gray;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
+"	border: 1px solid gray;\n"
 "}\n"
+"\n"
 "QPushButton:pressed {\n"
 "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
 "                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
@@ -432,7 +469,7 @@ public:
         addFunc->setGeometry(QRect(340, 240, 60, 60));
         addFunc->setFont(font1);
         addFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -446,7 +483,7 @@ public:
         divFunc->setGeometry(QRect(400, 180, 60, 60));
         divFunc->setFont(font1);
         divFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -460,7 +497,7 @@ public:
         subFunc->setGeometry(QRect(340, 180, 60, 60));
         subFunc->setFont(font1);
         subFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -474,7 +511,7 @@ public:
         mulFunc->setGeometry(QRect(400, 240, 60, 60));
         mulFunc->setFont(font1);
         mulFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -488,7 +525,7 @@ public:
         delElem->setGeometry(QRect(340, 60, 60, 60));
         delElem->setFont(font1);
         delElem->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 140, 0);\n"
+"  background-color: rgb(240, 151, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -502,7 +539,7 @@ public:
         delAll->setGeometry(QRect(400, 60, 60, 60));
         delAll->setFont(font1);
         delAll->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 140, 0);\n"
+"  background-color: rgb(240, 151, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -517,7 +554,7 @@ public:
         resultFunc->setBaseSize(QSize(0, 0));
         resultFunc->setFont(font1);
         resultFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 140, 0);\n"
+"  background-color: rgb(240, 151, 0);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -658,7 +695,7 @@ public:
         num_pi->setGeometry(QRect(400, 120, 60, 60));
         num_pi->setFont(font1);
         num_pi->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"
@@ -672,7 +709,7 @@ public:
         absFunc->setGeometry(QRect(80, 240, 80, 60));
         absFunc->setFont(font1);
         absFunc->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"  background-color: rgb(255, 215, 0);\n"
+"  background-color: rgb(255, 219, 139);\n"
 "  color: black; \n"
 "  border: 1px solid gray;\n"
 "}\n"

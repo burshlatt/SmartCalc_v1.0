@@ -79,7 +79,7 @@ void set_nums_output(char *string, int *i, char *output, int *index) {
         *index += 1;
         *i += 1;
     }
-    if (string[*i] >= 'P') {
+    if (string[*i] == 'P') {
         for (int k = 0; k < 8; k++) {
             output[*index] = pi_chars[k];
             *index += 1;

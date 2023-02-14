@@ -78,6 +78,7 @@ void MainWindow::operators_clicked() {
         }
         if (string_size < 255) {
             ui->inputOutput->setText(ui->inputOutput->text() + button->text());
+            is_dot = 0;
         }
     }
 }
@@ -85,20 +86,21 @@ void MainWindow::operators_clicked() {
 void MainWindow::symbols_clicked() {
     decompose_func();
     if (string_size < 255) {
-        if (last_symbol == 'x' || last_symbol == ')') {
+        if (last_symbol == 'x' || last_symbol == ')' || last_symbol == 'i') {
             ui->inputOutput->setText(ui->inputOutput->text() + "*");
         }
         if (button->text() == "Pi" && last_symbol != '.') {
-            if ((last_symbol >= '0' && last_symbol <= '9') || last_symbol == 'i') {
+            if (last_symbol >= '0' && last_symbol <= '9') {
                 ui->inputOutput->setText(ui->inputOutput->text() + "*");
             }
             ui->inputOutput->setText(ui->inputOutput->text() + button->text());
-            decompose_func();
+            is_dot = 0;
         } else if (button->text() == 'x' && last_symbol != '.') {
             if (last_symbol >= '0' && last_symbol <= '9') {
                 ui->inputOutput->setText(ui->inputOutput->text() + "*");
             }
             ui->inputOutput->setText(ui->inputOutput->text() + "x");
+            is_dot = 0;
         } else if (button->text() >= '0' && button->text() <= '9') {
             ui->inputOutput->setText(ui->inputOutput->text() + button->text());
         }
@@ -108,10 +110,11 @@ void MainWindow::symbols_clicked() {
 void MainWindow::func_clicked() {
     decompose_func();
     if (string_size < 255 && last_symbol != '.') {
-        if ((last_symbol >= '0' && last_symbol <= '9') || last_symbol == ')') {
+        if ((last_symbol >= '0' && last_symbol <= '9') || last_symbol == ')' || last_symbol == 'i') {
             ui->inputOutput->setText(ui->inputOutput->text() + "*");
         }
         ui->inputOutput->setText(ui->inputOutput->text() + button->text() + "(");
+        is_dot = 0;
     }
 }
 
@@ -135,6 +138,7 @@ void MainWindow::brackets_clicked() {
                     ui->inputOutput->setText(ui->inputOutput->text() + "*");
                 }
                 ui->inputOutput->setText(ui->inputOutput->text() + "(");
+                is_dot = 0;
             }
             if (button->text() == ')' && count_of_right_bracket < count_of_left_bracket) {
                 for (int i = 0; i < 6; i++) {
@@ -144,6 +148,7 @@ void MainWindow::brackets_clicked() {
                 }
                 if (can_do) {
                     ui->inputOutput->setText(ui->inputOutput->text() + ")");
+                    is_dot = 0;
                 }
             }
         }
@@ -169,11 +174,15 @@ void MainWindow::on_subFunc_clicked() {
 
 void MainWindow::on_dotSym_clicked() {
     decompose_func();
-    if (string_size < 255 && last_symbol != '.') {
+    if (string_size < 255 && last_symbol != '.' && !is_dot) {
         if (last_symbol < '0' || last_symbol > '9') {
+            if (last_symbol == ')') {
+                ui->inputOutput->setText(ui->inputOutput->text() + "*");
+            }
             ui->inputOutput->setText(ui->inputOutput->text() + "0");
         }
         ui->inputOutput->setText(ui->inputOutput->text() + ".");
+        is_dot = 1;
     }
 }
 
@@ -218,23 +227,6 @@ void MainWindow::on_resultFunc_clicked() {
             can_do = 0;
         }
     }
-
-     //sin(x)0.3 // от нажатия точки // 5.2.3+3
-
-//    for (int i = 0; i < (int)final_string.size(); i++) {
-//        if (chars_array[i] == '.') {
-//            for (int j = i + 1; j < (int)final_string.size(); j++) {
-//                if (chars_array[j] < '0' || chars_array[j] > '9') {
-//                    i = j;
-//                    break;
-//                }
-//            }
-//            if (chars_array[i] == '.') {
-//                can_do = 0;
-//                break;
-//            }
-//        }
-//    }
     for (int i = 0; final_string[i] != '\0'; i++) {
         if (final_string[i] == 'x') {
             is_x = 1;
@@ -263,8 +255,8 @@ void MainWindow::on_resultFunc_clicked() {
             ui->inputOutput->setText(ui->inputOutput->text() + result_string);
         }
     } else {
-        // ui->inputOutput->clear();
-        // ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Incorrect data!");
+         ui->inputOutput->clear();
+         ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Incorrect data!");
     }
 }
 
