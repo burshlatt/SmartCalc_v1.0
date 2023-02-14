@@ -21,7 +21,11 @@ public:
     ~CreditWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_showResult_clicked();
+    void on_calculator_clicked();
+
+signals:
+    void firstWindow();
 
 private:
     Ui::CreditWindow *ui;

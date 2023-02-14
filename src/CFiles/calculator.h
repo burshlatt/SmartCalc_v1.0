@@ -6,6 +6,7 @@
 #include <string.h>
 #include <math.h>
 #include <ctype.h>
+#include <time.h>
 
 #define SIZE 255
 
@@ -49,5 +50,8 @@ int is_empty(struct Stack *stack);
 int set_num(double *stack, int *top, double num);
 int get_nums_func(double *num_buffer, int *top, double *x, double *y);
 int do_pop(struct Stack *stack, char *output, int *index, int variant);
+
+double annuity_credit(double sum, int term, int type_of_term, double percent, double *month_pay, double *over_pay);
+double differentiated_credit(double sum, int term, int type_of_term, double percent, double *first_payment, double *last_payment, double *over_pay);
 
 #endif // SRC_SMARTCALC_CALCULATOR_H_

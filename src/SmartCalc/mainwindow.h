@@ -8,10 +8,13 @@
 #include <QVector>
 #include <QtMath>
 #include <QScreen>
+#include <QDialog>
 
 #include <iostream>
 #include <string>
 #include <math.h>
+
+#include "creditwindow.h"
 
 extern "C" {
 #include "../CFiles/calculator.h"
@@ -39,14 +42,14 @@ private slots:
     void on_delAll_clicked();
     void on_subFunc_clicked();
     void on_delElem_clicked();
+    void on_credCalc_clicked();
     void on_showGraph_clicked();
     void on_resultFunc_clicked();
     void print_graph(char *chars_array);
 
-    void on_credCalc_clicked();
-
 private:
     Ui::MainWindow *ui;
+    CreditWindow *secondWindow;
 
     int is_x = 0;
     int is_dot = 0;

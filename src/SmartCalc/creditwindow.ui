@@ -48,7 +48,7 @@
     <string>Сумма кредита:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="creditSum">
    <property name="geometry">
     <rect>
      <x>175</x>
@@ -76,7 +76,7 @@
     <string>Срок кредита:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="creditTerm">
    <property name="geometry">
     <rect>
      <x>175</x>
@@ -104,7 +104,7 @@
     <string>Процентная ставка:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="percent">
    <property name="geometry">
     <rect>
      <x>175</x>
@@ -132,7 +132,7 @@
     <string>Тип ежемесячных платежей:</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton">
+  <widget class="QRadioButton" name="annu">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -150,7 +150,7 @@
     <string>Аннуитетные</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_2">
+  <widget class="QRadioButton" name="differ">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -168,7 +168,7 @@
     <string>Дифференцированные</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="showResult">
    <property name="geometry">
     <rect>
      <x>175</x>
@@ -193,7 +193,7 @@ QPushButton:pressed {
     <string>Рассчитать</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="calculator">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -218,7 +218,7 @@ QPushButton:pressed {
     <string>Калькулятор</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="deposCalc">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -261,7 +261,7 @@ QPushButton:pressed {
     <string>Общая выплата:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="resultSum">
    <property name="geometry">
     <rect>
      <x>175</x>
@@ -310,7 +310,7 @@ QPushButton:pressed {
     <string>Переплата по кредиту:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="overPay">
    <property name="geometry">
     <rect>
      <x>175</x>
@@ -323,7 +323,7 @@ QPushButton:pressed {
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="monthRes">
    <property name="geometry">
     <rect>
      <x>175</x>
@@ -424,6 +424,42 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Руб.</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="month">
+   <property name="geometry">
+    <rect>
+     <x>305</x>
+     <y>85</y>
+     <width>85</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Месяцев</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="year">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>85</y>
+     <width>80</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Лет</string>
    </property>
   </widget>
  </widget>

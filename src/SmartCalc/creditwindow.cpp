@@ -1,5 +1,6 @@
 #include "creditwindow.h"
 #include "ui_creditwindow.h"
+//#include "mainwindow.h"
 
 CreditWindow::CreditWindow(QWidget *parent) :
     QDialog(parent),
@@ -9,18 +10,6 @@ CreditWindow::CreditWindow(QWidget *parent) :
 
     this->setFixedSize(480, 325);
 
-//    QPieSeries *series = new QPieSeries();
-
-//    series->append("Slice 1", 10);
-//    series->append("Slice 2", 20);
-//    series->append("Slice 3", 30);
-
-//    QChartView *chartView = new QChartView();
-//    chartView->setRenderHint(QPainter::Antialiasing);
-//    chartView->setChart(series);
-
-//    chartView->show();
-
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     int x = (screenGeometry.width() - 480) / 2;
@@ -28,13 +17,15 @@ CreditWindow::CreditWindow(QWidget *parent) :
     move(x, y);
 }
 
-CreditWindow::~CreditWindow()
-{
+CreditWindow::~CreditWindow() {
     delete ui;
 }
 
-void CreditWindow::on_pushButton_clicked()
-{
-    this->setFixedSize(480, 480);
+void CreditWindow::on_calculator_clicked() {
+    this->close();
+    emit firstWindow();
 }
 
+void CreditWindow::on_showResult_clicked() {
+    this->setFixedSize(480, 480);
+}

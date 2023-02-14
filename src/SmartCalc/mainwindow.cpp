@@ -1,12 +1,14 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "creditwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    secondWindow = new CreditWindow();
+    connect(secondWindow, &CreditWindow::firstWindow, this, &MainWindow::show);
 
     this->setFixedSize(480, 380);
 
@@ -302,9 +304,7 @@ void MainWindow::print_graph(char *chars_array) {
 }
 
 void MainWindow::on_credCalc_clicked() {
-    hide();
-    CreditWindow window;
-    window.setModal(true);
-    window.exec();
+    secondWindow->show();
+    this->close();
 }
 

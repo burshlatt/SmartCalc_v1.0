@@ -39,12 +39,12 @@ struct qt_meta_stringdata_MainWindow_t {
     char stringdata8[18];
     char stringdata9[19];
     char stringdata10[19];
-    char stringdata11[21];
-    char stringdata12[22];
-    char stringdata13[12];
-    char stringdata14[6];
-    char stringdata15[12];
-    char stringdata16[20];
+    char stringdata11[20];
+    char stringdata12[21];
+    char stringdata13[22];
+    char stringdata14[12];
+    char stringdata15[6];
+    char stringdata16[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
@@ -61,12 +61,12 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
         QT_MOC_LITERAL(109, 17),  // "on_delAll_clicked"
         QT_MOC_LITERAL(127, 18),  // "on_subFunc_clicked"
         QT_MOC_LITERAL(146, 18),  // "on_delElem_clicked"
-        QT_MOC_LITERAL(165, 20),  // "on_showGraph_clicked"
-        QT_MOC_LITERAL(186, 21),  // "on_resultFunc_clicked"
-        QT_MOC_LITERAL(208, 11),  // "print_graph"
-        QT_MOC_LITERAL(220, 5),  // "char*"
-        QT_MOC_LITERAL(226, 11),  // "chars_array"
-        QT_MOC_LITERAL(238, 19)   // "on_credCalc_clicked"
+        QT_MOC_LITERAL(165, 19),  // "on_credCalc_clicked"
+        QT_MOC_LITERAL(185, 20),  // "on_showGraph_clicked"
+        QT_MOC_LITERAL(206, 21),  // "on_resultFunc_clicked"
+        QT_MOC_LITERAL(228, 11),  // "print_graph"
+        QT_MOC_LITERAL(240, 5),  // "char*"
+        QT_MOC_LITERAL(246, 11)   // "chars_array"
     },
     "MainWindow",
     "func_clicked",
@@ -79,12 +79,12 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
     "on_delAll_clicked",
     "on_subFunc_clicked",
     "on_delElem_clicked",
+    "on_credCalc_clicked",
     "on_showGraph_clicked",
     "on_resultFunc_clicked",
     "print_graph",
     "char*",
-    "chars_array",
-    "on_credCalc_clicked"
+    "chars_array"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -114,8 +114,8 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
       10,    0,  100,    2, 0x08,    9 /* Private */,
       11,    0,  101,    2, 0x08,   10 /* Private */,
       12,    0,  102,    2, 0x08,   11 /* Private */,
-      13,    1,  103,    2, 0x08,   12 /* Private */,
-      16,    0,  106,    2, 0x08,   14 /* Private */,
+      13,    0,  103,    2, 0x08,   12 /* Private */,
+      14,    1,  104,    2, 0x08,   13 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -129,8 +129,8 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 14,   15,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 15,   16,
 
        0        // eod
 };
@@ -162,15 +162,15 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_delElem_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_credCalc_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_showGraph_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_resultFunc_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'print_graph'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<char *, std::false_type>,
-        // method 'on_credCalc_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<char *, std::false_type>
     >,
     nullptr
 } };
@@ -190,10 +190,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_delAll_clicked(); break;
         case 7: _t->on_subFunc_clicked(); break;
         case 8: _t->on_delElem_clicked(); break;
-        case 9: _t->on_showGraph_clicked(); break;
-        case 10: _t->on_resultFunc_clicked(); break;
-        case 11: _t->print_graph((*reinterpret_cast< std::add_pointer_t<char*>>(_a[1]))); break;
-        case 12: _t->on_credCalc_clicked(); break;
+        case 9: _t->on_credCalc_clicked(); break;
+        case 10: _t->on_showGraph_clicked(); break;
+        case 11: _t->on_resultFunc_clicked(); break;
+        case 12: _t->print_graph((*reinterpret_cast< std::add_pointer_t<char*>>(_a[1]))); break;
         default: ;
         }
     }
