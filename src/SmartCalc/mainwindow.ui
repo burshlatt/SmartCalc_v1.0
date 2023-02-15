@@ -38,8 +38,8 @@
    <string>SmartCalc v.1.0 (by Stephank)</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton {
-	background-color: solid gray;
+   <string notr="true">QMainWindow {
+	background-color: rgb(255, 219, 139);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -1257,6 +1257,7 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QLabel{
 	qproperty-alignment: 'AlignVCenter | AlignRight';
+	color: black; 
 	border-bottom: 1px solid white;
 }
 
@@ -1283,6 +1284,7 @@ background-color : gray;</string>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	qproperty-alignment: 'AlignVCenter | AlignRight';
+	color: black; 
 	border-bottom: 1px solid white;
 }
 
@@ -1309,6 +1311,7 @@ background-color : gray;</string>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	qproperty-alignment: 'AlignVCenter | AlignRight';
+	color: black; 
 	border-bottom: 1px solid white;
 }
 
@@ -1335,6 +1338,7 @@ background-color : gray;</string>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	qproperty-alignment: 'AlignVCenter | AlignRight';
+	color: black; 
 	border-bottom: 1px solid white;
 }
 
@@ -1376,6 +1380,7 @@ background-color : gray;</string>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	qproperty-alignment: 'AlignVCenter | AlignRight';
+	color: black; 
 	border-bottom: 1px solid white;
 }
 

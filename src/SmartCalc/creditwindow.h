@@ -4,9 +4,12 @@
 #include <QDialog>
 #include <QScreen>
 #include <QApplication>
-//#include <QtCharts/QChartView>
-//#include <QtCharts/QPieSeries>
-//#include <QtCharts/QPieSlice>
+#include <QPixmap>
+#include <QPalette>
+
+extern "C" {
+#include "../CFiles/calculator.h"
+}
 
 namespace Ui {
 class CreditWindow;

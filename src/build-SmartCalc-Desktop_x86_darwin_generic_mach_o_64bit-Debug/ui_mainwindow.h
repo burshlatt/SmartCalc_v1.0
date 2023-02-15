@@ -84,8 +84,8 @@ public:
         MainWindow->setMaximumSize(QSize(960, 380));
         MainWindow->setSizeIncrement(QSize(0, 0));
         MainWindow->setBaseSize(QSize(100, 100));
-        MainWindow->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: solid gray;\n"
+        MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow {\n"
+"	background-color: rgb(255, 219, 139);\n"
 "}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
@@ -629,6 +629,7 @@ public:
         label->setFont(font2);
         label->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	color: black; \n"
 "	border-bottom: 1px solid white;\n"
 "}\n"
 "\n"
@@ -639,6 +640,7 @@ public:
         label_2->setFont(font2);
         label_2->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	color: black; \n"
 "	border-bottom: 1px solid white;\n"
 "}\n"
 "\n"
@@ -649,6 +651,7 @@ public:
         label_3->setFont(font2);
         label_3->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	color: black; \n"
 "	border-bottom: 1px solid white;\n"
 "}\n"
 "\n"
@@ -659,6 +662,7 @@ public:
         label_4->setFont(font2);
         label_4->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	color: black; \n"
 "	border-bottom: 1px solid white;\n"
 "}\n"
 "\n"
@@ -673,6 +677,7 @@ public:
         label_5->setFont(font2);
         label_5->setStyleSheet(QString::fromUtf8("QLabel{\n"
 "	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	color: black; \n"
 "	border-bottom: 1px solid white;\n"
 "}\n"
 "\n"

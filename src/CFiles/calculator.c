@@ -113,6 +113,9 @@ double arithmetic_calculations(char *output, int is_graph, double xValue, int *e
                     break;
                 case '/':
                     *error_flag = get_nums_func(num_buffer, &top, &x, &y);
+                    if (x == 0.0) {
+                        *error_flag = 2;
+                    }
                     set_num(num_buffer, &top, y / x);
                     break;
                 case '^':

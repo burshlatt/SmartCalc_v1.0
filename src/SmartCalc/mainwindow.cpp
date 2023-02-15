@@ -257,9 +257,12 @@ void MainWindow::on_resultFunc_clicked() {
             ui->inputOutput->clear();
             ui->inputOutput->setText(ui->inputOutput->text() + result_string);
         }
+    } else if (error_status == 2 && can_do) {
+        ui->inputOutput->clear();
+        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Division by zero!");
     } else {
-         ui->inputOutput->clear();
-         ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Incorrect data!");
+        ui->inputOutput->clear();
+        ui->inputOutput->setText(ui->inputOutput->text() + "ERROR: Incorrect data!");
     }
 }
 
