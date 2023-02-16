@@ -4,8 +4,6 @@
 #include <QDialog>
 #include <QScreen>
 #include <QApplication>
-#include <QPixmap>
-#include <QPalette>
 
 extern "C" {
 #include "../CFiles/calculator.h"

@@ -15,6 +15,7 @@
 #include <math.h>
 
 #include "creditwindow.h"
+#include "depositwindow.h"
 
 extern "C" {
 #include "../CFiles/calculator.h"
@@ -43,6 +44,7 @@ private slots:
     void on_subFunc_clicked();
     void on_delElem_clicked();
     void on_credCalc_clicked();
+    void on_deposCalc_clicked();
     void on_showGraph_clicked();
     void on_resultFunc_clicked();
     void print_graph(char *chars_array);
@@ -50,6 +52,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     CreditWindow *secondWindow;
+    DepositWindow *thirdWindow;
 
     int is_x = 0;
     int is_dot = 0;

@@ -9,11 +9,6 @@ CreditWindow::CreditWindow(QWidget *parent) :
 
     this->setFixedSize(480, 325);
 
-//    QPixmap bkgnd("../../../../pictures/2.png");
-//    QPalette palette;
-//    palette.setBrush(QPalette::Window, bkgnd);
-//    this->setPalette(palette);
-
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     int x = (screenGeometry.width() - 480) / 2;

@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     secondWindow = new CreditWindow();
     connect(secondWindow, &CreditWindow::firstWindow, this, &MainWindow::show);
 
+    thirdWindow = new DepositWindow();
+    connect(thirdWindow, &DepositWindow::firstWindow, this, &MainWindow::show);
+
     this->setFixedSize(480, 380);
 
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -308,6 +311,11 @@ void MainWindow::print_graph(char *chars_array) {
 
 void MainWindow::on_credCalc_clicked() {
     secondWindow->show();
+    this->close();
+}
+
+void MainWindow::on_deposCalc_clicked() {
+    thirdWindow->show();
     this->close();
 }
 

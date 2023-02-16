@@ -605,6 +605,7 @@ public:
         functionGraph = new QCustomPlot(centralwidget);
         functionGraph->setObjectName("functionGraph");
         functionGraph->setGeometry(QRect(480, 0, 480, 290));
+        functionGraph->setStyleSheet(QString::fromUtf8(""));
         xMinCord = new QLineEdit(centralwidget);
         xMinCord->setObjectName("xMinCord");
         xMinCord->setGeometry(QRect(590, 325, 120, 25));
