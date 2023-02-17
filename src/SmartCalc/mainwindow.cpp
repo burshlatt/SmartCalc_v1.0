@@ -207,6 +207,10 @@ void MainWindow::decompose_func() {
 }
 
 void MainWindow::on_delElem_clicked() {
+    decompose_func();
+    if (last_symbol == '.') {
+        is_dot = 0;
+    }
     if (string_size == 0) {
         ui->inputOutput->clear();
     } else {
@@ -214,10 +218,17 @@ void MainWindow::on_delElem_clicked() {
         text.chop(1);
         ui->inputOutput->setText(text);
     }
+    decompose_func();
+    for (int i = input_string.size() - 1; input_string[i] >= '0' && input_string[i] <= '9'; i--) {
+        if (input_string[i - 1] == '.') {
+            is_dot = 1;
+        }
+    }
 }
 
 void MainWindow::on_delAll_clicked() {
     is_x = 0;
+    is_dot = 0;
     ui->inputOutput->clear();
 }
 
@@ -256,9 +267,12 @@ void MainWindow::on_resultFunc_clicked() {
             print_graph(chars_array);
             is_x = 0;
         } else {
-            QString result_string = QString::number(result);
             ui->inputOutput->clear();
-            ui->inputOutput->setText(ui->inputOutput->text() + result_string);
+            if (result - (int)result < 0.00000001) {
+                ui->inputOutput->setText(ui->inputOutput->text() + QString::number(result, 'f', 0));
+            } else {
+                ui->inputOutput->setText(ui->inputOutput->text() + QString::number(result, 'f', 7));
+            }
         }
     } else if (error_status == 2 && can_do) {
         ui->inputOutput->clear();
@@ -318,4 +332,3 @@ void MainWindow::on_deposCalc_clicked() {
     thirdWindow->show();
     this->close();
 }
-

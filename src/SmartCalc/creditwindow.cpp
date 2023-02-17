@@ -47,7 +47,7 @@ void CreditWindow::on_showResult_clicked() {
             all_sum = annuity_credit(sumCred, termCred, 2, percentCred, &month_payment, &over_pay);
         }
         ui->monthRes->clear();
-        ui->monthRes->setText(ui->monthRes->text() + QString::number(month_payment));
+        ui->monthRes->setText(ui->monthRes->text() + QString::number(month_payment, 'f', 2));
     }
     if (ui->differ->isChecked()) {
         if (ui->month->isChecked()) {
@@ -57,8 +57,8 @@ void CreditWindow::on_showResult_clicked() {
             all_sum = differentiated_credit(sumCred, termCred, 2, percentCred, &first_payment, &last_payment, &over_pay);
         }
         ui->monthRes->clear();
-        ui->monthRes->setText(ui->monthRes->text() + QString::number(first_payment) + " ... " + QString::number(last_payment));
+        ui->monthRes->setText(ui->monthRes->text() + QString::number(first_payment, 'f', 2) + " ... " + QString::number(last_payment, 'f', 2));
     }
-    ui->overPay->setText(ui->overPay->text() + QString::number(over_pay));
-    ui->resultSum->setText(ui->resultSum->text() + QString::number(all_sum));
+    ui->overPay->setText(ui->overPay->text() + QString::number(over_pay, 'f', 2));
+    ui->resultSum->setText(ui->resultSum->text() + QString::number(all_sum, 'f', 2));
 }

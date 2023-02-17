@@ -74,17 +74,14 @@ public:
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *wasteLayout;
     QComboBox *periodCombo;
-    QLineEdit *effBid;
-    QLabel *label_21;
-    QLabel *label_22;
 
     void setupUi(QDialog *DepositWindow)
     {
         if (DepositWindow->objectName().isEmpty())
             DepositWindow->setObjectName("DepositWindow");
-        DepositWindow->resize(1000, 570);
-        DepositWindow->setMinimumSize(QSize(1000, 570));
-        DepositWindow->setMaximumSize(QSize(1000, 570));
+        DepositWindow->resize(1000, 520);
+        DepositWindow->setMinimumSize(QSize(1000, 520));
+        DepositWindow->setMaximumSize(QSize(1000, 520));
         DepositWindow->setStyleSheet(QString::fromUtf8("QDialog {\n"
 "	background-color: rgb(255, 219, 139);\n"
 "}"));
@@ -199,7 +196,7 @@ public:
 "}"));
         label_5 = new QLabel(DepositWindow);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(500, 430, 211, 35));
+        label_5->setGeometry(QRect(520, 430, 191, 35));
         label_5->setFont(font2);
         label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: black; \n"
@@ -342,7 +339,7 @@ public:
 "}"));
         label_18 = new QLabel(DepositWindow);
         label_18->setObjectName("label_18");
-        label_18->setGeometry(QRect(500, 480, 211, 35));
+        label_18->setGeometry(QRect(520, 480, 191, 35));
         label_18->setFont(font2);
         label_18->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: black; \n"
@@ -432,25 +429,6 @@ public:
 "	background-color: rgb(59, 60, 54);\n"
 "	color: white;\n"
 "}"));
-        effBid = new QLineEdit(DepositWindow);
-        effBid->setObjectName("effBid");
-        effBid->setGeometry(QRect(220, 530, 200, 35));
-        effBid->setFont(font);
-        effBid->setReadOnly(true);
-        label_21 = new QLabel(DepositWindow);
-        label_21->setObjectName("label_21");
-        label_21->setGeometry(QRect(10, 530, 211, 35));
-        label_21->setFont(font2);
-        label_21->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	color: black; \n"
-"}"));
-        label_22 = new QLabel(DepositWindow);
-        label_22->setObjectName("label_22");
-        label_22->setGeometry(QRect(425, 530, 40, 35));
-        label_22->setFont(font1);
-        label_22->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	color: black; \n"
-"}"));
 
         retranslateUi(DepositWindow);
 
@@ -493,9 +471,6 @@ public:
         deleteWaste->setText(QCoreApplication::translate("DepositWindow", "-", nullptr));
         addWaste->setText(QCoreApplication::translate("DepositWindow", "+", nullptr));
         label_20->setText(QCoreApplication::translate("DepositWindow", "\320\247\320\260\321\201\321\202\320\270\321\207\320\275\321\213\320\265 \321\201\320\275\321\217\321\202\320\270\321\217:", nullptr));
-        effBid->setText(QString());
-        label_21->setText(QCoreApplication::translate("DepositWindow", "\320\255\321\204\321\204\320\265\320\272\321\202\320\270\320\262\320\275\320\260\321\217 \321\201\321\202\320\260\320\262\320\272\320\260:", nullptr));
-        label_22->setText(QCoreApplication::translate("DepositWindow", "%", nullptr));
     } // retranslateUi
 
 };

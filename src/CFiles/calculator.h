@@ -54,4 +54,10 @@ int do_pop(struct Stack *stack, char *output, int *index, int variant);
 double annuity_credit(double sum, int term, int type_of_term, double percent, double *month_pay, double *over_pay);
 double differentiated_credit(double sum, int term, int type_of_term, double percent, double *first_payment, double *last_payment, double *over_pay);
 
+double convert_to_days(int time_contrib, int type_of_time);
+int check_period(int capitalization, int period, double *time_copy);
+void is_capitalization(int n, double sum, double percent, double tax_rate, double time_copy, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res);
+void is_not_capitalization(int n, double sum, double percent, double tax_rate, double time_copy, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res);
+void deposit_calculator(double sum, int time_contrib, int type_of_time, double percent, double tax_rate, int period, int capitalization, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res);
+
 #endif // SRC_SMARTCALC_CALCULATOR_H_

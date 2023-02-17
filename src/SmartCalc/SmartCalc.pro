@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     ../CFiles/calculator.c \
     ../CFiles/credit_calculator.c \
+    ../CFiles/deposit_calculator.c \
     ../CFiles/help_functions.c \
     creditwindow.cpp \
     depositwindow.cpp \

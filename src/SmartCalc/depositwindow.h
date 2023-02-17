@@ -12,6 +12,10 @@
 #include <QDateEdit>
 #include <QLabel>
 
+extern "C" {
+#include "../CFiles/calculator.h"
+}
+
 namespace Ui {
 class DepositWindow;
 }

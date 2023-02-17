@@ -54,6 +54,7 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../CFiles/calculator.c \
 		../CFiles/credit_calculator.c \
+		../CFiles/deposit_calculator.c \
 		../CFiles/help_functions.c \
 		../SmartCalc/creditwindow.cpp \
 		../SmartCalc/depositwindow.cpp \
@@ -65,6 +66,7 @@ SOURCES       = ../CFiles/calculator.c \
 		moc_qcustomplot.cpp
 OBJECTS       = calculator.o \
 		credit_calculator.o \
+		deposit_calculator.o \
 		help_functions.o \
 		creditwindow.o \
 		depositwindow.o \
@@ -235,6 +237,7 @@ DIST          = ../../../../Qt/6.4.2/macos/mkspecs/features/spec_pre.prf \
 		../SmartCalc/mainwindow.h \
 		../SmartCalc/qcustomplot.h ../CFiles/calculator.c \
 		../CFiles/credit_calculator.c \
+		../CFiles/deposit_calculator.c \
 		../CFiles/help_functions.c \
 		../SmartCalc/creditwindow.cpp \
 		../SmartCalc/depositwindow.cpp \
@@ -614,7 +617,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../CFiles/calculator.h ../SmartCalc/creditwindow.h ../SmartCalc/depositwindow.h ../SmartCalc/mainwindow.h ../SmartCalc/qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../CFiles/calculator.c ../CFiles/credit_calculator.c ../CFiles/help_functions.c ../SmartCalc/creditwindow.cpp ../SmartCalc/depositwindow.cpp ../SmartCalc/main.cpp ../SmartCalc/mainwindow.cpp ../SmartCalc/qcustomplot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../CFiles/calculator.c ../CFiles/credit_calculator.c ../CFiles/deposit_calculator.c ../CFiles/help_functions.c ../SmartCalc/creditwindow.cpp ../SmartCalc/depositwindow.cpp ../SmartCalc/main.cpp ../SmartCalc/mainwindow.cpp ../SmartCalc/qcustomplot.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../SmartCalc/creditwindow.ui ../SmartCalc/depositwindow.ui ../SmartCalc/mainwindow.ui $(DISTDIR)/
 
 
@@ -654,10 +657,6 @@ moc_creditwindow.cpp: ../SmartCalc/creditwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPalette \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpalette.h \
 		../CFiles/calculator.h \
 		../../../../Qt/6.4.2/macos/libexec/moc
 	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/creditwindow.h -o moc_creditwindow.cpp
@@ -665,6 +664,21 @@ moc_creditwindow.cpp: ../SmartCalc/creditwindow.h \
 moc_depositwindow.cpp: ../SmartCalc/depositwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../CFiles/calculator.h \
 		../../../../Qt/6.4.2/macos/libexec/moc
 	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/depositwindow.h -o moc_depositwindow.cpp
 
@@ -686,11 +700,18 @@ moc_mainwindow.cpp: ../SmartCalc/mainwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../SmartCalc/creditwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPalette \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpalette.h \
 		../CFiles/calculator.h \
+		../SmartCalc/depositwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		../../../../Qt/6.4.2/macos/libexec/moc
 	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/mainwindow.h -o moc_mainwindow.cpp
 
@@ -742,6 +763,9 @@ calculator.o: ../CFiles/calculator.c ../CFiles/calculator.h
 credit_calculator.o: ../CFiles/credit_calculator.c ../CFiles/calculator.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o credit_calculator.o ../CFiles/credit_calculator.c
 
+deposit_calculator.o: ../CFiles/deposit_calculator.c ../CFiles/calculator.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o deposit_calculator.o ../CFiles/deposit_calculator.c
+
 help_functions.o: ../CFiles/help_functions.c ../CFiles/calculator.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o help_functions.o ../CFiles/help_functions.c
 
@@ -752,10 +776,6 @@ creditwindow.o: ../SmartCalc/creditwindow.cpp ../SmartCalc/creditwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPalette \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpalette.h \
 		../CFiles/calculator.h \
 		ui_creditwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o creditwindow.o ../SmartCalc/creditwindow.cpp
@@ -763,6 +783,21 @@ creditwindow.o: ../SmartCalc/creditwindow.cpp ../SmartCalc/creditwindow.h \
 depositwindow.o: ../SmartCalc/depositwindow.cpp ../SmartCalc/depositwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../CFiles/calculator.h \
 		ui_depositwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o depositwindow.o ../SmartCalc/depositwindow.cpp
 
@@ -784,11 +819,18 @@ main.o: ../SmartCalc/main.cpp ../SmartCalc/mainwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../SmartCalc/creditwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPalette \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpalette.h \
-		../CFiles/calculator.h
+		../CFiles/calculator.h \
+		../SmartCalc/depositwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SmartCalc/main.cpp
 
 mainwindow.o: ../SmartCalc/mainwindow.cpp ../SmartCalc/mainwindow.h \
@@ -809,11 +851,18 @@ mainwindow.o: ../SmartCalc/mainwindow.cpp ../SmartCalc/mainwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../SmartCalc/creditwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QPalette \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qpalette.h \
 		../CFiles/calculator.h \
+		../SmartCalc/depositwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		ui_mainwindow.h \
 		../SmartCalc/qcustomplot.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qnumeric.h \
