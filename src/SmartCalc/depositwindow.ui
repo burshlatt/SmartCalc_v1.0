@@ -126,7 +126,7 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>955</x>
+     <x>960</x>
      <y>430</y>
      <width>40</width>
      <height>35</height>
@@ -248,7 +248,7 @@ QPushButton:pressed {
   <widget class="QLineEdit" name="resultProfit">
    <property name="geometry">
     <rect>
-     <x>710</x>
+     <x>715</x>
      <y>430</y>
      <width>240</width>
      <height>35</height>
@@ -366,7 +366,8 @@ QPushButton:pressed {
       </property>
       <property name="styleSheet">
        <string notr="true">QRadioButton {
-	color: black;
+	background-color: rgb(59, 60, 54);
+	color: white;
 }</string>
       </property>
       <property name="text">
@@ -383,7 +384,8 @@ QPushButton:pressed {
       </property>
       <property name="styleSheet">
        <string notr="true">QRadioButton {
-	color: black;
+	background-color: rgb(59, 60, 54);
+	color: white;
 }</string>
       </property>
       <property name="text">
@@ -400,7 +402,8 @@ QPushButton:pressed {
       </property>
       <property name="styleSheet">
        <string notr="true">QRadioButton {
-	color: black;
+	background-color: rgb(59, 60, 54);
+	color: white;
 }</string>
       </property>
       <property name="text">
@@ -562,7 +565,8 @@ QPushButton:pressed {
       </property>
       <property name="styleSheet">
        <string notr="true">QRadioButton {
-	color: black;
+	background-color: rgb(59, 60, 54);
+	color: white;
 }</string>
       </property>
       <property name="text">
@@ -579,7 +583,8 @@ QPushButton:pressed {
       </property>
       <property name="styleSheet">
        <string notr="true">QRadioButton {
-	color: black;
+	background-color: rgb(59, 60, 54);
+	color: white;
 }</string>
       </property>
       <property name="text">
@@ -679,7 +684,7 @@ QPushButton:pressed {
   <widget class="QLineEdit" name="resultSum">
    <property name="geometry">
     <rect>
-     <x>710</x>
+     <x>715</x>
      <y>480</y>
      <width>240</width>
      <height>35</height>
@@ -700,7 +705,7 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_17">
    <property name="geometry">
     <rect>
-     <x>955</x>
+     <x>960</x>
      <y>480</y>
      <width>40</width>
      <height>35</height>
@@ -717,7 +722,7 @@ QPushButton:pressed {
 }</string>
    </property>
    <property name="text">
-    <string>%</string>
+    <string>Руб.</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_18">
@@ -777,7 +782,25 @@ QPushButton:pressed {
      <height>151</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="addLayout"/>
+   <layout class="QVBoxLayout" name="addLayout">
+    <item>
+     <widget class="QScrollArea" name="scrollPayment">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>447</width>
+         <height>147</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QLabel" name="label_19">
    <property name="geometry">
@@ -909,7 +932,25 @@ QPushButton:pressed {
      <height>151</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="wasteLayout"/>
+   <layout class="QVBoxLayout" name="wasteLayout">
+    <item>
+     <widget class="QScrollArea" name="scrollWaste">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>447</width>
+         <height>147</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QComboBox" name="periodCombo">
    <property name="geometry">

@@ -6,7 +6,7 @@
 #include <QApplication>
 
 extern "C" {
-#include "../CFiles/calculator.h"
+#include "../CFiles/s21_calculator.h"
 }
 
 namespace Ui {

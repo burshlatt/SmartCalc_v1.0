@@ -18,7 +18,7 @@
 #include "depositwindow.h"
 
 extern "C" {
-#include "../CFiles/calculator.h"
+#include "../CFiles/s21_calculator.h"
 }
 
 QT_BEGIN_NAMESPACE

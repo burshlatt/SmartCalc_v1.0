@@ -5,7 +5,7 @@ TEST_LIBS = -lcheck -lm -lpthread
 all: gcov_report
 
 calculator.a: clean
-	$(CC) $(CFLAGS) -c *.c help_functions.c
+	$(CC) $(CFLAGS) -c s21_*.c
 	ar rcs calculator.a *.o
 	ranlib calculator.a
 
@@ -15,7 +15,7 @@ test: calculator.a
 	./calculator
 
 gcov_report: calculator.a
-	$(CC) $(FLAGS) --coverage test.c *.c calculator.a $(TEST_LIBS) -o gcov_test
+	$(CC) $(FLAGS) --coverage test.c s21_*.c calculator.a $(TEST_LIBS) -o gcov_test
 	chmod +x *
 	./gcov_test
 	gcov s21_*.gcda

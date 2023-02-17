@@ -18,6 +18,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -66,6 +67,8 @@ public:
     QPushButton *addPayment;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *addLayout;
+    QScrollArea *scrollPayment;
+    QWidget *scrollAreaWidgetContents;
     QLabel *label_19;
     QPushButton *deletePayment;
     QPushButton *deleteWaste;
@@ -73,6 +76,8 @@ public:
     QLabel *label_20;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *wasteLayout;
+    QScrollArea *scrollWaste;
+    QWidget *scrollAreaWidgetContents_2;
     QComboBox *periodCombo;
 
     void setupUi(QDialog *DepositWindow)
@@ -133,7 +138,7 @@ public:
         tax->setReadOnly(true);
         label_12 = new QLabel(DepositWindow);
         label_12->setObjectName("label_12");
-        label_12->setGeometry(QRect(955, 430, 40, 35));
+        label_12->setGeometry(QRect(960, 430, 40, 35));
         QFont font1;
         font1.setPointSize(16);
         label_12->setFont(font1);
@@ -173,7 +178,7 @@ public:
 "}"));
         resultProfit = new QLineEdit(DepositWindow);
         resultProfit->setObjectName("resultProfit");
-        resultProfit->setGeometry(QRect(710, 430, 240, 35));
+        resultProfit->setGeometry(QRect(715, 430, 240, 35));
         resultProfit->setFont(font);
         resultProfit->setReadOnly(true);
         label_10 = new QLabel(DepositWindow);
@@ -213,7 +218,8 @@ public:
         font3.setPointSize(14);
         day->setFont(font3);
         day->setStyleSheet(QString::fromUtf8("QRadioButton {\n"
-"	color: black;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
 "}"));
 
         horizontalLayout->addWidget(day);
@@ -222,7 +228,8 @@ public:
         month->setObjectName("month");
         month->setFont(font3);
         month->setStyleSheet(QString::fromUtf8("QRadioButton {\n"
-"	color: black;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
 "}"));
 
         horizontalLayout->addWidget(month);
@@ -231,7 +238,8 @@ public:
         year->setObjectName("year");
         year->setFont(font3);
         year->setStyleSheet(QString::fromUtf8("QRadioButton {\n"
-"	color: black;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
 "}"));
 
         horizontalLayout->addWidget(year);
@@ -286,7 +294,8 @@ public:
         yes->setObjectName("yes");
         yes->setFont(font3);
         yes->setStyleSheet(QString::fromUtf8("QRadioButton {\n"
-"	color: black;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
 "}"));
 
         horizontalLayout_2->addWidget(yes);
@@ -295,7 +304,8 @@ public:
         no->setObjectName("no");
         no->setFont(font3);
         no->setStyleSheet(QString::fromUtf8("QRadioButton {\n"
-"	color: black;\n"
+"	background-color: rgb(59, 60, 54);\n"
+"	color: white;\n"
 "}"));
 
         horizontalLayout_2->addWidget(no);
@@ -327,12 +337,12 @@ public:
 "}"));
         resultSum = new QLineEdit(DepositWindow);
         resultSum->setObjectName("resultSum");
-        resultSum->setGeometry(QRect(710, 480, 240, 35));
+        resultSum->setGeometry(QRect(715, 480, 240, 35));
         resultSum->setFont(font);
         resultSum->setReadOnly(true);
         label_17 = new QLabel(DepositWindow);
         label_17->setObjectName("label_17");
-        label_17->setGeometry(QRect(955, 480, 40, 35));
+        label_17->setGeometry(QRect(960, 480, 40, 35));
         label_17->setFont(font1);
         label_17->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: black; \n"
@@ -363,6 +373,16 @@ public:
         addLayout = new QVBoxLayout(verticalLayoutWidget);
         addLayout->setObjectName("addLayout");
         addLayout->setContentsMargins(0, 0, 0, 0);
+        scrollPayment = new QScrollArea(verticalLayoutWidget);
+        scrollPayment->setObjectName("scrollPayment");
+        scrollPayment->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 447, 147));
+        scrollPayment->setWidget(scrollAreaWidgetContents);
+
+        addLayout->addWidget(scrollPayment);
+
         label_19 = new QLabel(DepositWindow);
         label_19->setObjectName("label_19");
         label_19->setGeometry(QRect(520, 30, 90, 30));
@@ -422,6 +442,16 @@ public:
         wasteLayout = new QVBoxLayout(verticalLayoutWidget_2);
         wasteLayout->setObjectName("wasteLayout");
         wasteLayout->setContentsMargins(0, 0, 0, 0);
+        scrollWaste = new QScrollArea(verticalLayoutWidget_2);
+        scrollWaste->setObjectName("scrollWaste");
+        scrollWaste->setWidgetResizable(true);
+        scrollAreaWidgetContents_2 = new QWidget();
+        scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 447, 147));
+        scrollWaste->setWidget(scrollAreaWidgetContents_2);
+
+        wasteLayout->addWidget(scrollWaste);
+
         periodCombo = new QComboBox(DepositWindow);
         periodCombo->setObjectName("periodCombo");
         periodCombo->setGeometry(QRect(175, 235, 135, 25));
@@ -463,7 +493,7 @@ public:
         label_14->setText(QCoreApplication::translate("DepositWindow", "\320\235\320\260\320\273\320\276\320\263\320\276\320\262\320\260\321\217 \321\201\321\202\320\260\320\262\320\272\320\260:", nullptr));
         label_15->setText(QCoreApplication::translate("DepositWindow", "\320\237\320\265\321\200\320\270\320\276\320\264\320\270\321\207\320\275\320\276\321\201\321\202\321\214 \320\262\321\213\320\277\320\273\320\260\321\202:", nullptr));
         resultSum->setText(QString());
-        label_17->setText(QCoreApplication::translate("DepositWindow", "%", nullptr));
+        label_17->setText(QCoreApplication::translate("DepositWindow", "\320\240\321\203\320\261.", nullptr));
         label_18->setText(QCoreApplication::translate("DepositWindow", "\320\241\321\203\320\274\320\274\320\260 \320\272 \320\272\320\276\320\275\321\206\321\203 \321\201\321\200\320\276\320\272\320\260:", nullptr));
         addPayment->setText(QCoreApplication::translate("DepositWindow", "+", nullptr));
         label_19->setText(QCoreApplication::translate("DepositWindow", "\320\237\320\276\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\217:", nullptr));

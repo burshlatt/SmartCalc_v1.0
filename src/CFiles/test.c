@@ -1,5 +1,5 @@
 #include <check.h>
-#include "calculator.h"
+#include "s21_calculator.h"
 
 START_TEST(number_test) {
   double result = 0;
