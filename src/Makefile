@@ -1,37 +1,67 @@
+# Путь к директории с исходными файлами на языке C
+C_SRC_DIR = CFiles
+
+# Путь к директории с исходными файлами на языке C++/Qt
+QT_SRC_DIR = SmartCalc
+
+# Путь к директории, в которую будут сохранены объектные файлы и исполняемый файл
+OBJ_DIR = test
+
+# Имя исполняемого файла
+TARGET = $(OBJ_DIR)/SmartCalc
+
+# Список исходных файлов на языке C
+C_SOURCES = $(wildcard $(C_SRC_DIR)/*.c)
+
+# Список исходных файлов на языке C++/Qt
+QT_SOURCES = $(wildcard $(QT_SRC_DIR)/*.cpp $(QT_SRC_DIR)/*.ui $(QT_SRC_DIR)/*.pro)
+
+# Список объектных файлов
+C_OBJECTS = $(patsubst $(C_SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(filter %.c,$(C_SOURCES)))
+QT_OBJECTS = $(patsubst $(QT_SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(filter %.cpp,$(QT_SOURCES))) \
+            $(patsubst $(QT_SRC_DIR)/%.ui,$(OBJ_DIR)/%.o,$(filter %.ui,$(QT_SOURCES)))
+OBJECTS = $(C_OBJECTS) $(QT_OBJECTS)
+
+# Компиляторы и опции компиляции
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c11 -D_GNU_SOURCE
-TEST_LIBS = -lcheck -lm -lpthread
+CXX = g++
+CFLAGS = -Wall -g
+CXXFLAGS = $(CFLAGS) -std=c++11 `pkg-config --cflags Qt5Widgets`
+LDFLAGS = `pkg-config --libs Qt5Widgets`
 
-all: gcov_report
+# Цель по умолчанию
+all: $(TARGET)
 
-calculator.a: clean
-	$(CC) $(CFLAGS) -c s21_*.c
-	ar rcs calculator.a *.o
-	ranlib calculator.a
+# Компиляция объектных файлов на языке C
+$(OBJ_DIR)/%.o: $(C_SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-test: calculator.a
-	$(CC) $(CFLAGS) -c test.c -o test.o
-	$(CC) test.o calculator.a $(TEST_LIBS) -o calculator
-	./calculator
+# Компиляция объектных файлов на языке C++/Qt
+$(OBJ_DIR)/%.o: $(QT_SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-gcov_report: calculator.a
-	$(CC) $(FLAGS) --coverage test.c s21_*.c calculator.a $(TEST_LIBS) -o gcov_test
-	chmod +x *
-	./gcov_test
-	gcov s21_*.gcda
-	gcovr -b
-	gcovr --html-details -o report.html
-	open report.html
+# Сборка исполняемого файла
+$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
+# Установка программы
+install:
+	install -m 755 $(TARGET) /usr/local/bin
+
+uninstall:
+	rm -f /usr/local/bin/$(notdir $(TARGET))
+	
 clean:
-	rm -rf build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/*
-	rm -rf calculator
-	rm -rf *.o
-	rm -rf *.a
-	rm -rf *.gcno
-	rm -rf *.gcda
-	rm -rf *.gcov
-	rm -rf *.html
-	rm -rf *.css
-	rm -rf main
-	rm -rf gcov_test
+	rm -f $(OBJECTS) $(TARGET)
+
+dvi:
+	latex refman.tex
+
+dist:
+	tar -czvf SmartCalc.tar.gz $(C_SOURCES) $(QT_SOURCES) Makefile refman.tex refman.pdf
+	
+tests:
+	./$(TARGET) --test
+	
+gcov_report:
+	gcov -o $(OBJ_DIR) $(C_SOURCES)
