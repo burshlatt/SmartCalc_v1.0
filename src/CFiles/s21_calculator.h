@@ -30,12 +30,15 @@ struct Stack {
 
 struct Stack *create_stack(int capacity);
 
+char *current_date();
 char pop(struct Stack *stack);
 char peek(struct Stack *stack);
+char *end_date(char *date, int time_contrib, int type_of_time);
 
 int size(struct Stack *stack);
 int is_empty(struct Stack *stack);
 int set_num(double *stack, int *top, double num);
+int date_difference(char *date_first, char *date_second);
 int convert_to_months(int time_contrib, int type_of_time);
 int check_period(int capitalization, int period, double *time_copy);
 int get_nums_func(double *num_buffer, int *top, double *x, double *y);
@@ -49,6 +52,7 @@ double arithmetic_calculations(char *output, int is_graph, double xValue, int *e
 double annuity_credit(double sum, int term, int type_of_term, double percent, double *month_pay, double *over_pay);
 double differentiated_credit(double sum, int term, int type_of_term, double percent, double *first_payment, double *last_payment, double *over_pay);
 
+void free_array(char *date);
 void delete_stack(struct Stack *stack);
 void set_space(char *output, int *index);
 void push(struct Stack *stack, char item);

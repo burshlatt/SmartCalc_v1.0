@@ -35,6 +35,14 @@ void DepositWindow::on_calculator_clicked() {
     emit firstWindow();
 }
 
+void DepositWindow::today_is() {
+    char *date_char = current_date();
+    std::string date_string = std::string(date_char);
+    free_array(date_char);
+    QString date_qstring = QString::fromStdString(date_string);
+    date_qdate = QDate::fromString(date_qstring, "dd/MM/yyyy");
+}
+
 void DepositWindow::on_addPayment_clicked() {
     QHBoxLayout* hboxLayout = new QHBoxLayout();
     QComboBox* addComboBox = new QComboBox(ui->scrollPayment->widget());
@@ -47,11 +55,15 @@ void DepositWindow::on_addPayment_clicked() {
     addComboBox->setFixedWidth(110);
     addComboBox->setFixedHeight(35);
     hboxLayout->addWidget(addComboBox);
-    QDateEdit* addData = new QDateEdit(ui->scrollPayment->widget());
-    addData->setCalendarPopup(true);
-    addData->setFixedWidth(105);
-    addData->setFixedHeight(35);
-    hboxLayout->addWidget(addData);
+
+    QDateEdit* addDate = new QDateEdit(ui->scrollPayment->widget());
+    addDate->setCalendarPopup(true);
+    addDate->setFixedWidth(105);
+    addDate->setFixedHeight(35);
+    hboxLayout->addWidget(addDate);
+    today_is();
+    addDate->setDate(date_qdate);
+
     QLineEdit* addLine = new QLineEdit(ui->scrollPayment->widget());
     addLine->setFixedWidth(200);
     addLine->setFixedHeight(35);
@@ -60,7 +72,7 @@ void DepositWindow::on_addPayment_clicked() {
     addVbox->addLayout(hboxLayout);
 
     comboBoxesAdd.append(addComboBox);
-    dateEditsAdd.append(addData);
+    dateEditsAdd.append(addDate);
     lineEditsAdd.append(addLine);
     count_of_elem_add++;
 }
@@ -94,11 +106,15 @@ void DepositWindow::on_addWaste_clicked() {
     delComboBox->setFixedWidth(110);
     delComboBox->setFixedHeight(35);
     hboxLayout->addWidget(delComboBox);
+
     QDateEdit* delData = new QDateEdit(ui->scrollWaste->widget());
     delData->setCalendarPopup(true);
     delData->setFixedWidth(105);
     delData->setFixedHeight(35);
     hboxLayout->addWidget(delData);
+    today_is();
+    delData->setDate(date_qdate);
+
     QLineEdit* delLine = new QLineEdit(ui->scrollWaste->widget());
     delLine->setFixedWidth(200);
     delLine->setFixedHeight(35);
@@ -130,13 +146,16 @@ void DepositWindow::on_deleteWaste_clicked() {
 }
 
 void DepositWindow::check_period(int converted_time, double *add_sum, double *waste_sum) {
+    today_is();
     if (comboBoxesAdd.size() > 0 && dateEditsAdd.size() > 0 && lineEditsAdd.size() > 0) {
         for (int i = 0; i < count_of_elem_add; i++) {
-//            QDate date_add = dateEditsAdd[i]->date();
+            QDate date_add = dateEditsAdd[i]->date();
             QString text_add = lineEditsAdd[i]->text();
             QString combobox_add = comboBoxesAdd[i]->currentText();
             if (combobox_add == "Разовое") {
-                *add_sum += text_add.toDouble();
+                if (date_add >= date_qdate) {
+                    *add_sum += text_add.toDouble();
+                }
             } else if (combobox_add == "Раз в месяц") {
                 *add_sum += add_start_sum(text_add.toDouble(), converted_time, 1);
             } else if (combobox_add == "Раз в 2 месяца") {
@@ -152,11 +171,13 @@ void DepositWindow::check_period(int converted_time, double *add_sum, double *wa
     }
     if (comboBoxesWaste.size() > 0 && dateEditsWaste.size() > 0 && lineEditsWaste.size() > 0) {
         for (int i = 0; i < count_of_elem_waste; i++) {
-//            QDate date_waste = dateEditsWaste[i]->date();
+            QDate date_waste = dateEditsWaste[i]->date();
             QString text_waste = lineEditsWaste[i]->text();
             QString combobox_waste = comboBoxesWaste[i]->currentText();
             if (combobox_waste == "Разовое") {
-                *waste_sum += text_waste.toDouble();
+                if (date_waste >= date_qdate) {
+                    *waste_sum += text_waste.toDouble();
+                }
             } else if (combobox_waste == "Раз в месяц") {
                 *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 1);
             } else if (combobox_waste == "Раз в 2 месяца") {
@@ -199,6 +220,7 @@ void DepositWindow::on_showResult_clicked() {
         capitalization = 1;
     }
 
+//    QDate end_period;
     if (ui->day->isChecked()) {
         time_type = 1;
     } else if (ui->month->isChecked()) {

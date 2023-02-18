@@ -12,6 +12,8 @@
 #include <QDateEdit>
 #include <QLabel>
 
+#include <string>
+
 extern "C" {
 #include "../CFiles/s21_calculator.h"
 }
@@ -29,6 +31,7 @@ public:
     ~DepositWindow();
 
 private slots:
+    void today_is();
     void on_addWaste_clicked();
     void on_calculator_clicked();
     void on_showResult_clicked();
@@ -48,6 +51,8 @@ private:
 
     QVBoxLayout *addVbox;
     QVBoxLayout* wasteVbox;
+
+    QDate date_qdate;
 
     QVector<QComboBox*> comboBoxesAdd;
     QVector<QDateEdit*> dateEditsAdd;

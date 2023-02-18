@@ -10,6 +10,31 @@ void deposit_calculator(double sum, int time_contrib, int type_of_time, double p
     }
 }
 
+double convert_to_days(int time_contrib, int type_of_time) {
+    int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    time_t now;
+    time(&now);
+    struct tm *local = localtime(&now);
+    int month = local->tm_mon;
+    double time_copy = 0;
+    if (type_of_time == 1) {
+        time_copy = time_contrib;
+    } else if (type_of_time == 3) {
+        time_contrib *= 12;
+    }
+    if (type_of_time != 1) {
+        for (int i = 0; i < time_contrib; i++) {
+            time_copy += days[month];
+            if (month == 11) {
+                month = 0;
+            } else {
+                month++;
+            }
+        }
+    }
+    return time_copy;
+}
+
 int convert_to_months(int time_contrib, int type_of_time) {
     int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     time_t now;
@@ -50,31 +75,6 @@ double add_start_sum(double sum, int time, int type) {
         sum_result += sum;
     }
     return sum_result;
-}
-
-double convert_to_days(int time_contrib, int type_of_time) {
-    int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    time_t now;
-    time(&now);
-    struct tm *local = localtime(&now);
-    int month = local->tm_mon;
-    double time_copy = 0;
-    if (type_of_time == 1) {
-        time_copy = time_contrib;
-    } else if (type_of_time == 3) {
-        time_contrib *= 12;
-    }
-    if (type_of_time != 1) {
-        for (int i = 0; i < time_contrib; i++) {
-            time_copy += days[month];
-            if (month == 11) {
-                month = 0;
-            } else {
-                month++;
-            }
-        }
-    }
-    return time_copy;
 }
 
 int check_period(int capitalization, int period, double *time_copy) {
@@ -139,3 +139,99 @@ void is_capitalization(int n, double sum, double percent, double tax_rate, doubl
     }
     *sum_with_tax = *res_percent - *tax_rate_res;
 }
+
+char *current_date() {
+    // int hours, minutes, seconds;
+    char *date = malloc(10 * sizeof(char));
+    int day, month, year;
+    time_t now;
+    time(&now); 
+    struct tm *local = localtime(&now);
+    // hours = local->tm_hour;
+    // minutes = local->tm_min;
+    // seconds = local->tm_sec;
+    day = local->tm_mday;
+    month = local->tm_mon + 1;
+    year = local->tm_year + 1900;
+    sprintf(date, "%02d/%02d/%d", day, month, year);
+    return date;
+}
+
+char *end_date(char *date, int time_contrib, int type_of_time) {
+    int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int count_days = convert_to_days(time_contrib, type_of_time);
+    char *date_result = malloc(10 * sizeof(char));
+    int date_arr[3] = {0, 0, 0};
+    char *trash;
+    int j = 0;
+    for (int i = 0; date[i]; i++) {
+        if (isdigit(date[i])) {
+            date_arr[j] = strtod(&date[i], &trash);
+            i = trash - date;
+            j++;
+        }
+    }
+    for (int i = 0; i < count_days; i++) {
+        date_arr[0] += 1;
+        if (date_arr[0] > days[date_arr[1] - 1]) {
+            date_arr[0] = 1;
+            date_arr[1] += 1;
+        }
+        if (date_arr[1] > 12) {
+            date_arr[1] = 1;
+            date_arr[2] += 1;
+        }
+    }
+    sprintf(date_result, "%02d/%02d/%d", date_arr[0], date_arr[1], date_arr[2]);
+    return date_result;
+}
+
+int date_difference(char *date_first, char *date_second) {
+    int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int date_differ[3];
+    int first_array[3] = {0, 0, 0};
+    char *trash_1;
+    int j = 0;
+    for (int i = 0; i < 10; i++) {
+        if (isdigit(date_first[i])) {
+            first_array[j] = strtod(&date_first[i], &trash_1);
+            i = trash_1 - date_first;
+            j++;
+        }
+    }
+    int second_array[3] = {0, 0, 0};
+    char *trash_2;
+    int k = 0;
+    for (int i = 0; i < 10; i++) {
+        if (isdigit(date_second[i])) {
+            second_array[k] = strtod(&date_second[i], &trash_2);
+            i = trash_2 - date_second;
+            k++;
+        }
+    }
+    int result_days = days[second_array[1] - 1] - second_array[0] + first_array[0];
+    date_differ[0] = first_array[0] - second_array[0];
+    date_differ[1] = first_array[1] - second_array[1];
+    date_differ[2] = first_array[2] - second_array[2];
+    if (date_differ[1] <= 0) {
+        date_differ[2] -= 1;
+        date_differ[1] = 12 + date_differ[1];
+    }
+    if (date_differ[0] <= 0) {
+        date_differ[1] -= 1;
+        date_differ[0] = result_days;
+    }
+    printf("%d\n", date_differ[0]);
+    printf("%d\n", date_differ[1]);
+    printf("%d\n", date_differ[2]);
+    return 0;
+}
+
+void free_array(char *date) {
+    free(date);
+}
+
+// int main() {
+//     date_difference("5/09/2027", "13/12/2015");
+//     return 0;
+// }

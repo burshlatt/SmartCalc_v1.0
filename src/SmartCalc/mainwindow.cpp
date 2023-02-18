@@ -21,13 +21,13 @@ MainWindow::MainWindow(QWidget *parent)
     int y = (screenGeometry.height() - 380) / 2;
     move(x, y);
 
-    ui->xValue->setPlaceholderText(QApplication::translate("Form", "Значение X", 0));
-    ui->xMaxCord->setPlaceholderText(QApplication::translate("Form", "X макс.", 0));
-    ui->xMinCord->setPlaceholderText(QApplication::translate("Form", "X мин.", 0));
-    ui->yMaxCord->setPlaceholderText(QApplication::translate("Form", "Y макс.", 0));
-    ui->yMinCord->setPlaceholderText(QApplication::translate("Form", "Y мин.", 0));
-    ui->xStart->setPlaceholderText(QApplication::translate("Form", "X начало.", 0));
-    ui->xEnd->setPlaceholderText(QApplication::translate("Form", "X конец.", 0));
+    ui->xValue->setPlaceholderText("Значение X");
+    ui->xMaxCord->setPlaceholderText("X макс.");
+    ui->xMinCord->setPlaceholderText("X мин.");
+    ui->yMaxCord->setPlaceholderText("Y макс.");
+    ui->yMinCord->setPlaceholderText("Y мин.");
+    ui->xStart->setPlaceholderText("X начало");
+    ui->xEnd->setPlaceholderText("X конец");
 
     connect(ui->lnFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
     connect(ui->logFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
@@ -360,12 +360,13 @@ void MainWindow::print_graph(char *chars_array) {
     double h = 0.01;
     double xBegin = ui->xStart->text().toDouble();
     double xEnd = ui->xEnd->text().toDouble() + h;
+    double X = xBegin;
     QVector<double> xCord, yCord;
-    while (xBegin <= xEnd) {
-        double result = polish_notation(chars_array, is_x, xBegin, &error_status);
-        xCord.push_back(xBegin);
+    while (X <= xEnd) {
+        double result = polish_notation(chars_array, is_x, X, &error_status);
+        xCord.push_back(X);
         yCord.push_back(result);
-        xBegin += h;
+        X += h;
     }
     ui->functionGraph->addGraph();
     ui->functionGraph->graph(0)->addData(xCord, yCord);
