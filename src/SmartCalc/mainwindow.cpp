@@ -21,11 +21,13 @@ MainWindow::MainWindow(QWidget *parent)
     int y = (screenGeometry.height() - 380) / 2;
     move(x, y);
 
-    ui->xValue->setText("0");
-    ui->xMaxCord->setText("5");
-    ui->yMaxCord->setText("5");
-    ui->xMinCord->setText("-5");
-    ui->yMinCord->setText("-5");
+    ui->xValue->setPlaceholderText(QApplication::translate("Form", "Значение X", 0));
+    ui->xMaxCord->setPlaceholderText(QApplication::translate("Form", "X макс.", 0));
+    ui->xMinCord->setPlaceholderText(QApplication::translate("Form", "X мин.", 0));
+    ui->yMaxCord->setPlaceholderText(QApplication::translate("Form", "Y макс.", 0));
+    ui->yMinCord->setPlaceholderText(QApplication::translate("Form", "Y мин.", 0));
+    ui->xStart->setPlaceholderText(QApplication::translate("Form", "X начало.", 0));
+    ui->xEnd->setPlaceholderText(QApplication::translate("Form", "X конец.", 0));
 
     connect(ui->lnFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
     connect(ui->logFunc, SIGNAL(clicked()), this, SLOT(func_clicked()));
@@ -64,6 +66,16 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_credCalc_clicked() {
+    secondWindow->show();
+    this->close();
+}
+
+void MainWindow::on_deposCalc_clicked() {
+    thirdWindow->show();
+    this->close();
 }
 
 void MainWindow::operators_clicked() {
@@ -232,8 +244,45 @@ void MainWindow::on_delAll_clicked() {
     ui->inputOutput->clear();
 }
 
+void MainWindow::check_fields() {
+    if (ui->xValue->text().size() == 0) {
+        ui->xValue->setText("0");
+    }
+    if (ui->xMinCord->text().size() == 0) {
+        ui->xMinCord->setText("-5");
+    } else if (ui->xMinCord->text().toDouble() < -1000000) {
+        ui->xMinCord->setText("-1000000");
+    }
+    if (ui->xMaxCord->text().size() == 0) {
+        ui->xMaxCord->setText("5");
+    } else if (ui->xMaxCord->text().toDouble() > 1000000) {
+        ui->xMaxCord->setText("1000000");
+    }
+    if (ui->yMinCord->text().size() == 0) {
+        ui->yMinCord->setText("-5");
+    } else if (ui->yMinCord->text().toDouble() < -1000000) {
+        ui->yMinCord->setText("-1000000");
+    }
+    if (ui->yMaxCord->text().size() == 0) {
+        ui->yMaxCord->setText("5");
+    } else if (ui->yMaxCord->text().toDouble() > 1000000) {
+        ui->yMaxCord->setText("1000000");
+    }
+    if (ui->xStart->text().size() == 0) {
+        ui->xStart->setText("-200");
+    } else if (ui->xStart->text().toDouble() < -1000000) {
+        ui->xStart->setText("-1000000");
+    }
+    if (ui->xEnd->text().size() == 0) {
+        ui->xEnd->setText("200");
+    } else if (ui->xEnd->text().toDouble() > 1000000) {
+        ui->xEnd->setText("1000000");
+    }
+}
+
 void MainWindow::on_resultFunc_clicked() {
     error_status = 0;
+    check_fields();
     int can_do = 1;
     double xValue = ui->xValue->text().toDouble();
     std::string final_string = ui->inputOutput->text().toStdString();
@@ -300,6 +349,7 @@ void MainWindow::on_showGraph_clicked() {
 }
 
 void MainWindow::print_graph(char *chars_array) {
+    check_fields();
     ui->functionGraph->clearGraphs();
     int xMin = ui->xMinCord->text().toInt();
     int xMax = ui->xMaxCord->text().toInt();
@@ -308,27 +358,16 @@ void MainWindow::print_graph(char *chars_array) {
     ui->functionGraph->xAxis->setRange(xMin, xMax);
     ui->functionGraph->yAxis->setRange(yMin, yMax);
     double h = 0.01;
-    double xBegin = -200;
-    double xEnd = 200 + h;
-    double X = xBegin;
+    double xBegin = ui->xStart->text().toDouble();
+    double xEnd = ui->xEnd->text().toDouble() + h;
     QVector<double> xCord, yCord;
-    while (X <= xEnd) {
-        double result = polish_notation(chars_array, is_x, X, &error_status);
-        xCord.push_back(X);
+    while (xBegin <= xEnd) {
+        double result = polish_notation(chars_array, is_x, xBegin, &error_status);
+        xCord.push_back(xBegin);
         yCord.push_back(result);
-        X += h;
+        xBegin += h;
     }
     ui->functionGraph->addGraph();
     ui->functionGraph->graph(0)->addData(xCord, yCord);
     ui->functionGraph->replot();
-}
-
-void MainWindow::on_credCalc_clicked() {
-    secondWindow->show();
-    this->close();
-}
-
-void MainWindow::on_deposCalc_clicked() {
-    thirdWindow->show();
-    this->close();
 }

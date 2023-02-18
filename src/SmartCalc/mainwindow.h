@@ -34,6 +34,7 @@ public:
     ~MainWindow();
 
 private slots:
+    void check_fields();
     void func_clicked();
     void decompose_func();
     void symbols_clicked();

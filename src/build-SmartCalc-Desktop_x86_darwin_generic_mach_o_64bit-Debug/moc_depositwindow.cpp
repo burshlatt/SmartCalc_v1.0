@@ -31,17 +31,17 @@ struct qt_meta_stringdata_DepositWindow_t {
     char stringdata0[14];
     char stringdata1[12];
     char stringdata2[1];
-    char stringdata3[13];
-    char stringdata4[15];
-    char stringdata5[8];
-    char stringdata6[8];
-    char stringdata7[10];
-    char stringdata8[22];
-    char stringdata9[22];
-    char stringdata10[22];
-    char stringdata11[25];
-    char stringdata12[20];
-    char stringdata13[23];
+    char stringdata3[20];
+    char stringdata4[22];
+    char stringdata5[22];
+    char stringdata6[22];
+    char stringdata7[23];
+    char stringdata8[25];
+    char stringdata9[13];
+    char stringdata10[15];
+    char stringdata11[8];
+    char stringdata12[8];
+    char stringdata13[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_DepositWindow_t::offsetsAndSizes) + ofs), len 
@@ -50,32 +50,32 @@ Q_CONSTINIT static const qt_meta_stringdata_DepositWindow_t qt_meta_stringdata_D
         QT_MOC_LITERAL(0, 13),  // "DepositWindow"
         QT_MOC_LITERAL(14, 11),  // "firstWindow"
         QT_MOC_LITERAL(26, 0),  // ""
-        QT_MOC_LITERAL(27, 12),  // "check_period"
-        QT_MOC_LITERAL(40, 14),  // "converted_time"
-        QT_MOC_LITERAL(55, 7),  // "double*"
-        QT_MOC_LITERAL(63, 7),  // "add_sum"
-        QT_MOC_LITERAL(71, 9),  // "waste_sum"
-        QT_MOC_LITERAL(81, 21),  // "on_calculator_clicked"
-        QT_MOC_LITERAL(103, 21),  // "on_showResult_clicked"
-        QT_MOC_LITERAL(125, 21),  // "on_addPayment_clicked"
-        QT_MOC_LITERAL(147, 24),  // "on_deletePayment_clicked"
-        QT_MOC_LITERAL(172, 19),  // "on_addWaste_clicked"
-        QT_MOC_LITERAL(192, 22)   // "on_deleteWaste_clicked"
+        QT_MOC_LITERAL(27, 19),  // "on_addWaste_clicked"
+        QT_MOC_LITERAL(47, 21),  // "on_calculator_clicked"
+        QT_MOC_LITERAL(69, 21),  // "on_showResult_clicked"
+        QT_MOC_LITERAL(91, 21),  // "on_addPayment_clicked"
+        QT_MOC_LITERAL(113, 22),  // "on_deleteWaste_clicked"
+        QT_MOC_LITERAL(136, 24),  // "on_deletePayment_clicked"
+        QT_MOC_LITERAL(161, 12),  // "check_period"
+        QT_MOC_LITERAL(174, 14),  // "converted_time"
+        QT_MOC_LITERAL(189, 7),  // "double*"
+        QT_MOC_LITERAL(197, 7),  // "add_sum"
+        QT_MOC_LITERAL(205, 9)   // "waste_sum"
     },
     "DepositWindow",
     "firstWindow",
     "",
+    "on_addWaste_clicked",
+    "on_calculator_clicked",
+    "on_showResult_clicked",
+    "on_addPayment_clicked",
+    "on_deleteWaste_clicked",
+    "on_deletePayment_clicked",
     "check_period",
     "converted_time",
     "double*",
     "add_sum",
-    "waste_sum",
-    "on_calculator_clicked",
-    "on_showResult_clicked",
-    "on_addPayment_clicked",
-    "on_deletePayment_clicked",
-    "on_addWaste_clicked",
-    "on_deleteWaste_clicked"
+    "waste_sum"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -97,25 +97,25 @@ Q_CONSTINIT static const uint qt_meta_data_DepositWindow[] = {
        1,    0,   62,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    3,   63,    2, 0x08,    2 /* Private */,
-       8,    0,   70,    2, 0x08,    6 /* Private */,
-       9,    0,   71,    2, 0x08,    7 /* Private */,
-      10,    0,   72,    2, 0x08,    8 /* Private */,
-      11,    0,   73,    2, 0x08,    9 /* Private */,
-      12,    0,   74,    2, 0x08,   10 /* Private */,
-      13,    0,   75,    2, 0x08,   11 /* Private */,
+       3,    0,   63,    2, 0x08,    2 /* Private */,
+       4,    0,   64,    2, 0x08,    3 /* Private */,
+       5,    0,   65,    2, 0x08,    4 /* Private */,
+       6,    0,   66,    2, 0x08,    5 /* Private */,
+       7,    0,   67,    2, 0x08,    6 /* Private */,
+       8,    0,   68,    2, 0x08,    7 /* Private */,
+       9,    3,   69,    2, 0x08,    8 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int, 0x80000000 | 5, 0x80000000 | 5,    4,    6,    7,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, 0x80000000 | 11, 0x80000000 | 11,   10,   12,   13,
 
        0        // eod
 };
@@ -131,23 +131,23 @@ Q_CONSTINIT const QMetaObject DepositWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<DepositWindow, std::true_type>,
         // method 'firstWindow'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'check_period'
+        // method 'on_addWaste_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        QtPrivate::TypeAndForceComplete<double *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<double *, std::false_type>,
         // method 'on_calculator_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_showResult_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_addPayment_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_deleteWaste_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_deletePayment_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_addWaste_clicked'
+        // method 'check_period'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_deleteWaste_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<double *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<double *, std::false_type>
     >,
     nullptr
 } };
@@ -159,13 +159,13 @@ void DepositWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         (void)_t;
         switch (_id) {
         case 0: _t->firstWindow(); break;
-        case 1: _t->check_period((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<double*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<double*>>(_a[3]))); break;
+        case 1: _t->on_addWaste_clicked(); break;
         case 2: _t->on_calculator_clicked(); break;
         case 3: _t->on_showResult_clicked(); break;
         case 4: _t->on_addPayment_clicked(); break;
-        case 5: _t->on_deletePayment_clicked(); break;
-        case 6: _t->on_addWaste_clicked(); break;
-        case 7: _t->on_deleteWaste_clicked(); break;
+        case 5: _t->on_deleteWaste_clicked(); break;
+        case 6: _t->on_deletePayment_clicked(); break;
+        case 7: _t->check_period((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<double*>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<double*>>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

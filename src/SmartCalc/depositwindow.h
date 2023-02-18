@@ -29,17 +29,13 @@ public:
     ~DepositWindow();
 
 private slots:
-    void check_period(int converted_time, double *add_sum, double *waste_sum);
+    void on_addWaste_clicked();
     void on_calculator_clicked();
     void on_showResult_clicked();
-
     void on_addPayment_clicked();
-
-    void on_deletePayment_clicked();
-
-    void on_addWaste_clicked();
-
     void on_deleteWaste_clicked();
+    void on_deletePayment_clicked();
+    void check_period(int converted_time, double *add_sum, double *waste_sum);
 
 signals:
     void firstWindow();
