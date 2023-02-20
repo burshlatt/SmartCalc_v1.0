@@ -187,6 +187,7 @@ void MainWindow::on_subFunc_clicked() {
             }
         }
         ui->inputOutput->setText(ui->inputOutput->text() + "-");
+        is_dot = 0;
     }
 }
 
@@ -303,7 +304,7 @@ void MainWindow::on_resultFunc_clicked() {
     } else if (error_status) {
         ui->inputOutput->setText(ui->inputOutput->text() + "2");
     }
-    if (!error_status && can_do) {
+    if (!error_status && can_do && chars_array[0] != '-') {
         if (is_x) {
             if (!graph_is_open) {
                 int xPos = this->geometry().x();
@@ -317,7 +318,7 @@ void MainWindow::on_resultFunc_clicked() {
             is_x = 0;
         } else {
             ui->inputOutput->clear();
-            if (result - (int)result < 0.00000001) {
+            if (fabs(result - (int)result) < 0.00000001) {
                 ui->inputOutput->setText(ui->inputOutput->text() + QString::number(result, 'f', 0));
             } else {
                 ui->inputOutput->setText(ui->inputOutput->text() + QString::number(result, 'f', 7));

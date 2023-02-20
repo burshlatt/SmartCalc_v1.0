@@ -33,12 +33,14 @@ public:
 private slots:
     void today_is();
     void check_types();
+    void check_correct_data();
     void on_addWaste_clicked();
     void on_calculator_clicked();
     void on_showResult_clicked();
     void on_addPayment_clicked();
     void on_deleteWaste_clicked();
     void on_deletePayment_clicked();
+    void check_correct_sum(QString sum);
     void additional_payment(double *add_sum);
     void additional_waste(double *waste_sum);
 
@@ -50,6 +52,8 @@ private:
 
     char *date_end;
 
+    int error = 0;
+    int error_dop = 0;
     int time_type = 0;
     int period_type = 0;
     int capitalization = 0;

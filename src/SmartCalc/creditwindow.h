@@ -22,6 +22,7 @@ public:
     ~CreditWindow();
 
 private slots:
+    void check_correct_data();
     void on_showResult_clicked();
     void on_calculator_clicked();
 
@@ -30,6 +31,8 @@ signals:
 
 private:
     Ui::CreditWindow *ui;
+
+    int error = 0;
 };
 
 #endif // CREDITWINDOW_H

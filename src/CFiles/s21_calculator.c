@@ -165,8 +165,6 @@ void push_func(struct Stack *stack, char *string, int *index) {
             push(stack, 'L');
             *index += 3;
         }
-    } else if (string[*index] == 'm') {
-        push(stack, 'm');
     } else if (string[*index] == '^') {
         push(stack, '^');
     }
@@ -248,9 +246,12 @@ double polish_notation(char *string, int is_graph, double xValue, int *error_fla
                 case 't':
                 case 'a':
                 case 'l':
-                case 'm':
                 case '(':
                     push_func(stack, string, &i);
+                    break;
+                case 'm':
+                    do_pop(stack, output, &index, 1);
+                    push(stack, 'm');
                     break;
                 case '*':
                     do_pop(stack, output, &index, 5);

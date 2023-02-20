@@ -145,6 +145,15 @@ void DepositWindow::on_deleteWaste_clicked() {
     }
 }
 
+void DepositWindow::check_correct_sum(QString sum) {
+    error_dop = 0;
+    for (int i = 0; i < sum.size(); i++) {
+        if ((sum[i] < '0' || sum[i] > '9') && sum[i] != '.') {
+            error_dop = 1;
+        }
+    }
+}
+
 void DepositWindow::additional_payment(double *add_sum) {
     if (comboBoxesAdd.size() > 0 && dateEditsAdd.size() > 0 && lineEditsAdd.size() > 0) {
         for (int i = 0; i < count_of_elem_add; i++) {
@@ -154,22 +163,27 @@ void DepositWindow::additional_payment(double *add_sum) {
             std::string date_stdstr = dateEditsAdd[i]->text().toStdString();
             char *date_intermediate = &date_stdstr[0];
             int converted_time = date_difference(date_end, date_intermediate);
-            if (date_add <= date_qdate_max) {
-                if (combobox_add == "Разовое") {
-                    if (date_add >= date_qdate) {
-                        *add_sum += text_add.toDouble();
+            check_correct_sum(text_add);
+            if (!error_dop) {
+                if (date_add <= date_qdate_max) {
+                    if (combobox_add == "Разовое") {
+                        if (date_add >= date_qdate) {
+                            *add_sum += text_add.toDouble();
+                        }
+                    } else if (combobox_add == "Раз в месяц") {
+                        *add_sum += add_start_sum(text_add.toDouble(), converted_time, 1);
+                    } else if (combobox_add == "Раз в 2 месяца") {
+                        *add_sum += add_start_sum(text_add.toDouble(), converted_time, 2);
+                    } else if (combobox_add == "Раз в квартал") {
+                        *add_sum += add_start_sum(text_add.toDouble(), converted_time, 3);
+                    } else if (combobox_add == "Раз в полгода") {
+                        *add_sum += add_start_sum(text_add.toDouble(), converted_time, 4);
+                    } else if (combobox_add == "Раз в год") {
+                        *add_sum += add_start_sum(text_add.toDouble(), converted_time, 5);
                     }
-                } else if (combobox_add == "Раз в месяц") {
-                    *add_sum += add_start_sum(text_add.toDouble(), converted_time, 1);
-                } else if (combobox_add == "Раз в 2 месяца") {
-                    *add_sum += add_start_sum(text_add.toDouble(), converted_time, 2);
-                } else if (combobox_add == "Раз в квартал") {
-                    *add_sum += add_start_sum(text_add.toDouble(), converted_time, 3);
-                } else if (combobox_add == "Раз в полгода") {
-                    *add_sum += add_start_sum(text_add.toDouble(), converted_time, 4);
-                } else if (combobox_add == "Раз в год") {
-                    *add_sum += add_start_sum(text_add.toDouble(), converted_time, 5);
                 }
+            } else {
+                lineEditsAdd[i]->setText("ERROR!");
             }
         }
     }
@@ -184,22 +198,27 @@ void DepositWindow::additional_waste(double *waste_sum) {
             std::string date_stdstr = dateEditsWaste[i]->text().toStdString();
             char *date_intermediate = &date_stdstr[0];
             int converted_time = date_difference(date_end, date_intermediate);
-            if (date_waste <= date_qdate_max) {
-                if (combobox_waste == "Разовое") {
-                    if (date_waste >= date_qdate) {
-                        *waste_sum += text_waste.toDouble();
+            check_correct_sum(text_waste);
+            if (!error_dop) {
+                if (date_waste <= date_qdate_max) {
+                    if (combobox_waste == "Разовое") {
+                        if (date_waste >= date_qdate) {
+                            *waste_sum += text_waste.toDouble();
+                        }
+                    } else if (combobox_waste == "Раз в месяц") {
+                        *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 1);
+                    } else if (combobox_waste == "Раз в 2 месяца") {
+                        *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 2);
+                    } else if (combobox_waste == "Раз в квартал") {
+                        *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 3);
+                    } else if (combobox_waste == "Раз в полгода") {
+                        *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 4);
+                    } else if (combobox_waste == "Раз в год") {
+                        *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 5);
                     }
-                } else if (combobox_waste == "Раз в месяц") {
-                    *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 1);
-                } else if (combobox_waste == "Раз в 2 месяца") {
-                    *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 2);
-                } else if (combobox_waste == "Раз в квартал") {
-                    *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 3);
-                } else if (combobox_waste == "Раз в полгода") {
-                    *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 4);
-                } else if (combobox_waste == "Раз в год") {
-                    *waste_sum += add_start_sum(text_waste.toDouble(), converted_time, 5);
                 }
+            } else {
+                lineEditsWaste[i]->setText("ERROR!");
             }
         }
     }
@@ -235,36 +254,79 @@ void DepositWindow::check_types() {
     }
 }
 
+void DepositWindow::check_correct_data() {
+    error = 0;
+    QString term = ui->time->text();
+    QString percent = ui->percent->text();
+    QString tax_rate = ui->taxRate->text();
+    QString sum = ui->depositAmount->text();
+    for (int i = 0; i < sum.size(); i++) {
+        if ((sum[i] < '0' || sum[i] > '9') && sum[i] != '.') {
+            error = 1;
+        }
+    }
+    if (error == 1) {
+        ui->depositAmount->setText("ERROR!");
+    }
+    for (int i = 0; i < term.size(); i++) {
+        if (term[i] < '0' || term[i] > '9') {
+            error = 2;
+        }
+    }
+    if (error == 2) {
+        ui->time->setText("ERROR!");
+    }
+    for (int i = 0; i < percent.size(); i++) {
+        if ((percent[i] < '0' || percent[i] > '9') && percent[i] != '.') {
+            error = 3;
+        }
+    }
+    if (error == 3) {
+        ui->percent->setText("ERROR!");
+    }
+    for (int i = 0; i < tax_rate.size(); i++) {
+        if ((tax_rate[i] < '0' || tax_rate[i] > '9') && tax_rate[i] != '.') {
+            error = 4;
+        }
+    }
+    if (error == 4) {
+        ui->taxRate->setText("ERROR!");
+    }
+}
+
 void DepositWindow::on_showResult_clicked() {
-    this->setFixedSize(1000, 520);
-    ui->tax->clear();
-    ui->resultSum->clear();
-    ui->resultProfit->clear();
-    ui->resultPercent->clear();
-    double add_sum = 0.0;
-    double waste_sum = 0.0;
-    double sum_result = 0.0;
-    double tax_result = 0.0;
-    double profit_result = 0.0;
-    double percent_result = 0.0;
-    double percent = ui->percent->text().toDouble();
-    double tax_rate = ui->taxRate->text().toDouble();
-    double sum = ui->depositAmount->text().toDouble();
-    int time = ui->time->text().toInt();
-    check_types();
-    char *today = current_date();
-    date_end = end_date(today, time, time_type);
-    std::string date_string = std::string(date_end);
-    QString date_qstring = QString::fromStdString(date_string);
-    date_qdate_max = QDate::fromString(date_qstring, "dd/MM/yyyy");
-    today_is();
-    additional_payment(&add_sum);
-    additional_waste(&waste_sum);
-    deposit_calculator(sum + add_sum - waste_sum, time, time_type, percent, tax_rate, period_type, capitalization, &percent_result, &tax_result, &profit_result, &sum_result);
-    ui->tax->setText(ui->resultPercent->text() + QString::number(tax_result, 'f', 2));
-    ui->resultSum->setText(ui->resultPercent->text() + QString::number(sum_result, 'f', 2));
-    ui->resultProfit->setText(ui->resultPercent->text() + QString::number(profit_result, 'f', 2));
-    ui->resultPercent->setText(ui->resultPercent->text() + QString::number(percent_result, 'f', 2));
-    free_array(today);
-    free_array(date_end);
+    check_correct_data();
+    if (error == 0) {
+        this->setFixedSize(1000, 520);
+        ui->tax->clear();
+        ui->resultSum->clear();
+        ui->resultProfit->clear();
+        ui->resultPercent->clear();
+        double add_sum = 0.0;
+        double waste_sum = 0.0;
+        double sum_result = 0.0;
+        double tax_result = 0.0;
+        double profit_result = 0.0;
+        double percent_result = 0.0;
+        double percent = ui->percent->text().toDouble();
+        double tax_rate = ui->taxRate->text().toDouble();
+        double sum = ui->depositAmount->text().toDouble();
+        int time = ui->time->text().toInt();
+        check_types();
+        char *today = current_date();
+        date_end = end_date(today, time, time_type);
+        std::string date_string = std::string(date_end);
+        QString date_qstring = QString::fromStdString(date_string);
+        date_qdate_max = QDate::fromString(date_qstring, "dd/MM/yyyy");
+        today_is();
+        additional_payment(&add_sum);
+        additional_waste(&waste_sum);
+        deposit_calculator(sum + add_sum - waste_sum, time, time_type, percent, tax_rate, period_type, capitalization, &percent_result, &tax_result, &profit_result, &sum_result);
+        ui->tax->setText(ui->resultPercent->text() + QString::number(tax_result, 'f', 2));
+        ui->resultSum->setText(ui->resultPercent->text() + QString::number(sum_result, 'f', 2));
+        ui->resultProfit->setText(ui->resultPercent->text() + QString::number(profit_result, 'f', 2));
+        ui->resultPercent->setText(ui->resultPercent->text() + QString::number(percent_result, 'f', 2));
+        free_array(today);
+        free_array(date_end);
+    }
 }
