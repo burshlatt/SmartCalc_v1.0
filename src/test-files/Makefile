@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c11 -D_GNU_SOURCE
 TEST_LIBS = -lcheck -lm -lpthread
 
 smartcalc.a: clean_test
-	$(CC) $(CFLAGS) -c ../CFiles/s21_*.c
+	$(CC) $(CFLAGS) -c ../CFiles/s21_*.c ../CFiles/help_functions.c
 	ar rcs smartcalc.a *.o
 	ranlib smartcalc.a
 

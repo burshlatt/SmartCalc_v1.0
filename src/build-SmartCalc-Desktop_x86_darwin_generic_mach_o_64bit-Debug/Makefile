@@ -52,7 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../CFiles/s21_calculator.c \
+SOURCES       = ../CFiles/help_functions.c \
+		../CFiles/s21_calculator.c \
 		../CFiles/s21_credit_calculator.c \
 		../CFiles/s21_deposit_calculator.c \
 		../SmartCalc/creditwindow.cpp \
@@ -63,7 +64,8 @@ SOURCES       = ../CFiles/s21_calculator.c \
 		moc_depositwindow.cpp \
 		moc_mainwindow.cpp \
 		moc_qcustomplot.cpp
-OBJECTS       = s21_calculator.o \
+OBJECTS       = help_functions.o \
+		s21_calculator.o \
 		s21_credit_calculator.o \
 		s21_deposit_calculator.o \
 		creditwindow.o \
@@ -233,7 +235,8 @@ DIST          = ../../../../Qt/6.4.2/macos/mkspecs/features/spec_pre.prf \
 		../SmartCalc/creditwindow.h \
 		../SmartCalc/depositwindow.h \
 		../SmartCalc/mainwindow.h \
-		../SmartCalc/qcustomplot.h ../CFiles/s21_calculator.c \
+		../SmartCalc/qcustomplot.h ../CFiles/help_functions.c \
+		../CFiles/s21_calculator.c \
 		../CFiles/s21_credit_calculator.c \
 		../CFiles/s21_deposit_calculator.c \
 		../SmartCalc/creditwindow.cpp \
@@ -619,7 +622,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../CFiles/s21_calculator.h ../SmartCalc/creditwindow.h ../SmartCalc/depositwindow.h ../SmartCalc/mainwindow.h ../SmartCalc/qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../CFiles/s21_calculator.c ../CFiles/s21_credit_calculator.c ../CFiles/s21_deposit_calculator.c ../SmartCalc/creditwindow.cpp ../SmartCalc/depositwindow.cpp ../SmartCalc/main.cpp ../SmartCalc/mainwindow.cpp ../SmartCalc/qcustomplot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../CFiles/help_functions.c ../CFiles/s21_calculator.c ../CFiles/s21_credit_calculator.c ../CFiles/s21_deposit_calculator.c ../SmartCalc/creditwindow.cpp ../SmartCalc/depositwindow.cpp ../SmartCalc/main.cpp ../SmartCalc/mainwindow.cpp ../SmartCalc/qcustomplot.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../SmartCalc/creditwindow.ui ../SmartCalc/depositwindow.ui ../SmartCalc/mainwindow.ui $(DISTDIR)/
 
 
@@ -758,6 +761,9 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+help_functions.o: ../CFiles/help_functions.c ../CFiles/s21_calculator.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o help_functions.o ../CFiles/help_functions.c
 
 s21_calculator.o: ../CFiles/s21_calculator.c ../CFiles/s21_calculator.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_calculator.o ../CFiles/s21_calculator.c
