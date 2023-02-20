@@ -8,19 +8,23 @@
 #include <ctype.h>
 #include <time.h>
 
-#define SIZE 255
+#define DAY 0
+#define MONTH 1
+#define YEAR 2
 
-#define COS 1
-#define SIN 2
-#define TAN 3
-#define ACOS 4
-#define ASIN 5
-#define ATAN 6
-#define SQRT 7
-#define LN 8
-#define LOG 9
-#define POW 10
-#define MOD 11
+#define LN 1
+#define LOG 2
+#define COS 3
+#define SIN 4
+#define TAN 5
+#define POW 6
+#define MOD 7
+#define ACOS 8
+#define ASIN 9
+#define ATAN 10
+#define SQRT 11
+
+#define SIZE 255
 
 struct Stack {
     int top;
@@ -37,6 +41,7 @@ char *end_date(char *date, int time_contrib, int type_of_time);
 
 int size(struct Stack *stack);
 int is_empty(struct Stack *stack);
+int days_in_month(int month, int year);
 int set_num(double *stack, int *top, double num);
 int date_difference(char *date_first, char *date_second);
 int convert_to_months(int time_contrib, int type_of_time);
@@ -56,12 +61,11 @@ void free_array(char *date);
 void delete_stack(struct Stack *stack);
 void set_space(char *output, int *index);
 void push(struct Stack *stack, char item);
+void do_correct_date(char *date_first, char *date_second);
 void push_func(struct Stack *stack, char *string, int *index);
 void logic_actions(struct Stack *stack, char *output, int *index);
 void set_in_output(struct Stack *stack, char *output, int *index);
 void set_nums_output(char *string, int *i, char *output, int *index);
-void is_capitalization(int n, double sum, double percent, double tax_rate, double time_copy, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res);
-void is_not_capitalization(int n, double sum, double percent, double tax_rate, double time_copy, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res);
 void deposit_calculator(double sum, int time_contrib, int type_of_time, double percent, double tax_rate, int period, int capitalization, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res);
 
 #endif // SRC_SMARTCALC_CALCULATOR_H_

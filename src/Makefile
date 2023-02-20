@@ -1,67 +1,55 @@
-# Путь к директории с исходными файлами на языке C
-C_SRC_DIR = CFiles
-
-# Путь к директории с исходными файлами на языке C++/Qt
-QT_SRC_DIR = SmartCalc
-
-# Путь к директории, в которую будут сохранены объектные файлы и исполняемый файл
-OBJ_DIR = test
-
-# Имя исполняемого файла
-TARGET = $(OBJ_DIR)/SmartCalc
-
-# Список исходных файлов на языке C
-C_SOURCES = $(wildcard $(C_SRC_DIR)/*.c)
-
-# Список исходных файлов на языке C++/Qt
-QT_SOURCES = $(wildcard $(QT_SRC_DIR)/*.cpp $(QT_SRC_DIR)/*.ui $(QT_SRC_DIR)/*.pro)
-
-# Список объектных файлов
-C_OBJECTS = $(patsubst $(C_SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(filter %.c,$(C_SOURCES)))
-QT_OBJECTS = $(patsubst $(QT_SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(filter %.cpp,$(QT_SOURCES))) \
-            $(patsubst $(QT_SRC_DIR)/%.ui,$(OBJ_DIR)/%.o,$(filter %.ui,$(QT_SOURCES)))
-OBJECTS = $(C_OBJECTS) $(QT_OBJECTS)
-
-# Компиляторы и опции компиляции
 CC = gcc
-CXX = g++
-CFLAGS = -Wall -g
-CXXFLAGS = $(CFLAGS) -std=c++11 `pkg-config --cflags Qt5Widgets`
-LDFLAGS = `pkg-config --libs Qt5Widgets`
+CFLAGS = -Wall -Wextra -Werror -std=c11 -D_GNU_SOURCE
+TEST_LIBS = -lcheck -lm -lpthread
 
-# Цель по умолчанию
-all: $(TARGET)
+all: clean uninstall install dist
 
-# Компиляция объектных файлов на языке C
-$(OBJ_DIR)/%.o: $(C_SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+build:
+	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make install
 
-# Компиляция объектных файлов на языке C++/Qt
-$(OBJ_DIR)/%.o: $(QT_SRC_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Сборка исполняемого файла
-$(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
-
-# Установка программы
 install:
-	install -m 755 $(TARGET) /usr/local/bin
-
+	mkdir app
+	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && mv SmartCalc.app ../app/
+	
 uninstall:
-	rm -f /usr/local/bin/$(notdir $(TARGET))
+	rm -rf app
 	
 clean:
-	rm -f $(OBJECTS) $(TARGET)
-
+	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make clean && rm -rf SmartCalc.app
+	
 dvi:
-	latex refman.tex
+	-@doxygen
+	open doxygen/html/index.html
 
 dist:
-	tar -czvf SmartCalc.tar.gz $(C_SOURCES) $(QT_SOURCES) Makefile refman.tex refman.pdf
+	tar czvf smartcalc.tar.gz .
 	
-tests:
-	./$(TARGET) --test
+smartcalc.a: clean_test
+	$(CC) $(CFLAGS) -c CFiles/s21_*.c
+	ar rcs smartcalc.a *.o
 	
-gcov_report:
-	gcov -o $(OBJ_DIR) $(C_SOURCES)
+test: smartcalc.a
+	$(CC) $(CFLAGS) -c unit_test.c -o unit_test.o
+	$(CC) unit_test.o CFiles/smartcalc.a $(TEST_LIBS) -o smartcalc
+	./smartcalc
+	
+gcov_report: s21_decimal.a
+	$(CC) $(FLAGS) --coverage unit_test.c s21_*.c s21_decimal.a $(TEST_LIBS) -o gcov_test
+	chmod +x *
+	./gcov_test
+	gcov s21_*.gcda
+	gcovr -b
+	gcovr --html-details -o report.html
+	open report.html
+
+clean_test:
+	rm -rf s21_decimal
+	rm -rf *.o
+	rm -rf *.a
+	rm -rf *.gcno
+	rm -rf *.gcda
+	rm -rf *.gcov
+	rm -rf *.html
+	rm -rf *.css
+	rm -rf main
+	rm -rf gcov_test

@@ -2,12 +2,26 @@
 
 void deposit_calculator(double sum, int time_contrib, int type_of_time, double percent, double tax_rate, int period, int capitalization, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res) {
     double time_copy = convert_to_days(time_contrib, type_of_time);
+    double time_copy_2 = time_copy;
     int n = check_period(capitalization, period, &time_copy);
     if (!capitalization) {
-        is_not_capitalization(n, sum, percent, tax_rate, time_copy, res_percent, tax_rate_res, sum_with_tax, sum_res);
+        *sum_res = sum;
+        if (period == 7) {
+            *res_percent = sum * (1 + ((percent / 100) * time_copy_2 / n));
+        } else {
+            *res_percent = (sum * (percent / 100) / n) * time_copy;
+        }
     } else {
-        is_capitalization(n, sum, percent, tax_rate, time_copy, res_percent, tax_rate_res, sum_with_tax, sum_res);
+        *sum_res = sum * pow(1 + (percent / 100) / n, time_copy / 365 * n);
+        *res_percent = *sum_res - sum;
     }
+    *tax_rate_res = *res_percent - 1000000 * (7.5 / 100);
+    if (*tax_rate_res > 0) {
+        *tax_rate_res *= tax_rate / 100;
+    } else {
+        *tax_rate_res = 0;
+    }
+    *sum_with_tax = *res_percent - *tax_rate_res;
 }
 
 double convert_to_days(int time_contrib, int type_of_time) {
@@ -116,40 +130,12 @@ int check_period(int capitalization, int period, double *time_copy) {
     return n;
 }
 
-void is_not_capitalization(int n, double sum, double percent, double tax_rate, double time_copy, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res) {
-    *res_percent = (percent / 100) * sum * (time_copy / n);
-    *tax_rate_res = *res_percent - 1000000 * (7.5 / 100);
-    if (*tax_rate_res > 0) {
-        *tax_rate_res *= tax_rate / 100;
-    } else {
-        *tax_rate_res = 0;
-    }
-    *sum_with_tax = *res_percent - *tax_rate_res;
-    *sum_res = sum;
-}
-
-void is_capitalization(int n, double sum, double percent, double tax_rate, double time_copy, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res) {
-    *sum_res = sum * pow(1 + (percent / 100) / n, time_copy / 365 * n);
-    *res_percent = *sum_res - sum;
-    *tax_rate_res = *res_percent - 1000000 * (7.5 / 100);
-    if (*tax_rate_res > 0) {
-        *tax_rate_res *= tax_rate / 100;
-    } else {
-        *tax_rate_res = 0;
-    }
-    *sum_with_tax = *res_percent - *tax_rate_res;
-}
-
 char *current_date() {
-    // int hours, minutes, seconds;
     char *date = malloc(10 * sizeof(char));
     int day, month, year;
     time_t now;
     time(&now); 
     struct tm *local = localtime(&now);
-    // hours = local->tm_hour;
-    // minutes = local->tm_min;
-    // seconds = local->tm_sec;
     day = local->tm_mday;
     month = local->tm_mon + 1;
     year = local->tm_year + 1900;
@@ -173,65 +159,50 @@ char *end_date(char *date, int time_contrib, int type_of_time) {
     }
     for (int i = 0; i < count_days; i++) {
         date_arr[0] += 1;
-        if (date_arr[0] > days[date_arr[1] - 1]) {
-            date_arr[0] = 1;
-            date_arr[1] += 1;
+        if (date_arr[DAY] > days[date_arr[1] - 1]) {
+            date_arr[DAY] = 1;
+            date_arr[MONTH] += 1;
         }
-        if (date_arr[1] > 12) {
-            date_arr[1] = 1;
-            date_arr[2] += 1;
+        if (date_arr[MONTH] > 12) {
+            date_arr[MONTH] = 1;
+            date_arr[YEAR] += 1;
         }
     }
     sprintf(date_result, "%02d/%02d/%d", date_arr[0], date_arr[1], date_arr[2]);
     return date_result;
 }
 
+void do_correct_date(char *date_first, char *date_second) {
+    for (int i = 0; i < 10; i++) {
+        if (date_first[i] == '.') {
+            date_first[i] = '/';
+        }
+        if (date_second[i] == '.') {
+            date_second[i] = '/';
+        }
+    }
+}
+
+int days_in_month(int month, int year) {
+    int days[] = {31, 28 + (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    return days[month - 1];
+}
+
 int date_difference(char *date_first, char *date_second) {
-    int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    int date_differ[3];
+    do_correct_date(date_first, date_second);
     int first_array[3] = {0, 0, 0};
-    char *trash_1;
-    int j = 0;
-    for (int i = 0; i < 10; i++) {
-        if (isdigit(date_first[i])) {
-            first_array[j] = strtod(&date_first[i], &trash_1);
-            i = trash_1 - date_first;
-            j++;
-        }
-    }
     int second_array[3] = {0, 0, 0};
-    char *trash_2;
-    int k = 0;
-    for (int i = 0; i < 10; i++) {
-        if (isdigit(date_second[i])) {
-            second_array[k] = strtod(&date_second[i], &trash_2);
-            i = trash_2 - date_second;
-            k++;
-        }
+    sscanf(date_first, "%d/%d/%d", &first_array[DAY], &first_array[MONTH], &first_array[YEAR]);
+    sscanf(date_second, "%d/%d/%d", &second_array[DAY], &second_array[MONTH], &second_array[YEAR]);
+    int month_diff = (first_array[YEAR] - second_array[YEAR]) * 12 + first_array[MONTH] - second_array[MONTH];
+    int day_diff = first_array[DAY] - second_array[DAY];
+    if (day_diff < 0) {
+        month_diff--;
+        day_diff += days_in_month(second_array[MONTH], second_array[YEAR]);
     }
-    int result_days = days[second_array[1] - 1] - second_array[0] + first_array[0];
-    date_differ[0] = first_array[0] - second_array[0];
-    date_differ[1] = first_array[1] - second_array[1];
-    date_differ[2] = first_array[2] - second_array[2];
-    if (date_differ[1] <= 0) {
-        date_differ[2] -= 1;
-        date_differ[1] = 12 + date_differ[1];
-    }
-    if (date_differ[0] <= 0) {
-        date_differ[1] -= 1;
-        date_differ[0] = result_days;
-    }
-    printf("%d\n", date_differ[0]);
-    printf("%d\n", date_differ[1]);
-    printf("%d\n", date_differ[2]);
-    return 0;
+    return month_diff;
 }
 
 void free_array(char *date) {
     free(date);
 }
-
-// int main() {
-//     date_difference("5/09/2027", "13/12/2015");
-//     return 0;
-// }

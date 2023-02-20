@@ -32,13 +32,15 @@ public:
 
 private slots:
     void today_is();
+    void check_types();
     void on_addWaste_clicked();
     void on_calculator_clicked();
     void on_showResult_clicked();
     void on_addPayment_clicked();
     void on_deleteWaste_clicked();
     void on_deletePayment_clicked();
-    void check_period(int converted_time, double *add_sum, double *waste_sum);
+    void additional_payment(double *add_sum);
+    void additional_waste(double *waste_sum);
 
 signals:
     void firstWindow();
@@ -46,21 +48,27 @@ signals:
 private:
     Ui::DepositWindow *ui;
 
+    char *date_end;
+
+    int time_type = 0;
+    int period_type = 0;
+    int capitalization = 0;
     int count_of_elem_add = 0;
     int count_of_elem_waste = 0;
+
+    QDate date_qdate;
+    QDate date_qdate_max;
 
     QVBoxLayout *addVbox;
     QVBoxLayout* wasteVbox;
 
-    QDate date_qdate;
-
-    QVector<QComboBox*> comboBoxesAdd;
     QVector<QDateEdit*> dateEditsAdd;
     QVector<QLineEdit*> lineEditsAdd;
+    QVector<QComboBox*> comboBoxesAdd;
 
-    QVector<QComboBox*> comboBoxesWaste;
     QVector<QDateEdit*> dateEditsWaste;
     QVector<QLineEdit*> lineEditsWaste;
+    QVector<QComboBox*> comboBoxesWaste;
 };
 
 #endif // DEPOSITWINDOW_H

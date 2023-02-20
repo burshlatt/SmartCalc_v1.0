@@ -35,7 +35,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>500</width>
+     <width>175</width>
      <height>20</height>
     </rect>
    </property>
@@ -52,32 +52,7 @@ QPushButton:pressed {
 }</string>
    </property>
    <property name="text">
-    <string>Калькулятор</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="creditCalc">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>0</y>
-     <width>500</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-  background-color: rgb(255, 160, 122);
-  color: black; 
-  border: 1px solid gray;
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #FF7832, stop: 1 #FF9739);
-}</string>
-   </property>
-   <property name="text">
-    <string>Кредитный калькулятор</string>
+    <string>&lt;-- Назад</string>
    </property>
   </widget>
   <widget class="QPushButton" name="showResult">
