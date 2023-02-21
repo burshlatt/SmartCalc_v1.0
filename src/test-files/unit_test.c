@@ -181,6 +181,12 @@ START_TEST(div_test) {
   char string_8[255] = "(+12/)13=";
   
   result = polish_notation(string_8, 0, 0, &error);
+
+  // test 9
+  char string_9[255] = "2/0";
+  result = polish_notation(string_9, 0, 0, &error);
+  ck_assert_double_eq_tol(result, 0.000000, 1e-7);
+  ck_assert_double_eq(error, 2);
 }
 
 // mod test
@@ -524,6 +530,62 @@ START_TEST(algebraic_equation_test) {
   ck_assert_double_eq_tol(result, 4, 1e-6);
 }
 
+START_TEST(credit_test) {
+  double month_pay = 0.0;
+  double overpay = 0.0;
+  double sum = annuity_credit(1000000, 1, 2, 13, &month_pay, &overpay);
+  ck_assert_double_eq_tol(sum, 1066185.46, 1e-2);
+  ck_assert_double_eq_tol(month_pay, 88848.79, 1e-2);
+  ck_assert_double_eq_tol(overpay, 66185.46, 1e-2);
+
+  double f_payment = 0.0;
+  double l_payment = 0.0;
+  overpay = 0.0;
+  sum = differentiated_credit(1000000, 1, 2, 13, &f_payment, &l_payment, &overpay);
+  ck_assert_double_eq_tol(sum, 1069926.94, 1e-2);
+  ck_assert_double_eq_tol(f_payment, 93305.94, 1e-2);
+  ck_assert_double_eq_tol(l_payment, 84253.42, 1e-2);
+  ck_assert_double_eq_tol(overpay, 69926.94, 1e-2);
+}
+
+START_TEST(deposit_test) {
+  double sum_res = 0.0;
+  double res_percent = 0.0;
+  double tax_rate_res = 0.0;
+  double sum_with_tax = 0.0;
+  deposit_calculator(1000000, 1, 3, 10, 13, 3, 0, &res_percent, &tax_rate_res, &sum_with_tax, &sum_res);
+  ck_assert_double_eq_tol(sum_res, 1000000.00, 1e-2);
+  ck_assert_double_eq_tol(res_percent, 91666.67, 1e-2);
+  ck_assert_double_eq_tol(tax_rate_res, 2166.67, 1e-2);
+  ck_assert_double_eq_tol(sum_with_tax, 89500.00, 1e-2);
+
+  sum_res = 0.0;
+  res_percent = 0.0;
+  tax_rate_res = 0.0;
+  sum_with_tax = 0.0;
+  deposit_calculator(1000000, 1, 3, 10, 13, 3, 1, &res_percent, &tax_rate_res, &sum_with_tax, &sum_res);
+  ck_assert_double_eq_tol(sum_res, 1104713.07, 1e-2);
+  ck_assert_double_eq_tol(res_percent, 104713.07, 1e-2);
+  ck_assert_double_eq_tol(tax_rate_res, 3862.70, 1e-2);
+  ck_assert_double_eq_tol(sum_with_tax, 100850.37, 1e-2);
+
+  sum_res = 0.0;
+  res_percent = 0.0;
+  tax_rate_res = 0.0;
+  sum_with_tax = 0.0;
+  deposit_calculator(1000000, 1, 2, 10, 13, 3, 1, &res_percent, &tax_rate_res, &sum_with_tax, &sum_res);
+  ck_assert_double_eq_tol(sum_res, 1007668.70, 1e-2);
+  ck_assert_double_eq_tol(res_percent, 7668.70, 1e-2);
+  ck_assert_double_eq_tol(tax_rate_res, 0.00, 1e-2);
+  ck_assert_double_eq_tol(sum_with_tax, 7668.70, 1e-2);
+}
+
+START_TEST(hard_test) {
+  int error = 0;
+  double result = polish_notation("sqrt(cos(x))*cos(200*x)+sqrt(abs(x))-3.1415/4*(4-x^2)^0.01+sin(x)+tan(x)+acos(x)+asin(x)+atan(x)", 1, 0, &error);
+  ck_assert_double_eq_tol(result, 1.774458, 1e-6);
+}
+
 int main(void) {
   Suite *s1 = suite_create("Core");
   TCase *tc1_1 = tcase_create("Core");
@@ -532,22 +594,25 @@ int main(void) {
   int failed = 0;
 
   suite_add_tcase(s1, tc1_1);
-  tcase_add_test(tc1_1, number_test);
-  tcase_add_test(tc1_1, plus_test);
+  tcase_add_test(tc1_1, ln_test);
   tcase_add_test(tc1_1, sub_test);
   tcase_add_test(tc1_1, mul_test);
   tcase_add_test(tc1_1, div_test);
   tcase_add_test(tc1_1, mod_test);
   tcase_add_test(tc1_1, deg_test);
-  tcase_add_test(tc1_1, sqrt_test);
   tcase_add_test(tc1_1, sin_test);
   tcase_add_test(tc1_1, cos_test);
   tcase_add_test(tc1_1, tan_test);
+  tcase_add_test(tc1_1, log_test);
+  tcase_add_test(tc1_1, hard_test);
+  tcase_add_test(tc1_1, plus_test);
+  tcase_add_test(tc1_1, sqrt_test);
   tcase_add_test(tc1_1, asin_test);
   tcase_add_test(tc1_1, acos_test);
   tcase_add_test(tc1_1, atan_test);
-  tcase_add_test(tc1_1, ln_test);
-  tcase_add_test(tc1_1, log_test);
+  tcase_add_test(tc1_1, credit_test);
+  tcase_add_test(tc1_1, number_test);
+  tcase_add_test(tc1_1, deposit_test);
   tcase_add_test(tc1_1, algebraic_equation_test);
 
   srunner_run_all(sr, CK_ENV);

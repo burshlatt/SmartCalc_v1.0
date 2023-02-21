@@ -2,15 +2,10 @@
 
 void deposit_calculator(double sum, int time_contrib, int type_of_time, double percent, double tax_rate, int period, int capitalization, double *res_percent, double *tax_rate_res, double *sum_with_tax, double *sum_res) {
     double time_copy = convert_to_days(time_contrib, type_of_time);
-    double time_copy_2 = time_copy;
     int n = check_period(capitalization, period, &time_copy);
     if (!capitalization) {
         *sum_res = sum;
-        if (period == 7) {
-            *res_percent = sum * (1 + ((percent / 100) * time_copy_2 / n));
-        } else {
-            *res_percent = (sum * (percent / 100) / n) * time_copy;
-        }
+        *res_percent = (sum * (percent / 100) / n) * time_copy;
     } else {
         *sum_res = sum * pow(1 + (percent / 100) / n, time_copy / 365 * n);
         *res_percent = *sum_res - sum;
