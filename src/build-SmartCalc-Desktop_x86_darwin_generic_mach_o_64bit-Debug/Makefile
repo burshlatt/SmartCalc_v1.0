@@ -892,10 +892,6 @@ moc_qcustomplot.o: moc_qcustomplot.cpp
 ####### Install
 
 install_target: first FORCE
-	@test -d $(INSTALL_ROOT)/opt/SmartCalc/bin || mkdir -p $(INSTALL_ROOT)/opt/SmartCalc/bin
-	$(DEL_FILE) -r $(INSTALL_ROOT)/opt/SmartCalc/bin/SmartCalc.app
-	
-	$(QINSTALL) SmartCalc.app $(INSTALL_ROOT)/opt/SmartCalc/bin/SmartCalc.app
 
 uninstall_target: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/SmartCalc/bin/SmartCalc.app

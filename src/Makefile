@@ -1,4 +1,4 @@
-all: clean uninstall install dist
+all: clean uninstall build install dist gcov_report
 
 build:
 	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make install
@@ -10,7 +10,8 @@ install:
 uninstall:
 	rm -rf app
 	
-clean:
+clean: clean_test
+	rm smartcalc.tar.gz
 	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make clean && rm -rf SmartCalc.app
 	
 dvi:
