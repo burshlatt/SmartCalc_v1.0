@@ -11,8 +11,8 @@ uninstall:
 	rm -rf app
 	
 clean: clean_test
-	rm smartcalc.tar.gz
 	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make clean && rm -rf SmartCalc.app
+	rm smartcalc.tar.gz
 	
 dvi:
 	-@doxygen
