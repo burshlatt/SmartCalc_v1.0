@@ -1,5 +1,5 @@
-#include <check.h>
 #include "../CFiles/s21_calculator.h"
+#include <check.h>
 
 int error = 0;
 
@@ -347,7 +347,8 @@ START_TEST(algebraic_equation_test) {
   result = polish_notation(string_3, 0, 0, &error);
   ck_assert_double_eq_tol(result, 1679616.000000, 1e-6);
   // test 6
-  char string_6[255] = "sin(30)+cos(30)*tan(30)/acos(0.15)^asin(0.15)+(-1)*atan(0.15)";
+  char string_6[255] =
+      "sin(30)+cos(30)*tan(30)/acos(0.15)^asin(0.15)+(-1)*atan(0.15)";
   result = polish_notation(string_6, 0, 0, &error);
   ck_assert_double_eq_tol(result, 0.9967934, 1e-6);
   // test 7
@@ -367,7 +368,8 @@ START_TEST(credit_test) {
   double f_payment = 0.0;
   double l_payment = 0.0;
   overpay = 0.0;
-  sum = differentiated_credit(1000000, 1, 2, 13, &f_payment, &l_payment, &overpay);
+  sum = differentiated_credit(1000000, 1, 2, 13, &f_payment, &l_payment,
+                              &overpay);
   ck_assert_double_eq_tol(sum, 1069926.94, 1e-2);
   ck_assert_double_eq_tol(f_payment, 93305.94, 1e-2);
   ck_assert_double_eq_tol(l_payment, 84253.42, 1e-2);
@@ -379,7 +381,8 @@ START_TEST(deposit_test) {
   double res_percent = 0.0;
   double tax_rate_res = 0.0;
   double sum_with_tax = 0.0;
-  deposit_calculator(1000000, 1, 3, 10, 13, 3, 0, &res_percent, &tax_rate_res, &sum_with_tax, &sum_res);
+  deposit_calculator(1000000, 1, 3, 10, 13, 3, 0, &res_percent, &tax_rate_res,
+                     &sum_with_tax, &sum_res);
   ck_assert_double_eq_tol(sum_res, 1000000.00, 1e-2);
   ck_assert_double_eq_tol(res_percent, 91666.67, 1e-2);
   ck_assert_double_eq_tol(tax_rate_res, 2166.67, 1e-2);
@@ -389,7 +392,8 @@ START_TEST(deposit_test) {
   res_percent = 0.0;
   tax_rate_res = 0.0;
   sum_with_tax = 0.0;
-  deposit_calculator(1000000, 1, 3, 10, 13, 3, 1, &res_percent, &tax_rate_res, &sum_with_tax, &sum_res);
+  deposit_calculator(1000000, 1, 3, 10, 13, 3, 1, &res_percent, &tax_rate_res,
+                     &sum_with_tax, &sum_res);
   ck_assert_double_eq_tol(sum_res, 1104713.07, 1e-2);
   ck_assert_double_eq_tol(res_percent, 104713.07, 1e-2);
   ck_assert_double_eq_tol(tax_rate_res, 3862.70, 1e-2);
@@ -399,7 +403,8 @@ START_TEST(deposit_test) {
   res_percent = 0.0;
   tax_rate_res = 0.0;
   sum_with_tax = 0.0;
-  deposit_calculator(1000000, 1, 2, 10, 13, 3, 1, &res_percent, &tax_rate_res, &sum_with_tax, &sum_res);
+  deposit_calculator(1000000, 1, 2, 10, 13, 3, 1, &res_percent, &tax_rate_res,
+                     &sum_with_tax, &sum_res);
   ck_assert_double_eq_tol(sum_res, 1007668.70, 1e-2);
   ck_assert_double_eq_tol(res_percent, 7668.70, 1e-2);
   ck_assert_double_eq_tol(tax_rate_res, 0.00, 1e-2);
@@ -408,7 +413,10 @@ START_TEST(deposit_test) {
 
 START_TEST(other_test) {
   int error = 0;
-  double result = polish_notation("sqrt(cos(x))*cos(200*x)+sqrt(abs(x))-3.1415/4*(4-x^2)^0.01+sin(x)+tan(x)+acos(x)+asin(x)+atan(x)", 1, 0, &error);
+  double result =
+      polish_notation("sqrt(cos(x))*cos(200*x)+sqrt(abs(x))-3.1415/"
+                      "4*(4-x^2)^0.01+sin(x)+tan(x)+acos(x)+asin(x)+atan(x)",
+                      1, 0, &error);
   ck_assert_double_eq_tol(result, 1.774458, 1e-6);
 
   error = 0;
