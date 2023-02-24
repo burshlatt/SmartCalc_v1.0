@@ -19,7 +19,7 @@ char peek(struct Stack *stack) {
   if (stack->top >= 0) {
     result = stack->data[stack->top];
   }
-  return result; 
+  return result;
 }
 
 char pop(struct Stack *stack) {

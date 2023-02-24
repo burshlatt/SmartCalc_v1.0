@@ -30,3 +30,4 @@ gcov_report:
 
 clean:
 	cd ./test-files/ && make clean_test
+	rm -rf smartcalc.tar.gz
