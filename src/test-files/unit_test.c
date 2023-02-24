@@ -19,7 +19,7 @@ START_TEST(number_test) {
 START_TEST(plus_test) {
   double result = 0;
   // test 1
-  char string_1[255] = "-12.3+4";
+  char string_1[255] = "(-12.3)+4";
   result = polish_notation(string_1, 0, 0, &error);
   ck_assert_double_eq_tol(result, -8.3, 1e-7);
   // test 2
@@ -100,7 +100,7 @@ START_TEST(div_test) {
 START_TEST(mod_test) {
   double result = 0;
   // test 1
-  char string_1[255] = "(-1.3)mod4";
+  char string_1[] = "(-1.3)mod4";
   result = polish_notation(string_1, 0, 0, &error);
   ck_assert_double_eq_tol(result, -1.3, 1e-7);
   // test 2

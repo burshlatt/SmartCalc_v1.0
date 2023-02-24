@@ -12,27 +12,19 @@ test: smartcalc.a
 	$(CC) unit_test.o smartcalc.a $(TEST_LIBS) -o calc_test
 	rm -rf test/*.o
 	./calc_test
-	
-gcov_report: test
+
+gcov_report: smartcalc.a
 	cp ../CFiles/s21_*.* .
 	$(CC) $(FLAGS) --coverage unit_test.c s21_*.c smartcalc.a $(TEST_LIBS) -o gcov_test
-	chmod +x *
 	./gcov_test
-	gcov s21_*.gcda
-	gcovr -b
-	gcovr
-	gcovr --html-details -o report.html
-	open report.html
+	lcov -t "smartcalc" -o smartcalc.info -c -d .
+	genhtml -o report smartcalc.info
+	open ./report/index.html
 
 clean_test:
-	rm -rf s21_*.*
-	rm -rf calc_test
-	rm -rf *.o
-	rm -rf *.o
-	rm -rf *.a
-	rm -rf *.gcno
-	rm -rf *.gcda
-	rm -rf *.gcov
-	rm -rf *.html
-	rm -rf *.css
-	rm -rf gcov_test
+	rm -rf s21_*.* calc_test *.o *.a *.gcno *.gcda *.info report gcov_test
+
+clang:
+	cp ../materials/linters/.clang-format .
+	clang-format -n *.c *.h
+	rm .clang-format

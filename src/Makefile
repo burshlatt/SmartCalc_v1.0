@@ -1,23 +1,24 @@
-all: clean uninstall build install dist gcov_report
+all: clean uninstall install dist gcov_report
 
 build:
 	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make install
 
-install:
+install: build
 	mkdir app
 	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && mv SmartCalc.app ../app/
+
+run:
+	cd ./app && open SmartCalc.app
 	
-uninstall:
+uninstall: clean_app
 	rm -rf app
 	
-clean: clean_test
+clean_app:
 	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make clean && rm -rf SmartCalc.app
-	rm smartcalc.tar.gz
 	
 dvi:
-	-@doxygen
-	open doxygen/html/index.html
-
+	open readme.html
+	
 dist:
 	tar czvf smartcalc.tar.gz .
 	
@@ -27,5 +28,5 @@ test:
 gcov_report:
 	cd ./test-files/ && make gcov_report
 
-clean_test:
+clean:
 	cd ./test-files/ && make clean_test

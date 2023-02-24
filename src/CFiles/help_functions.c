@@ -14,7 +14,13 @@ int size(struct Stack *stack) { return stack->top + 1; }
 
 void push(struct Stack *stack, char item) { stack->data[++stack->top] = item; }
 
-char peek(struct Stack *stack) { return stack->data[stack->top]; }
+char peek(struct Stack *stack) {
+  char result = '\0';
+  if (stack->top >= 0) {
+    result = stack->data[stack->top];
+  }
+  return result; 
+}
 
 char pop(struct Stack *stack) {
   char return_value = '\0';
@@ -187,7 +193,7 @@ void logic_actions(struct Stack *stack, char *output, int *index) {
 int do_pop(struct Stack *stack, char *output, int *index, int variant) {
   int error_status = 0;
   if (variant == 1) {
-    while (!is_empty(stack) && peek(stack) != '(') {
+    while (!is_empty(stack) && peek(stack) != '(' && peek(stack) != '\0') {
       logic_actions(stack, output, index);
     }
   } else if (variant == 2) {
@@ -195,7 +201,7 @@ int do_pop(struct Stack *stack, char *output, int *index, int variant) {
       logic_actions(stack, output, index);
     }
   } else if (variant == 3) {
-    while (peek(stack) != '(') {
+    while (peek(stack) != '(' && peek(stack) != '\0') {
       if (is_empty(stack)) {
         error_status = 1;
         break;
@@ -208,7 +214,7 @@ int do_pop(struct Stack *stack, char *output, int *index, int variant) {
     }
   } else if (variant == 5) {
     while (!is_empty(stack) && peek(stack) != '-' && peek(stack) != '+' &&
-           peek(stack) != '(') {
+           peek(stack) != '(' && peek(stack) != '\0') {
       logic_actions(stack, output, index);
     }
   }

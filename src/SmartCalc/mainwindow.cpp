@@ -366,6 +366,7 @@ void MainWindow::print_graph(char *chars_array) {
   double xBegin = ui->xStart->text().toDouble();
   double xEnd = ui->xEnd->text().toDouble() + h;
   double X = xBegin;
+  error_status = 0;
   QVector<double> xCord, yCord;
   while (X <= xEnd) {
     double result = polish_notation(chars_array, is_x, X, &error_status);

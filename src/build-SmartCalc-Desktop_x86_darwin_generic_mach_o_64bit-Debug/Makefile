@@ -12,12 +12,12 @@ EQ            = =
 
 ####### Compiler, tools and options
 
-CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
-CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
+CC            = /Library/Developer/CommandLineTools/usr/bin/clang
+CXX           = /Library/Developer/CommandLineTools/usr/bin/clang++
 DEFINES       = -DQT_QML_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
-CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -mmacosx-version-min=10.14 -Wall -Wextra $(DEFINES)
-CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -mmacosx-version-min=10.14 -Wall -Wextra $(DEFINES)
-INCPATH       = -I../SmartCalc -I. -I../../../../Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.4.2/macos/mkspecs/macx-clang -F/Users/burshlat/Qt/6.4.2/macos/lib
+CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.14 -Wall -Wextra $(DEFINES)
+CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.14 -Wall -Wextra $(DEFINES)
+INCPATH       = -I../SmartCalc -I. -I../../../../Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.4.2/macos/mkspecs/macx-clang -F/Users/burshlat/Qt/6.4.2/macos/lib
 QMAKE         = /Users/burshlat/Qt/6.4.2/macos/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -38,11 +38,11 @@ TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = SmartCalc1.0.0
 DISTDIR = /Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/.tmp/SmartCalc1.0.0
-LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -mmacosx-version-min=10.14 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/burshlat/Qt/6.4.2/macos/lib
+LINK          = /Library/Developer/CommandLineTools/usr/bin/clang++
+LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.14 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/burshlat/Qt/6.4.2/macos/lib
 LIBS          = $(SUBLIBS) -F/Users/burshlat/Qt/6.4.2/macos/lib -framework QtPrintSupport -framework ApplicationServices -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -lcups -framework AGL -framework OpenGL   
-AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
-RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
+AR            = /Library/Developer/CommandLineTools/usr/bin/ar cq
+RANLIB        = /Library/Developer/CommandLineTools/usr/bin/ranlib -s
 SED           = sed
 STRIP         = strip
 
@@ -202,7 +202,6 @@ DIST          = ../../../../Qt/6.4.2/macos/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.4.2/macos/mkspecs/features/qt_config.prf \
 		../../../../Qt/6.4.2/macos/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/6.4.2/macos/mkspecs/features/spec_post.prf \
-		../SmartCalc/.qmake.stash \
 		../../../../Qt/6.4.2/macos/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/6.4.2/macos/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/6.4.2/macos/mkspecs/features/toolchain.prf \
@@ -250,9 +249,9 @@ TARGET        = SmartCalc.app/Contents/MacOS/SmartCalc
 
 ####### Custom Variables
 EXPORT_QMAKE_MAC_SDK = macosx
-EXPORT_QMAKE_MAC_SDK_VERSION = 13.0
-EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = /Users/burshlat/Desktop/SmartCalc_v1.0/src/build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug/.qmake.stash
+EXPORT_QMAKE_MAC_SDK_VERSION = 13.1
+EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
+EXPORT__QMAKE_STASH_ = 
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = x86_64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -393,7 +392,6 @@ Makefile: ../SmartCalc/SmartCalc.pro ../../../../Qt/6.4.2/macos/mkspecs/macx-cla
 		../../../../Qt/6.4.2/macos/mkspecs/features/qt_config.prf \
 		../../../../Qt/6.4.2/macos/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/6.4.2/macos/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../../Qt/6.4.2/macos/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/6.4.2/macos/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/6.4.2/macos/mkspecs/features/toolchain.prf \
@@ -553,7 +551,6 @@ Makefile: ../SmartCalc/SmartCalc.pro ../../../../Qt/6.4.2/macos/mkspecs/macx-cla
 ../../../../Qt/6.4.2/macos/mkspecs/features/qt_config.prf:
 ../../../../Qt/6.4.2/macos/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/6.4.2/macos/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../../Qt/6.4.2/macos/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/6.4.2/macos/mkspecs/features/mac/sdk.prf:
 ../../../../Qt/6.4.2/macos/mkspecs/features/toolchain.prf:
@@ -633,7 +630,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r SmartCalc.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -656,76 +652,76 @@ compiler_moc_header_make_all: moc_creditwindow.cpp moc_depositwindow.cpp moc_mai
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_creditwindow.cpp moc_depositwindow.cpp moc_mainwindow.cpp moc_qcustomplot.cpp
 moc_creditwindow.cpp: ../SmartCalc/creditwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
 		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../CFiles/s21_calculator.h \
 		../../../../Qt/6.4.2/macos/libexec/moc
-	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/creditwindow.h -o moc_creditwindow.cpp
+	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/creditwindow.h -o moc_creditwindow.cpp
 
 moc_depositwindow.cpp: ../SmartCalc/depositwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../CFiles/s21_calculator.h \
 		../../../../Qt/6.4.2/macos/libexec/moc
-	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/depositwindow.h -o moc_depositwindow.cpp
+	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/depositwindow.h -o moc_depositwindow.cpp
 
 moc_mainwindow.cpp: ../SmartCalc/mainwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
+		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qvector.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QtMath \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qmath.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../SmartCalc/creditwindow.h \
 		../CFiles/s21_calculator.h \
 		../SmartCalc/depositwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../../../../Qt/6.4.2/macos/libexec/moc
-	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/mainwindow.h -o moc_mainwindow.cpp
+	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/mainwindow.h -o moc_mainwindow.cpp
 
 moc_qcustomplot.cpp: ../SmartCalc/qcustomplot.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qmath.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qnumeric.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QtNumeric \
 		../../../../Qt/6.4.2/macos/libexec/moc
-	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/qcustomplot.h -o moc_qcustomplot.cpp
+	/Users/burshlat/Qt/6.4.2/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/burshlat/Qt/6.4.2/macos/mkspecs/macx-clang -I/Users/burshlat/Desktop/SmartCalc_v1.0/src/SmartCalc -I/Users/burshlat/Qt/6.4.2/macos/lib/QtPrintSupport.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtWidgets.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtGui.framework/Headers -I/Users/burshlat/Qt/6.4.2/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/burshlat/Qt/6.4.2/macos/lib ../SmartCalc/qcustomplot.h -o moc_qcustomplot.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -775,99 +771,99 @@ s21_deposit_calculator.o: ../CFiles/s21_deposit_calculator.c ../CFiles/s21_calcu
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_deposit_calculator.o ../CFiles/s21_deposit_calculator.c
 
 creditwindow.o: ../SmartCalc/creditwindow.cpp ../SmartCalc/creditwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
 		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../CFiles/s21_calculator.h \
 		ui_creditwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o creditwindow.o ../SmartCalc/creditwindow.cpp
 
 depositwindow.o: ../SmartCalc/depositwindow.cpp ../SmartCalc/depositwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		../CFiles/s21_calculator.h \
 		ui_depositwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o depositwindow.o ../SmartCalc/depositwindow.cpp
 
 main.o: ../SmartCalc/main.cpp ../SmartCalc/mainwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
+		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QVector \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qvector.h \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QtMath \
 		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qmath.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../SmartCalc/creditwindow.h \
 		../CFiles/s21_calculator.h \
 		../SmartCalc/depositwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SmartCalc/main.cpp
-
-mainwindow.o: ../SmartCalc/mainwindow.cpp ../SmartCalc/mainwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QMainWindow \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QVector \
-		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qvector.h \
-		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QtMath \
-		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qmath.h \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
-		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../SmartCalc/creditwindow.h \
-		../CFiles/s21_calculator.h \
-		../SmartCalc/depositwindow.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
-		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SmartCalc/main.cpp
+
+mainwindow.o: ../SmartCalc/mainwindow.cpp ../SmartCalc/mainwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/QScreen \
+		../../../../Qt/6.4.2/macos/lib/QtGui.framework/Headers/qscreen.h \
+		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QVector \
+		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qvector.h \
+		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/QtMath \
+		../../../../Qt/6.4.2/macos/lib/QtCore.framework/Headers/qmath.h \
+		../SmartCalc/creditwindow.h \
+		../CFiles/s21_calculator.h \
+		../SmartCalc/depositwindow.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QDateEdit \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QScrollArea \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.4.2/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../SmartCalc/mainwindow.cpp
 
@@ -894,9 +890,6 @@ moc_qcustomplot.o: moc_qcustomplot.cpp
 install_target: first FORCE
 
 uninstall_target: FORCE
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/SmartCalc/bin/SmartCalc.app
-	-$(DEL_DIR) $(INSTALL_ROOT)/opt/SmartCalc/bin/ 
-
 
 install: install_target  FORCE
 
