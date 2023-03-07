@@ -60,7 +60,6 @@ private:
   int is_dot = 0;
   int string_size = 0;
   int error_status = 0;
-  int graph_is_open = 0;
   int count_of_left_bracket = 0;
   int count_of_right_bracket = 0;
 

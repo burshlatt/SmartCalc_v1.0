@@ -23,8 +23,3 @@ gcov_report: smartcalc.a
 
 clean_test:
 	rm -rf s21_*.* calc_test *.o *.a *.gcno *.gcda *.info report gcov_test
-
-clang:
-	cp ../materials/linters/.clang-format .
-	clang-format -n *.c *.h
-	rm .clang-format

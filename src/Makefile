@@ -1,11 +1,11 @@
 all: clean uninstall install dist gcov_report
 
 build:
-	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make install
+	cd ./SmartCalc && qmake && make
 
 install: build
 	mkdir app
-	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && mv SmartCalc.app ../app/
+	cd ./SmartCalc && mv SmartCalc.app ../app/
 
 run:
 	cd ./app && open SmartCalc.app
@@ -14,7 +14,7 @@ uninstall: clean_app
 	rm -rf app
 	
 clean_app:
-	cd ./build-SmartCalc-Desktop_x86_darwin_generic_mach_o_64bit-Debug && make clean && rm -rf SmartCalc.app
+	cd ./SmartCalc && make clean && rm -rf SmartCalc.app
 	
 dvi:
 	open readme.html

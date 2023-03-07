@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 
   QScreen *screen = QGuiApplication::primaryScreen();
   QRect screenGeometry = screen->geometry();
-  int x = (screenGeometry.width() - 480) / 2;
+  int x = (screenGeometry.width() - 960) / 2;
   int y = (screenGeometry.height() - 380) / 2;
   move(x, y);
 
@@ -306,13 +306,9 @@ void MainWindow::on_resultFunc_clicked() {
   }
   if (!error_status && can_do && chars_array[0] != '-') {
     if (is_x) {
-      if (!graph_is_open) {
-        int xPos = this->geometry().x();
-        int yPos = this->geometry().y();
+      if (ui->showGraph->text() == '>') {
         this->setFixedSize(960, 380);
         ui->showGraph->setText("<");
-        setGeometry(xPos, yPos, width() + 480, height());
-        graph_is_open = 1;
       }
       print_graph(chars_array);
       is_x = 0;
@@ -338,18 +334,12 @@ void MainWindow::on_resultFunc_clicked() {
 }
 
 void MainWindow::on_showGraph_clicked() {
-  int xPos = this->geometry().x();
-  int yPos = this->geometry().y();
-  if (!graph_is_open) {
+  if (ui->showGraph->text() == '>') {
     this->setFixedSize(960, 380);
     ui->showGraph->setText("<");
-    setGeometry(xPos, yPos, width() + 480, height());
-    graph_is_open = 1;
   } else {
     this->setFixedSize(480, 380);
     ui->showGraph->setText(">");
-    setGeometry(xPos, yPos, width() - 480, height());
-    graph_is_open = 0;
   }
 }
 
